@@ -2606,7 +2606,7 @@ class BiosensorApp(QMainWindow):
     def open_developer_website(self):
         """Open developer website in default browser"""
         import webbrowser
-        developer_url = "https://github.com/anas-gulzar/grace"  # Replace with actual URL
+        developer_url = "https://github.com/anas-gulzar-dev/grace/"  # Replace with actual URL
         try:
             webbrowser.open(developer_url)
             self.update_status("🌐 Developer website opened in browser", "blue")
