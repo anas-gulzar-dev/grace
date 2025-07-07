@@ -52,8 +52,8 @@ A professional-grade application for capturing, processing, and analyzing data f
 
 1. **Clone or download** this repository:
    ```bash
-   git clone <repository-url>
-   cd biosensor-data-capture
+   git clone https://github.com/anas-gulzar-dev/grace.git
+   cd grace
    ```
 
 2. **Install dependencies**:
@@ -216,7 +216,7 @@ ENABLE_ANIMATIONS=true
 ## 📁 Project Structure
 
 ```
-project/
+grace/
 ├── main.py                 # Main application file
 ├── config.py              # Configuration loader
 ├── .env                   # Environment variables (create this)
