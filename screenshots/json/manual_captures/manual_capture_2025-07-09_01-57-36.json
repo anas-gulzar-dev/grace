@@ -1,0 +1,1490 @@
+{
+  "timestamp": "2025-07-09 01:57:36",
+  "window_title": "Turn Raw Data into a Feature Layer - Google Chrome",
+  "raw_text": "Turn Raw Data into a Feature L X\nC esri.com/about/newsroom/arcuser/raw-data\nIndustries\nARCUSER\nSupport & Services\nStories\nBarbour County\nBibb County\nBlount County\nBullock County\nButler County\nCalhoun County\nChambers County\nCherokee County\nChilton County\nChoctaw County\nClarke County\nProducts\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n1\n1\n1\n1\n1\n1\n1\n1\n1\n9586.165\n11783.54\n10908.1\n12066.91\n14018.61\n12217.76\n11273.17\n11294.41\n10831.92\nAbout\n451\n445\n1050\n205\n393\n2333\n691\n575\n850\n72222\n63653\n161107\n29266\n54804\n321406\n93770\n71014\n123617\n8200.118\n10159.98\n9895.583\n9519.704\n11976.43\n11484.59\n9948.759\n9767.023\n9733.842\n10972.21\n13407.11\n11920.62\n14614.12\n16060.78\n12950.93\n12597.58\n12821.8\n11929.99\n4\n2\n11332.56\n14812.54\n5619.645\n14336.54\n15793.58\n12955.02\n10774.82\n16395.25\n12000.44\n12215.47\n12447.32\n7309.6\n11327.\n11336.\n6638.6\n12797.\n12447.\n11794.\n10965.\n12163.\n7394.5\nTurn Raw Data\nHANDS ON\nSummer 2019\ninto a Feature Layer\nDownload article\nDiana Lavery\nPDF 331\nMost demographic, economic, health, and education maps start with tabular data of\nsome kind. This article will describe several ways you can turn a flat file of raw data\ninto a feature layer. Feature layers allow you to do spatial analysis and create web\nmaps that can be shared in apps and story maps.",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "Up",
+    "regions": [
+      {
+        "boundingBox": "80,24,358,54",
+        "lines": [
+          {
+            "boundingBox": "80,24,188,9",
+            "words": [
+              {
+                "boundingBox": "80,24,24,9",
+                "text": "Turn"
+              },
+              {
+                "boundingBox": "108,24,21,9",
+                "text": "Raw"
+              },
+              {
+                "boundingBox": "133,24,24,9",
+                "text": "Data"
+              },
+              {
+                "boundingBox": "161,24,20,9",
+                "text": "into"
+              },
+              {
+                "boundingBox": "185,27,5,6",
+                "text": "a"
+              },
+              {
+                "boundingBox": "195,24,39,9",
+                "text": "Feature"
+              },
+              {
+                "boundingBox": "237,24,8,9",
+                "text": "L"
+              },
+              {
+                "boundingBox": "260,24,8,8",
+                "text": "X"
+              }
+            ]
+          },
+          {
+            "boundingBox": "96,65,342,13",
+            "words": [
+              {
+                "boundingBox": "96,65,12,12",
+                "text": "C"
+              },
+              {
+                "boundingBox": "165,66,273,12",
+                "text": "esri.com/about/newsroom/arcuser/raw-data"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "487,119,113,480",
+        "lines": [
+          {
+            "boundingBox": "487,119,70,12",
+            "words": [
+              {
+                "boundingBox": "487,119,70,12",
+                "text": "Industries"
+              }
+            ]
+          },
+          {
+            "boundingBox": "507,586,93,13",
+            "words": [
+              {
+                "boundingBox": "507,586,93,13",
+                "text": "ARCUSER"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "621,119,137,16",
+        "lines": [
+          {
+            "boundingBox": "621,119,137,16",
+            "words": [
+              {
+                "boundingBox": "621,119,58,16",
+                "text": "Support"
+              },
+              {
+                "boundingBox": "684,119,11,12",
+                "text": "&"
+              },
+              {
+                "boundingBox": "699,119,59,12",
+                "text": "Services"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "822,119,49,12",
+        "lines": [
+          {
+            "boundingBox": "822,119,49,12",
+            "words": [
+              {
+                "boundingBox": "822,119,49,12",
+                "text": "Stories"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "21,169,274,539",
+        "lines": [
+          {
+            "boundingBox": "22,169,242,34",
+            "words": [
+              {
+                "boundingBox": "22,169,124,27",
+                "text": "Barbour"
+              },
+              {
+                "boundingBox": "156,171,108,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "22,220,185,33",
+            "words": [
+              {
+                "boundingBox": "22,220,65,26",
+                "text": "Bibb"
+              },
+              {
+                "boundingBox": "99,222,108,31",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "22,270,217,34",
+            "words": [
+              {
+                "boundingBox": "22,270,99,27",
+                "text": "Blount"
+              },
+              {
+                "boundingBox": "131,272,108,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "22,321,225,33",
+            "words": [
+              {
+                "boundingBox": "22,321,107,27",
+                "text": "Bullock"
+              },
+              {
+                "boundingBox": "139,323,108,31",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "22,371,209,34",
+            "words": [
+              {
+                "boundingBox": "22,371,90,27",
+                "text": "Butler"
+              },
+              {
+                "boundingBox": "122,373,109,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "21,422,245,34",
+            "words": [
+              {
+                "boundingBox": "21,422,125,27",
+                "text": "Calhoun"
+              },
+              {
+                "boundingBox": "157,424,109,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "21,472,274,34",
+            "words": [
+              {
+                "boundingBox": "21,472,154,27",
+                "text": "Chambers"
+              },
+              {
+                "boundingBox": "186,474,109,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "21,523,263,34",
+            "words": [
+              {
+                "boundingBox": "21,523,144,27",
+                "text": "Cherokee"
+              },
+              {
+                "boundingBox": "176,525,108,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "21,574,227,33",
+            "words": [
+              {
+                "boundingBox": "21,574,106,26",
+                "text": "Chilton"
+              },
+              {
+                "boundingBox": "139,575,109,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "21,624,250,34",
+            "words": [
+              {
+                "boundingBox": "21,624,131,27",
+                "text": "Choctaw"
+              },
+              {
+                "boundingBox": "163,626,108,32",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "21,675,213,33",
+            "words": [
+              {
+                "boundingBox": "21,675,94,26",
+                "text": "Clarke"
+              },
+              {
+                "boundingBox": "126,676,108,32",
+                "text": "County"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "361,119,125,582",
+        "lines": [
+          {
+            "boundingBox": "361,119,62,12",
+            "words": [
+              {
+                "boundingBox": "361,119,62,12",
+                "text": "Products"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,171,72,25",
+            "words": [
+              {
+                "boundingBox": "414,171,72,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,222,72,24",
+            "words": [
+              {
+                "boundingBox": "414,222,72,24",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,272,72,25",
+            "words": [
+              {
+                "boundingBox": "414,272,72,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,323,72,24",
+            "words": [
+              {
+                "boundingBox": "414,323,72,24",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,373,72,25",
+            "words": [
+              {
+                "boundingBox": "414,373,72,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,424,72,25",
+            "words": [
+              {
+                "boundingBox": "414,424,72,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,474,72,25",
+            "words": [
+              {
+                "boundingBox": "414,474,72,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,525,72,25",
+            "words": [
+              {
+                "boundingBox": "414,525,72,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,575,71,25",
+            "words": [
+              {
+                "boundingBox": "414,575,71,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,626,71,25",
+            "words": [
+              {
+                "boundingBox": "414,626,71,25",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "414,676,71,25",
+            "words": [
+              {
+                "boundingBox": "414,676,71,25",
+                "text": "2019"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "632,171,16,429",
+        "lines": [
+          {
+            "boundingBox": "632,171,16,25",
+            "words": [
+              {
+                "boundingBox": "632,171,16,25",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,221,16,25",
+            "words": [
+              {
+                "boundingBox": "632,221,16,25",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,272,16,25",
+            "words": [
+              {
+                "boundingBox": "632,272,16,25",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,322,16,26",
+            "words": [
+              {
+                "boundingBox": "632,322,16,26",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,373,16,25",
+            "words": [
+              {
+                "boundingBox": "632,373,16,25",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,423,16,26",
+            "words": [
+              {
+                "boundingBox": "632,423,16,26",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,474,16,25",
+            "words": [
+              {
+                "boundingBox": "632,474,16,25",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,525,16,25",
+            "words": [
+              {
+                "boundingBox": "632,525,16,25",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "632,575,16,25",
+            "words": [
+              {
+                "boundingBox": "632,575,16,25",
+                "text": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "671,171,139,429",
+        "lines": [
+          {
+            "boundingBox": "671,171,138,25",
+            "words": [
+              {
+                "boundingBox": "671,171,138,25",
+                "text": "9586.165"
+              }
+            ]
+          },
+          {
+            "boundingBox": "673,222,137,24",
+            "words": [
+              {
+                "boundingBox": "673,222,137,24",
+                "text": "11783.54"
+              }
+            ]
+          },
+          {
+            "boundingBox": "691,272,118,25",
+            "words": [
+              {
+                "boundingBox": "691,272,118,25",
+                "text": "10908.1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "673,322,136,26",
+            "words": [
+              {
+                "boundingBox": "673,322,136,26",
+                "text": "12066.91"
+              }
+            ]
+          },
+          {
+            "boundingBox": "673,373,136,25",
+            "words": [
+              {
+                "boundingBox": "673,373,136,25",
+                "text": "14018.61"
+              }
+            ]
+          },
+          {
+            "boundingBox": "673,424,137,25",
+            "words": [
+              {
+                "boundingBox": "673,424,137,25",
+                "text": "12217.76"
+              }
+            ]
+          },
+          {
+            "boundingBox": "673,474,137,25",
+            "words": [
+              {
+                "boundingBox": "673,474,137,25",
+                "text": "11273.17"
+              }
+            ]
+          },
+          {
+            "boundingBox": "673,525,136,25",
+            "words": [
+              {
+                "boundingBox": "673,525,136,25",
+                "text": "11294.41"
+              }
+            ]
+          },
+          {
+            "boundingBox": "673,575,136,25",
+            "words": [
+              {
+                "boundingBox": "673,575,136,25",
+                "text": "10831.92"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "899,119,81,481",
+        "lines": [
+          {
+            "boundingBox": "934,119,46,12",
+            "words": [
+              {
+                "boundingBox": "934,119,46,12",
+                "text": "About"
+              }
+            ]
+          },
+          {
+            "boundingBox": "916,171,55,25",
+            "words": [
+              {
+                "boundingBox": "916,171,55,25",
+                "text": "451"
+              }
+            ]
+          },
+          {
+            "boundingBox": "916,222,55,24",
+            "words": [
+              {
+                "boundingBox": "916,222,55,24",
+                "text": "445"
+              }
+            ]
+          },
+          {
+            "boundingBox": "900,272,72,25",
+            "words": [
+              {
+                "boundingBox": "900,272,72,25",
+                "text": "1050"
+              }
+            ]
+          },
+          {
+            "boundingBox": "917,323,54,24",
+            "words": [
+              {
+                "boundingBox": "917,323,54,24",
+                "text": "205"
+              }
+            ]
+          },
+          {
+            "boundingBox": "917,373,54,25",
+            "words": [
+              {
+                "boundingBox": "917,373,54,25",
+                "text": "393"
+              }
+            ]
+          },
+          {
+            "boundingBox": "899,424,72,25",
+            "words": [
+              {
+                "boundingBox": "899,424,72,25",
+                "text": "2333"
+              }
+            ]
+          },
+          {
+            "boundingBox": "918,474,53,25",
+            "words": [
+              {
+                "boundingBox": "918,474,53,25",
+                "text": "691"
+              }
+            ]
+          },
+          {
+            "boundingBox": "917,525,54,25",
+            "words": [
+              {
+                "boundingBox": "917,525,54,25",
+                "text": "575"
+              }
+            ]
+          },
+          {
+            "boundingBox": "917,575,55,25",
+            "words": [
+              {
+                "boundingBox": "917,575,55,25",
+                "text": "850"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1024,171,110,429",
+        "lines": [
+          {
+            "boundingBox": "1042,171,91,25",
+            "words": [
+              {
+                "boundingBox": "1042,171,91,25",
+                "text": "72222"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1042,222,91,24",
+            "words": [
+              {
+                "boundingBox": "1042,222,91,24",
+                "text": "63653"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1025,272,108,25",
+            "words": [
+              {
+                "boundingBox": "1025,272,108,25",
+                "text": "161107"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1042,323,91,24",
+            "words": [
+              {
+                "boundingBox": "1042,323,91,24",
+                "text": "29266"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1042,373,92,25",
+            "words": [
+              {
+                "boundingBox": "1042,373,92,25",
+                "text": "54804"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1024,424,109,25",
+            "words": [
+              {
+                "boundingBox": "1024,424,109,25",
+                "text": "321406"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1042,474,91,25",
+            "words": [
+              {
+                "boundingBox": "1042,474,91,25",
+                "text": "93770"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1042,525,92,25",
+            "words": [
+              {
+                "boundingBox": "1042,525,92,25",
+                "text": "71014"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1025,575,108,25",
+            "words": [
+              {
+                "boundingBox": "1025,575,108,25",
+                "text": "123617"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1156,171,139,429",
+        "lines": [
+          {
+            "boundingBox": "1156,171,139,25",
+            "words": [
+              {
+                "boundingBox": "1156,171,139,25",
+                "text": "8200.118"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1158,222,137,24",
+            "words": [
+              {
+                "boundingBox": "1158,222,137,24",
+                "text": "10159.98"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1157,272,137,25",
+            "words": [
+              {
+                "boundingBox": "1157,272,137,25",
+                "text": "9895.583"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1156,322,139,26",
+            "words": [
+              {
+                "boundingBox": "1156,322,139,26",
+                "text": "9519.704"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1158,373,136,25",
+            "words": [
+              {
+                "boundingBox": "1158,373,136,25",
+                "text": "11976.43"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1158,424,137,25",
+            "words": [
+              {
+                "boundingBox": "1158,424,137,25",
+                "text": "11484.59"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1156,474,139,25",
+            "words": [
+              {
+                "boundingBox": "1156,474,139,25",
+                "text": "9948.759"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1156,525,138,25",
+            "words": [
+              {
+                "boundingBox": "1156,525,138,25",
+                "text": "9767.023"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1156,575,138,25",
+            "words": [
+              {
+                "boundingBox": "1156,575,138,25",
+                "text": "9733.842"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1319,171,138,429",
+        "lines": [
+          {
+            "boundingBox": "1320,171,136,25",
+            "words": [
+              {
+                "boundingBox": "1320,171,136,25",
+                "text": "10972.21"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1320,221,136,25",
+            "words": [
+              {
+                "boundingBox": "1320,221,136,25",
+                "text": "13407.11"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1320,272,136,25",
+            "words": [
+              {
+                "boundingBox": "1320,272,136,25",
+                "text": "11920.62"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1319,322,137,26",
+            "words": [
+              {
+                "boundingBox": "1319,322,137,26",
+                "text": "14614.12"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1319,373,138,25",
+            "words": [
+              {
+                "boundingBox": "1319,373,138,25",
+                "text": "16060.78"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1320,424,136,25",
+            "words": [
+              {
+                "boundingBox": "1320,424,136,25",
+                "text": "12950.93"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1319,474,138,25",
+            "words": [
+              {
+                "boundingBox": "1319,474,138,25",
+                "text": "12597.58"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1338,525,119,25",
+            "words": [
+              {
+                "boundingBox": "1338,525,119,25",
+                "text": "12821.8"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1320,575,136,25",
+            "words": [
+              {
+                "boundingBox": "1320,575,136,25",
+                "text": "11929.99"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1439,626,18,75",
+        "lines": [
+          {
+            "boundingBox": "1439,626,18,25",
+            "words": [
+              {
+                "boundingBox": "1439,626,18,25",
+                "text": "4"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1440,676,16,25",
+            "words": [
+              {
+                "boundingBox": "1440,676,16,25",
+                "text": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1481,171,298,530",
+        "lines": [
+          {
+            "boundingBox": "1481,171,138,25",
+            "words": [
+              {
+                "boundingBox": "1481,171,138,25",
+                "text": "11332.56"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,221,138,25",
+            "words": [
+              {
+                "boundingBox": "1481,221,138,25",
+                "text": "14812.54"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1642,272,137,25",
+            "words": [
+              {
+                "boundingBox": "1642,272,137,25",
+                "text": "5619.645"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,322,138,26",
+            "words": [
+              {
+                "boundingBox": "1481,322,138,26",
+                "text": "14336.54"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,373,137,25",
+            "words": [
+              {
+                "boundingBox": "1481,373,137,25",
+                "text": "15793.58"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,424,137,25",
+            "words": [
+              {
+                "boundingBox": "1481,424,137,25",
+                "text": "12955.02"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,474,137,25",
+            "words": [
+              {
+                "boundingBox": "1481,474,137,25",
+                "text": "10774.82"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,525,137,25",
+            "words": [
+              {
+                "boundingBox": "1481,525,137,25",
+                "text": "16395.25"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,575,138,25",
+            "words": [
+              {
+                "boundingBox": "1481,575,138,25",
+                "text": "12000.44"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,626,137,25",
+            "words": [
+              {
+                "boundingBox": "1481,626,137,25",
+                "text": "12215.47"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1481,676,137,25",
+            "words": [
+              {
+                "boundingBox": "1481,676,137,25",
+                "text": "12447.32"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1804,171,101,530",
+        "lines": [
+          {
+            "boundingBox": "1804,171,101,25",
+            "words": [
+              {
+                "boundingBox": "1804,171,101,25",
+                "text": "7309.6"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1805,221,97,25",
+            "words": [
+              {
+                "boundingBox": "1805,221,97,25",
+                "text": "11327."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1805,272,97,25",
+            "words": [
+              {
+                "boundingBox": "1805,272,97,25",
+                "text": "11336."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1804,323,100,24",
+            "words": [
+              {
+                "boundingBox": "1804,323,100,24",
+                "text": "6638.6"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1805,373,97,25",
+            "words": [
+              {
+                "boundingBox": "1805,373,97,25",
+                "text": "12797."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1805,424,97,25",
+            "words": [
+              {
+                "boundingBox": "1805,424,97,25",
+                "text": "12447."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1805,474,97,25",
+            "words": [
+              {
+                "boundingBox": "1805,474,97,25",
+                "text": "11794."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1805,525,97,25",
+            "words": [
+              {
+                "boundingBox": "1805,525,97,25",
+                "text": "10965."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1805,626,97,25",
+            "words": [
+              {
+                "boundingBox": "1805,626,97,25",
+                "text": "12163."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1804,676,100,25",
+            "words": [
+              {
+                "boundingBox": "1804,676,100,25",
+                "text": "7394.5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "588,675,306,120",
+        "lines": [
+          {
+            "boundingBox": "588,675,306,35",
+            "words": [
+              {
+                "boundingBox": "588,675,91,35",
+                "text": "Turn"
+              },
+              {
+                "boundingBox": "699,675,84,35",
+                "text": "Raw"
+              },
+              {
+                "boundingBox": "800,675,94,35",
+                "text": "Data"
+              }
+            ]
+          },
+          {
+            "boundingBox": "642,758,84,11",
+            "words": [
+              {
+                "boundingBox": "642,758,55,11",
+                "text": "HANDS"
+              },
+              {
+                "boundingBox": "702,758,24,11",
+                "text": "ON"
+              }
+            ]
+          },
+          {
+            "boundingBox": "642,785,87,10",
+            "words": [
+              {
+                "boundingBox": "642,785,52,10",
+                "text": "Summer"
+              },
+              {
+                "boundingBox": "698,785,31,10",
+                "text": "2019"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "913,675,420,121",
+        "lines": [
+          {
+            "boundingBox": "913,675,420,47",
+            "words": [
+              {
+                "boundingBox": "913,676,78,34",
+                "text": "into"
+              },
+              {
+                "boundingBox": "1008,687,19,23",
+                "text": "a"
+              },
+              {
+                "boundingBox": "1046,675,157,35",
+                "text": "Feature"
+              },
+              {
+                "boundingBox": "1221,675,112,47",
+                "text": "Layer"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1149,760,105,11",
+            "words": [
+              {
+                "boundingBox": "1149,760,63,11",
+                "text": "Download"
+              },
+              {
+                "boundingBox": "1217,760,37,11",
+                "text": "article"
+              }
+            ]
+          },
+          {
+            "boundingBox": "954,772,78,13",
+            "words": [
+              {
+                "boundingBox": "954,772,34,10",
+                "text": "Diana"
+              },
+              {
+                "boundingBox": "994,772,38,13",
+                "text": "Lavery"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1119,786,50,10",
+            "words": [
+              {
+                "boundingBox": "1119,786,25,10",
+                "text": "PDF"
+              },
+              {
+                "boundingBox": "1149,786,20,10",
+                "text": "331"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "572,911,780,99",
+        "lines": [
+          {
+            "boundingBox": "572,911,780,20",
+            "words": [
+              {
+                "boundingBox": "572,912,47,14",
+                "text": "Most"
+              },
+              {
+                "boundingBox": "624,911,129,20",
+                "text": "demographic,"
+              },
+              {
+                "boundingBox": "760,912,94,17",
+                "text": "economic,"
+              },
+              {
+                "boundingBox": "862,911,60,18",
+                "text": "health,"
+              },
+              {
+                "boundingBox": "929,911,36,15",
+                "text": "and"
+              },
+              {
+                "boundingBox": "970,911,92,15",
+                "text": "education"
+              },
+              {
+                "boundingBox": "1069,916,50,15",
+                "text": "maps"
+              },
+              {
+                "boundingBox": "1125,913,41,13",
+                "text": "start"
+              },
+              {
+                "boundingBox": "1171,911,36,15",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1214,911,66,15",
+                "text": "tabular"
+              },
+              {
+                "boundingBox": "1285,911,39,15",
+                "text": "data"
+              },
+              {
+                "boundingBox": "1331,911,21,15",
+                "text": "of"
+              }
+            ]
+          },
+          {
+            "boundingBox": "572,937,758,20",
+            "words": [
+              {
+                "boundingBox": "572,942,51,10",
+                "text": "some"
+              },
+              {
+                "boundingBox": "629,937,43,15",
+                "text": "kind."
+              },
+              {
+                "boundingBox": "680,937,35,15",
+                "text": "This"
+              },
+              {
+                "boundingBox": "721,937,56,15",
+                "text": "article"
+              },
+              {
+                "boundingBox": "784,937,30,15",
+                "text": "will"
+              },
+              {
+                "boundingBox": "819,937,80,15",
+                "text": "describe"
+              },
+              {
+                "boundingBox": "904,937,67,15",
+                "text": "several"
+              },
+              {
+                "boundingBox": "976,942,44,15",
+                "text": "ways"
+              },
+              {
+                "boundingBox": "1023,942,36,15",
+                "text": "you"
+              },
+              {
+                "boundingBox": "1065,942,32,10",
+                "text": "can"
+              },
+              {
+                "boundingBox": "1104,939,35,13",
+                "text": "turn"
+              },
+              {
+                "boundingBox": "1146,942,9,10",
+                "text": "a"
+              },
+              {
+                "boundingBox": "1162,937,29,15",
+                "text": "flat"
+              },
+              {
+                "boundingBox": "1196,937,26,15",
+                "text": "file"
+              },
+              {
+                "boundingBox": "1229,937,21,15",
+                "text": "of"
+              },
+              {
+                "boundingBox": "1252,942,34,10",
+                "text": "raw"
+              },
+              {
+                "boundingBox": "1291,937,39,15",
+                "text": "data"
+              }
+            ]
+          },
+          {
+            "boundingBox": "572,963,749,20",
+            "words": [
+              {
+                "boundingBox": "572,964,35,14",
+                "text": "into"
+              },
+              {
+                "boundingBox": "613,968,10,10",
+                "text": "a"
+              },
+              {
+                "boundingBox": "630,963,64,15",
+                "text": "feature"
+              },
+              {
+                "boundingBox": "700,963,47,20",
+                "text": "layer."
+              },
+              {
+                "boundingBox": "754,964,68,14",
+                "text": "Feature"
+              },
+              {
+                "boundingBox": "829,963,53,20",
+                "text": "layers"
+              },
+              {
+                "boundingBox": "887,963,50,15",
+                "text": "allow"
+              },
+              {
+                "boundingBox": "940,968,35,15",
+                "text": "you"
+              },
+              {
+                "boundingBox": "982,965,17,13",
+                "text": "to"
+              },
+              {
+                "boundingBox": "1006,963,24,15",
+                "text": "do"
+              },
+              {
+                "boundingBox": "1036,963,61,20",
+                "text": "spatial"
+              },
+              {
+                "boundingBox": "1101,963,72,20",
+                "text": "analysis"
+              },
+              {
+                "boundingBox": "1178,963,37,15",
+                "text": "and"
+              },
+              {
+                "boundingBox": "1220,965,56,13",
+                "text": "create"
+              },
+              {
+                "boundingBox": "1283,963,38,15",
+                "text": "web"
+              }
+            ]
+          },
+          {
+            "boundingBox": "572,990,452,20",
+            "words": [
+              {
+                "boundingBox": "572,995,51,15",
+                "text": "maps"
+              },
+              {
+                "boundingBox": "629,990,36,15",
+                "text": "that"
+              },
+              {
+                "boundingBox": "669,995,32,10",
+                "text": "can"
+              },
+              {
+                "boundingBox": "707,990,24,15",
+                "text": "be"
+              },
+              {
+                "boundingBox": "737,990,64,15",
+                "text": "shared"
+              },
+              {
+                "boundingBox": "806,991,15,14",
+                "text": "in"
+              },
+              {
+                "boundingBox": "827,995,46,15",
+                "text": "apps"
+              },
+              {
+                "boundingBox": "878,990,37,15",
+                "text": "and"
+              },
+              {
+                "boundingBox": "919,992,46,18",
+                "text": "story"
+              },
+              {
+                "boundingBox": "970,995,54,15",
+                "text": "maps."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\images\\manual_captures\\manual_background_20250709_015731_6828.png"
+}

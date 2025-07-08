@@ -1,0 +1,705 @@
+{
+  "timestamp": "2025-07-09 01:06:07",
+  "window_title": "Cursor - The AI Code Editor and 2 more pages - Personal - Microsoft​ Edge",
+  "raw_text": "New tab\nX\nCursor - The Al Code Editor\nx\nCursor Billing\nhttps://cursor.com/dashboard?tab=billing\nbc250219096smu@vu.edu.pk\nOverview\n@ Settings\nIntegrations\nBackground Agents\ng Bug80t\n.11 Usage\na Billing & Invoices\nDocs\nContact IJs\nAgents\nDashboard\nJuly 2025 • Upcoming invoice\n$1.56\n/ S100.oo C\ntoken-based usage calls to non-max-claude-4-sonnet-thinking, totalling: Sl .25. Input tokens: 11546, Output\ntokens: 7526, Cache write tokens: 210956, Cache read tokens: 1045010\ntoken-based usage calls to claude-4-sonnet-thinking, totalling: SO.31. Input tokens: 148, Output tokens: 6023,\nCache write tokens: 32324 Cache read tokens: 149422\nSet Spendng Limit\nCost\nso.u\nQty\n17\nTotal\n5.25\nso.31\nView month:\nJuly 2025\nAmount\na Manage Subscription\nInvoice",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "Up",
+    "regions": [
+      {
+        "boundingBox": "126,19,43,9",
+        "lines": [
+          {
+            "boundingBox": "126,19,43,9",
+            "words": [
+              {
+                "boundingBox": "126,19,23,9",
+                "text": "New"
+              },
+              {
+                "boundingBox": "152,19,17,9",
+                "text": "tab"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "312,20,9,9",
+        "lines": [
+          {
+            "boundingBox": "312,20,9,9",
+            "words": [
+              {
+                "boundingBox": "312,20,9,9",
+                "text": "X"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "364,19,146,9",
+        "lines": [
+          {
+            "boundingBox": "364,19,146,9",
+            "words": [
+              {
+                "boundingBox": "364,19,35,9",
+                "text": "Cursor"
+              },
+              {
+                "boundingBox": "402,24,5,1",
+                "text": "-"
+              },
+              {
+                "boundingBox": "410,19,19,9",
+                "text": "The"
+              },
+              {
+                "boundingBox": "433,19,10,9",
+                "text": "Al"
+              },
+              {
+                "boundingBox": "447,19,28,9",
+                "text": "Code"
+              },
+              {
+                "boundingBox": "479,19,31,9",
+                "text": "Editor"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "551,20,9,9",
+        "lines": [
+          {
+            "boundingBox": "551,20,9,9",
+            "words": [
+              {
+                "boundingBox": "551,20,9,9",
+                "text": "x"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "603,19,70,12",
+        "lines": [
+          {
+            "boundingBox": "603,19,70,12",
+            "words": [
+              {
+                "boundingBox": "603,19,35,9",
+                "text": "Cursor"
+              },
+              {
+                "boundingBox": "642,19,31,12",
+                "text": "Billing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "123,57,382,609",
+        "lines": [
+          {
+            "boundingBox": "123,57,257,13",
+            "words": [
+              {
+                "boundingBox": "123,57,257,13",
+                "text": "https://cursor.com/dashboard?tab=billing"
+              }
+            ]
+          },
+          {
+            "boundingBox": "321,251,184,13",
+            "words": [
+              {
+                "boundingBox": "321,251,184,13",
+                "text": "bc250219096smu@vu.edu.pk"
+              }
+            ]
+          },
+          {
+            "boundingBox": "351,317,56,10",
+            "words": [
+              {
+                "boundingBox": "351,317,56,10",
+                "text": "Overview"
+              }
+            ]
+          },
+          {
+            "boundingBox": "325,347,75,16",
+            "words": [
+              {
+                "boundingBox": "325,347,16,16",
+                "text": "@"
+              },
+              {
+                "boundingBox": "351,350,49,13",
+                "text": "Settings"
+              }
+            ]
+          },
+          {
+            "boundingBox": "352,408,72,13",
+            "words": [
+              {
+                "boundingBox": "352,408,72,13",
+                "text": "Integrations"
+              }
+            ]
+          },
+          {
+            "boundingBox": "352,441,119,13",
+            "words": [
+              {
+                "boundingBox": "352,441,72,13",
+                "text": "Background"
+              },
+              {
+                "boundingBox": "429,441,42,13",
+                "text": "Agents"
+              }
+            ]
+          },
+          {
+            "boundingBox": "326,472,70,15",
+            "words": [
+              {
+                "boundingBox": "326,472,14,14",
+                "text": "g"
+              },
+              {
+                "boundingBox": "352,474,44,13",
+                "text": "Bug80t"
+              }
+            ]
+          },
+          {
+            "boundingBox": "328,531,60,14",
+            "words": [
+              {
+                "boundingBox": "328,531,10,12",
+                "text": ".11"
+              },
+              {
+                "boundingBox": "352,532,36,13",
+                "text": "Usage"
+              }
+            ]
+          },
+          {
+            "boundingBox": "325,564,132,14",
+            "words": [
+              {
+                "boundingBox": "325,564,16,12",
+                "text": "a"
+              },
+              {
+                "boundingBox": "351,565,37,13",
+                "text": "Billing"
+              },
+              {
+                "boundingBox": "392,565,12,10",
+                "text": "&"
+              },
+              {
+                "boundingBox": "408,565,49,10",
+                "text": "Invoices"
+              }
+            ]
+          },
+          {
+            "boundingBox": "352,623,29,10",
+            "words": [
+              {
+                "boundingBox": "352,623,29,10",
+                "text": "Docs"
+              }
+            ]
+          },
+          {
+            "boundingBox": "351,656,66,10",
+            "words": [
+              {
+                "boundingBox": "351,656,47,10",
+                "text": "Contact"
+              },
+              {
+                "boundingBox": "403,656,14,10",
+                "text": "IJs"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "885,133,49,15",
+        "lines": [
+          {
+            "boundingBox": "885,133,49,15",
+            "words": [
+              {
+                "boundingBox": "885,133,49,15",
+                "text": "Agents"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "960,132,75,12",
+        "lines": [
+          {
+            "boundingBox": "960,132,75,12",
+            "words": [
+              {
+                "boundingBox": "960,132,75,12",
+                "text": "Dashboard"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "688,275,686,219",
+        "lines": [
+          {
+            "boundingBox": "688,275,182,13",
+            "words": [
+              {
+                "boundingBox": "688,275,24,13",
+                "text": "July"
+              },
+              {
+                "boundingBox": "716,275,29,10",
+                "text": "2025"
+              },
+              {
+                "boundingBox": "750,279,4,3",
+                "text": "•"
+              },
+              {
+                "boundingBox": "760,275,63,13",
+                "text": "Upcoming"
+              },
+              {
+                "boundingBox": "827,275,43,10",
+                "text": "invoice"
+              }
+            ]
+          },
+          {
+            "boundingBox": "689,304,46,18",
+            "words": [
+              {
+                "boundingBox": "689,304,46,18",
+                "text": "$1.56"
+              }
+            ]
+          },
+          {
+            "boundingBox": "739,308,75,14",
+            "words": [
+              {
+                "boundingBox": "739,310,6,12",
+                "text": "/"
+              },
+              {
+                "boundingBox": "749,309,47,12",
+                "text": "S100.oo"
+              },
+              {
+                "boundingBox": "802,308,12,12",
+                "text": "C"
+              }
+            ]
+          },
+          {
+            "boundingBox": "700,401,666,14",
+            "words": [
+              {
+                "boundingBox": "700,402,78,10",
+                "text": "token-based"
+              },
+              {
+                "boundingBox": "782,405,37,10",
+                "text": "usage"
+              },
+              {
+                "boundingBox": "822,402,27,10",
+                "text": "calls"
+              },
+              {
+                "boundingBox": "852,403,13,9",
+                "text": "to"
+              },
+              {
+                "boundingBox": "870,402,220,13",
+                "text": "non-max-claude-4-sonnet-thinking,"
+              },
+              {
+                "boundingBox": "1094,402,54,13",
+                "text": "totalling:"
+              },
+              {
+                "boundingBox": "1153,401,13,12",
+                "text": "Sl"
+              },
+              {
+                "boundingBox": "1168,402,20,10",
+                "text": ".25."
+              },
+              {
+                "boundingBox": "1193,402,32,13",
+                "text": "Input"
+              },
+              {
+                "boundingBox": "1229,402,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "1278,402,39,11",
+                "text": "11546,"
+              },
+              {
+                "boundingBox": "1321,402,45,13",
+                "text": "Output"
+              }
+            ]
+          },
+          {
+            "boundingBox": "700,422,435,11",
+            "words": [
+              {
+                "boundingBox": "700,422,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "749,422,32,11",
+                "text": "7526,"
+              },
+              {
+                "boundingBox": "785,422,38,10",
+                "text": "Cache"
+              },
+              {
+                "boundingBox": "827,422,30,10",
+                "text": "write"
+              },
+              {
+                "boundingBox": "861,422,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "909,422,48,11",
+                "text": "210956,"
+              },
+              {
+                "boundingBox": "961,422,38,10",
+                "text": "Cache"
+              },
+              {
+                "boundingBox": "1003,422,27,10",
+                "text": "read"
+              },
+              {
+                "boundingBox": "1034,422,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "1083,422,52,10",
+                "text": "1045010"
+              }
+            ]
+          },
+          {
+            "boundingBox": "700,462,674,14",
+            "words": [
+              {
+                "boundingBox": "700,463,78,10",
+                "text": "token-based"
+              },
+              {
+                "boundingBox": "782,466,37,10",
+                "text": "usage"
+              },
+              {
+                "boundingBox": "822,463,27,10",
+                "text": "calls"
+              },
+              {
+                "boundingBox": "852,464,13,9",
+                "text": "to"
+              },
+              {
+                "boundingBox": "869,463,160,13",
+                "text": "claude-4-sonnet-thinking,"
+              },
+              {
+                "boundingBox": "1033,463,55,13",
+                "text": "totalling:"
+              },
+              {
+                "boundingBox": "1092,462,36,12",
+                "text": "SO.31."
+              },
+              {
+                "boundingBox": "1132,463,33,13",
+                "text": "Input"
+              },
+              {
+                "boundingBox": "1168,463,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "1217,463,24,11",
+                "text": "148,"
+              },
+              {
+                "boundingBox": "1245,463,45,13",
+                "text": "Output"
+              },
+              {
+                "boundingBox": "1293,463,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "1342,463,32,11",
+                "text": "6023,"
+              }
+            ]
+          },
+          {
+            "boundingBox": "700,483,334,11",
+            "words": [
+              {
+                "boundingBox": "700,483,38,10",
+                "text": "Cache"
+              },
+              {
+                "boundingBox": "741,483,32,10",
+                "text": "write"
+              },
+              {
+                "boundingBox": "776,483,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "824,483,41,11",
+                "text": "32324"
+              },
+              {
+                "boundingBox": "869,483,37,10",
+                "text": "Cache"
+              },
+              {
+                "boundingBox": "910,483,27,10",
+                "text": "read"
+              },
+              {
+                "boundingBox": "941,483,44,10",
+                "text": "tokens:"
+              },
+              {
+                "boundingBox": "990,483,44,10",
+                "text": "149422"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1444,289,116,13",
+        "lines": [
+          {
+            "boundingBox": "1444,289,116,13",
+            "words": [
+              {
+                "boundingBox": "1444,289,19,10",
+                "text": "Set"
+              },
+              {
+                "boundingBox": "1467,289,58,13",
+                "text": "Spendng"
+              },
+              {
+                "boundingBox": "1530,289,30,10",
+                "text": "Limit"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1419,363,33,121",
+        "lines": [
+          {
+            "boundingBox": "1424,363,28,10",
+            "words": [
+              {
+                "boundingBox": "1424,363,28,10",
+                "text": "Cost"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1419,472,33,12",
+            "words": [
+              {
+                "boundingBox": "1419,472,33,12",
+                "text": "so.u"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1477,363,24,69",
+        "lines": [
+          {
+            "boundingBox": "1477,363,24,13",
+            "words": [
+              {
+                "boundingBox": "1477,363,24,13",
+                "text": "Qty"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1486,422,14,10",
+            "words": [
+              {
+                "boundingBox": "1486,422,14,10",
+                "text": "17"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1525,363,31,121",
+        "lines": [
+          {
+            "boundingBox": "1525,363,31,10",
+            "words": [
+              {
+                "boundingBox": "1525,363,31,10",
+                "text": "Total"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1525,411,31,12",
+            "words": [
+              {
+                "boundingBox": "1525,411,31,12",
+                "text": "5.25"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1525,472,31,12",
+            "words": [
+              {
+                "boundingBox": "1525,472,31,12",
+                "text": "so.31"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "688,607,77,10",
+        "lines": [
+          {
+            "boundingBox": "688,607,77,10",
+            "words": [
+              {
+                "boundingBox": "688,607,30,10",
+                "text": "View"
+              },
+              {
+                "boundingBox": "723,607,42,10",
+                "text": "month:"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "786,607,56,13",
+        "lines": [
+          {
+            "boundingBox": "786,607,56,13",
+            "words": [
+              {
+                "boundingBox": "786,607,23,13",
+                "text": "July"
+              },
+              {
+                "boundingBox": "813,607,29,10",
+                "text": "2025"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1267,695,55,10",
+        "lines": [
+          {
+            "boundingBox": "1267,695,55,10",
+            "words": [
+              {
+                "boundingBox": "1267,695,55,10",
+                "text": "Amount"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1414,606,154,99",
+        "lines": [
+          {
+            "boundingBox": "1414,606,154,14",
+            "words": [
+              {
+                "boundingBox": "1414,606,16,12",
+                "text": "a"
+              },
+              {
+                "boundingBox": "1438,607,50,13",
+                "text": "Manage"
+              },
+              {
+                "boundingBox": "1492,607,76,13",
+                "text": "Subscription"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1506,695,47,10",
+            "words": [
+              {
+                "boundingBox": "1506,695,47,10",
+                "text": "Invoice"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\images\\manual_captures\\manual_background_20250709_010603_4575.png"
+}

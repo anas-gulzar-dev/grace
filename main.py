@@ -75,6 +75,8 @@ import glob
 from datetime import datetime
 from typing import Optional, Dict, Any
 
+import pywinctl
+
 # Cross-platform window management
 try:
     import pywinctl as gw  # Cross-platform replacement for pygetwindow
@@ -100,6 +102,44 @@ from PyQt5.QtGui import QFont, QIcon, QColor, QPalette, QLinearGradient, QPainte
 import mss
 import numpy as np
 from PIL import Image
+
+# Modern JSON and text formatting libraries
+try:
+    import pygments
+    from pygments import highlight
+    from pygments.lexers import JsonLexer, TextLexer
+    from pygments.formatters import HtmlFormatter
+    from pygments.styles import get_style_by_name
+    PYGMENTS_AVAILABLE = True
+except ImportError:
+    PYGMENTS_AVAILABLE = False
+    print("⚠️ Pygments not available. Install with: pip install pygments")
+
+try:
+    from rich.console import Console
+    from rich.syntax import Syntax
+    from rich.text import Text
+    from rich.panel import Panel
+    RICH_AVAILABLE = True
+except ImportError:
+    RICH_AVAILABLE = False
+    print("⚠️ Rich not available. Install with: pip install rich")
+
+try:
+    import markdown
+    from markdown.extensions import codehilite
+    MARKDOWN_AVAILABLE = True
+except ImportError:
+    MARKDOWN_AVAILABLE = False
+    print("⚠️ Markdown not available. Install with: pip install markdown")
+
+# Clipboard functionality
+try:
+    import pyperclip
+    CLIPBOARD_AVAILABLE = True
+except ImportError:
+    CLIPBOARD_AVAILABLE = False
+    print("⚠️ Clipboard functionality not available. Install with: pip install pyperclip")
 
 # Modern UI Libraries
 try:
@@ -156,7 +196,8 @@ except ImportError:
 try:
     from config import (
         AZURE_API_KEY, AZURE_ENDPOINT, DEFAULT_CAPTURE_INTERVAL,
-        SCREENSHOTS_FOLDER, SCRCPY_WINDOW_TITLES, OCR_LANGUAGE, DETECT_ORIENTATION
+        SCREENSHOTS_FOLDER, SCRCPY_WINDOW_TITLES, OCR_LANGUAGE, DETECT_ORIENTATION,
+        ENABLE_AUTO_DELETE_SCREENSHOTS
     )
 except ImportError:
     print("ERROR: Configuration not found!")
@@ -602,6 +643,10 @@ class HelpDocumentationDialog(QDialog):
         config_tab = self.create_config_tab()
         tab_widget.addTab(config_tab, "⚙️ Configuration")
         
+        # Tab 6: FAQ
+        faq_tab = self.create_faq_tab()
+        tab_widget.addTab(faq_tab, "❓ FAQ")
+        
         layout.addWidget(tab_widget)
         
         # Close button
@@ -1032,6 +1077,588 @@ pip install -r requirements.txt
         layout.addWidget(content)
         widget.setLayout(layout)
         return widget
+    def create_faq_tab(self):
+        """Create the FAQ tab content"""
+        widget = QWidget()
+        layout = QVBoxLayout()
+
+        content = QTextEdit()
+        content.setReadOnly(True)
+        content.setHtml("""
+        <h2>❓ Frequently Asked Questions (FAQ)</h2>
+
+        <h3>Application Crashes at Start</h3>
+        <p><strong>Check:</strong> Ensure all environment variables are set. Verify the log for errors.</p>
+        <h3>OCR Not Working</h3>
+        <p><strong>Solution:</strong> Verify Azure API key and endpoint in the configuration.</p>
+        <h3>Output is Garbled</h3>
+        <p><strong>Hint:</strong> Check the language settings in the configuration tab.</p>
+
+        <h3>How to Report Bugs?</h3>
+        <p><strong>Guidance:</strong> Use the 'Report Issue' button in the menu or submit via <a href='https://github.com/username/repo/issues'>GitHub Issues</a>.</p>
+
+        <h3>Need More Help?</h3>
+        <p><strong>Suggestion:</strong> Refer to the 'Getting Help' tab for more troubleshooting steps.</p>
+        """)
+
+        layout.addWidget(content)
+        widget.setLayout(layout)
+        return widget
+
+class USBStabilityManager:
+    """
+    USB Stability Management System
+    
+    This class provides comprehensive USB stability management to prevent
+    USB disconnections during auto-capture operations. It implements:
+    
+    1. Intelligent file operation timing
+    2. Reduced I/O operation frequency
+    3. Graceful error handling
+    4. Auto-recovery mechanisms
+    5. Resource optimization
+    """
+    
+    def __init__(self, parent_app):
+        self.app = parent_app
+        self.is_stable_mode = True  # Default to stable mode
+        self.operation_delays = {
+            'file_write': 0.2,
+            'file_delete': 0.5,
+            'cleanup': 1.0,
+            'ocr_process': 0.3
+        }
+        self.max_concurrent_operations = 1
+        self.current_operations = 0
+        self.error_count = 0
+        self.last_error_time = 0
+        
+    def enable_stability_mode(self):
+        """Enable maximum USB stability mode"""
+        self.is_stable_mode = True
+        self.operation_delays = {
+            'file_write': 0.3,
+            'file_delete': 0.8,
+            'cleanup': 2.0,
+            'ocr_process': 0.5
+        }
+        self.max_concurrent_operations = 1
+        print("DEBUG: USB Stability - Maximum stability mode enabled")
+        
+    def disable_stability_mode(self):
+        """Disable USB stability mode for faster operations"""
+        self.is_stable_mode = False
+        self.operation_delays = {
+            'file_write': 0.1,
+            'file_delete': 0.2,
+            'cleanup': 0.5,
+            'ocr_process': 0.1
+        }
+        self.max_concurrent_operations = 3
+        print("DEBUG: USB Stability - Fast mode enabled")
+        
+    def safe_file_operation(self, operation_type, operation_func, *args, **kwargs):
+        """Safely execute file operations with USB stability considerations"""
+        if self.current_operations >= self.max_concurrent_operations:
+            print(f"DEBUG: USB Stability - Operation queued: {operation_type}")
+            time.sleep(self.operation_delays.get(operation_type, 0.2))
+            
+        self.current_operations += 1
+        
+        try:
+            # Add delay before operation
+            if self.is_stable_mode:
+                time.sleep(self.operation_delays.get(operation_type, 0.2))
+            
+            # Execute operation
+            result = operation_func(*args, **kwargs)
+            
+            # Add delay after operation
+            if self.is_stable_mode:
+                time.sleep(self.operation_delays.get(operation_type, 0.2) * 0.5)
+            
+            self.error_count = 0  # Reset error count on success
+            return result
+            
+        except Exception as e:
+            self.error_count += 1
+            self.last_error_time = time.time()
+            print(f"DEBUG: USB Stability - Operation failed: {operation_type}, Error: {e}")
+            
+            # Auto-enable stability mode if errors occur
+            if self.error_count >= 3:
+                self.enable_stability_mode()
+                self.app.update_status("🔌 Auto-enabled USB stability mode due to errors", "orange")
+            
+            raise e
+            
+        finally:
+            self.current_operations = max(0, self.current_operations - 1)
+            
+    def safe_file_write(self, file_path, content, mode='w', encoding='utf-8'):
+        """Safely write to file with USB stability"""
+        def write_operation():
+            with open(file_path, mode, encoding=encoding) as f:
+                if isinstance(content, str):
+                    f.write(content)
+                else:
+                    f.write(str(content))
+                f.flush()
+                os.fsync(f.fileno())  # Force write to disk
+                
+        return self.safe_file_operation('file_write', write_operation)
+        
+    def safe_file_delete(self, file_path):
+        """Safely delete file with USB stability"""
+        def delete_operation():
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                return True
+            return False
+            
+        return self.safe_file_operation('file_delete', delete_operation)
+        
+    def safe_cleanup(self, cleanup_func, *args, **kwargs):
+        """Safely perform cleanup operations"""
+        return self.safe_file_operation('cleanup', cleanup_func, *args, **kwargs)
+        
+    def get_optimal_cleanup_frequency(self):
+        """Get optimal cleanup frequency based on current stability mode"""
+        if self.is_stable_mode:
+            return 20  # Every 20 captures
+        else:
+            return 10  # Every 10 captures
+            
+    def should_skip_operation(self, operation_type):
+        """Determine if an operation should be skipped for USB stability"""
+        if not self.is_stable_mode:
+            return False
+            
+        # Skip operations if there were recent errors
+        if self.error_count > 0 and (time.time() - self.last_error_time) < 30:
+            return True
+            
+        # Skip deletion operations in maximum stability mode
+        if operation_type == 'file_delete' and self.is_stable_mode:
+            return True
+            
+        return False
+        
+    def optimize_for_device(self, device_name):
+        """Optimize settings for specific device types"""
+        device_name = device_name.lower()
+        
+        if any(keyword in device_name for keyword in ['xiaomi', 'mi band', 'redmi']):
+            # Xiaomi devices are more sensitive to USB operations
+            self.enable_stability_mode()
+            self.operation_delays['file_delete'] = 1.0
+            print("DEBUG: USB Stability - Optimized for Xiaomi device")
+            
+        elif any(keyword in device_name for keyword in ['samsung', 'galaxy']):
+            # Samsung devices are generally more stable
+            self.operation_delays['file_delete'] = 0.3
+            print("DEBUG: USB Stability - Optimized for Samsung device")
+            
+        elif any(keyword in device_name for keyword in ['scrcpy', 'android']):
+            # Generic Android via scrcpy
+            self.operation_delays['file_delete'] = 0.4
+            print("DEBUG: USB Stability - Optimized for Android via scrcpy")
+            
+    def get_status_message(self):
+        """Get current USB stability status message"""
+        if self.is_stable_mode:
+            return f"🔌 USB Stability Mode: ACTIVE (Errors: {self.error_count})"
+        else:
+            return f"⚡ Fast Mode: ACTIVE (Errors: {self.error_count})"
+
+
+class SettingsDialog(QDialog):
+    """Modern settings dialog with tabbed interface"""
+    
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.parent_app = parent
+        self.setWindowTitle("⚙️ Settings - Grace Biosensor Data Capture")
+        self.setGeometry(150, 150, 800, 600)
+        self.setModal(True)
+        
+        # Apply dark theme styling
+        self.setStyleSheet("""
+            QDialog {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #2b2b2b, stop: 1 #1e1e1e);
+                color: white;
+            }
+            QTabWidget::pane {
+                border: 2px solid #555;
+                background: #2d2d2d;
+            }
+            QTabBar::tab {
+                background: #3a3a3a;
+                color: white;
+                padding: 10px 20px;
+                margin-right: 2px;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+            }
+            QTabBar::tab:selected {
+                background: #00bcd4;
+                color: white;
+            }
+            QTabBar::tab:hover {
+                background: #4a4a4a;
+            }
+        """)
+        
+        self.init_ui()
+    
+    def init_ui(self):
+        """Initialize the settings UI with tabs"""
+        layout = QVBoxLayout(self)
+        
+        # Create tab widget
+        self.tab_widget = QTabWidget()
+        
+        # Performance monitoring tab
+        self.performance_tab = self.create_performance_tab()
+        self.tab_widget.addTab(self.performance_tab, "📊 Performance Metrics")
+        
+        # API testing tab
+        self.api_tab = self.create_api_tab()
+        self.tab_widget.addTab(self.api_tab, "🌐 API & Network Testing")
+        
+        layout.addWidget(self.tab_widget)
+        
+        # Dialog buttons
+        button_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        button_box.accepted.connect(self.accept)
+        button_box.rejected.connect(self.reject)
+        button_box.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #4CAF50, stop: 1 #45a049);
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 6px;
+                min-width: 80px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #45a049, stop: 1 #3d8b40);
+            }
+        """)
+        layout.addWidget(button_box)
+    
+    def create_performance_tab(self):
+        """Create performance monitoring tab"""
+        widget = QWidget()
+        layout = QVBoxLayout(widget)
+        
+        # Performance metrics group
+        metrics_group = QGroupBox("📊 Real-time Performance Metrics")
+        metrics_layout = QVBoxLayout(metrics_group)
+        
+        # Performance metrics row 1
+        perf_row1 = QHBoxLayout()
+        
+        # Total captures
+        self.total_captures_label = QLabel("📸 Total Captures: 0")
+        self.total_captures_label.setFont(QFont("Arial", 12, QFont.Bold))
+        self.total_captures_label.setStyleSheet("color: #2196F3; padding: 10px; border: 1px solid #555; border-radius: 4px;")
+        perf_row1.addWidget(self.total_captures_label)
+        
+        # Total processing time
+        self.total_time_label = QLabel("⏱️ Total Processing: 0.0s")
+        self.total_time_label.setFont(QFont("Arial", 12, QFont.Bold))
+        self.total_time_label.setStyleSheet("color: #FF9800; padding: 10px; border: 1px solid #555; border-radius: 4px;")
+        perf_row1.addWidget(self.total_time_label)
+        
+        metrics_layout.addLayout(perf_row1)
+        
+        # Performance metrics row 2
+        perf_row2 = QHBoxLayout()
+        
+        # Average processing time
+        self.avg_time_label = QLabel("⚡ Avg Processing: 0.0s")
+        self.avg_time_label.setFont(QFont("Arial", 12, QFont.Bold))
+        self.avg_time_label.setStyleSheet("color: #4CAF50; padding: 10px; border: 1px solid #555; border-radius: 4px;")
+        perf_row2.addWidget(self.avg_time_label)
+        
+        # Session uptime
+        self.uptime_label = QLabel("🕐 Session Uptime: 0:00:00")
+        self.uptime_label.setFont(QFont("Arial", 12, QFont.Bold))
+        self.uptime_label.setStyleSheet("color: #607D8B; padding: 10px; border: 1px solid #555; border-radius: 4px;")
+        perf_row2.addWidget(self.uptime_label)
+        
+        metrics_layout.addLayout(perf_row2)
+        
+        # Reset stats button
+        self.reset_stats_btn = QPushButton("🔄 Reset Performance Statistics")
+        self.reset_stats_btn.clicked.connect(self.reset_performance_stats)
+        self.reset_stats_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #795548, stop: 1 #5D4037);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 6px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #5D4037, stop: 1 #4E342E);
+            }
+        """)
+        metrics_layout.addWidget(self.reset_stats_btn)
+        
+        layout.addWidget(metrics_group)
+        layout.addStretch()
+        
+        return widget
+    
+    def create_api_tab(self):
+        """Create comprehensive API and network testing tab"""
+        widget = QWidget()
+        layout = QVBoxLayout(widget)
+        
+        # API Key Status Group (simplified)
+        api_status_group = QGroupBox("🔑 API Configuration")
+        api_status_layout = QVBoxLayout(api_status_group)
+        
+        # Simple API status label
+        self.api_config_label = QLabel("✅ API configured and ready for OCR processing")
+        self.api_config_label.setFont(QFont("Arial", 12, QFont.Bold))
+        self.api_config_label.setStyleSheet("color: #4CAF50; padding: 12px; border: 2px solid #4CAF50; border-radius: 6px;")
+        api_status_layout.addWidget(self.api_config_label)
+        
+        layout.addWidget(api_status_group)
+        
+        # Network Testing Group
+        network_group = QGroupBox("🌐 Network & Connectivity")
+        network_layout = QVBoxLayout(network_group)
+        
+        # Network status row
+        network_row = QHBoxLayout()
+        
+        # Internet connectivity
+        self.internet_status_label = QLabel("📶 Internet: Checking...")
+        self.internet_status_label.setFont(QFont("Arial", 11, QFont.Bold))
+        self.internet_status_label.setStyleSheet("color: #FF9800; padding: 8px; border: 1px solid #555; border-radius: 4px;")
+        network_row.addWidget(self.internet_status_label)
+        
+        # Ping latency
+        self.ping_latency_label = QLabel("📡 Ping: Not tested")
+        self.ping_latency_label.setFont(QFont("Arial", 11, QFont.Bold))
+        self.ping_latency_label.setStyleSheet("color: #9C27B0; padding: 8px; border: 1px solid #555; border-radius: 4px;")
+        network_row.addWidget(self.ping_latency_label)
+        
+        network_layout.addLayout(network_row)
+        
+        # Test network button
+        self.network_test_btn = QPushButton("📡 Test Network Connection")
+        self.network_test_btn.clicked.connect(self.test_network_connection)
+        self.network_test_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #673AB7, stop: 1 #512DA8);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 6px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #512DA8, stop: 1 #4527A0);
+            }
+        """)
+        network_layout.addWidget(self.network_test_btn)
+        
+        layout.addWidget(network_group)
+        
+        # OCR Testing Group
+        ocr_test_group = QGroupBox("🔍 OCR Processing Testing")
+        ocr_test_layout = QVBoxLayout(ocr_test_group)
+        
+        # OCR processing estimate
+        self.ocr_estimate_label = QLabel("🔍 OCR Estimate: Click test to check")
+        self.ocr_estimate_label.setFont(QFont("Arial", 12, QFont.Bold))
+        self.ocr_estimate_label.setStyleSheet("color: #4CAF50; padding: 10px; border: 2px solid #555; border-radius: 6px;")
+        ocr_test_layout.addWidget(self.ocr_estimate_label)
+        
+        # Test OCR processing button
+        self.ocr_test_btn = QPushButton("🔍 Test OCR Processing Speed")
+        self.ocr_test_btn.clicked.connect(self.test_ocr_processing)
+        self.ocr_test_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #4CAF50, stop: 1 #388E3C);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 6px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #388E3C, stop: 1 #2E7D32);
+            }
+            QPushButton:disabled {
+                background: #666;
+                color: #999;
+            }
+        """)
+        ocr_test_layout.addWidget(self.ocr_test_btn)
+        
+        layout.addWidget(ocr_test_group)
+        
+        # Initialize status checks
+        self.check_network_status()
+        
+        layout.addStretch()
+        return widget
+    
+    
+    # Removed the update_api_status and test_api_latency methods
+    
+    def test_network_connection(self):
+        """Test network connection and ping latency"""
+        if self.parent_app:
+            self.parent_app.test_network_connection_from_settings(self)
+    
+    def test_ocr_processing(self):
+        """Test OCR processing time estimation"""
+        if self.parent_app:
+            self.parent_app.test_ocr_processing_from_settings(self)
+    
+    def check_network_status(self):
+        """Check initial network connectivity status"""
+        if self.parent_app:
+            self.parent_app.check_network_status_from_settings(self)
+    
+    def reset_performance_stats(self):
+        """Reset performance statistics"""
+        if self.parent_app:
+            self.parent_app.reset_performance_stats()
+    
+    def update_performance_display(self):
+        """Update performance metrics display"""
+        if self.parent_app:
+            # Update total captures
+            self.total_captures_label.setText(f"📸 Total Captures: {self.parent_app.total_captures}")
+            
+            # Update total processing time
+            self.total_time_label.setText(f"⏱️ Total Processing: {self.parent_app.total_processing_time:.2f}s")
+            
+            # Update average processing time
+            if self.parent_app.total_captures > 0:
+                avg_time = self.parent_app.total_processing_time / self.parent_app.total_captures
+                self.avg_time_label.setText(f"⚡ Avg Processing: {avg_time:.2f}s")
+            else:
+                self.avg_time_label.setText("⚡ Avg Processing: 0.0s")
+            
+            # Update session uptime
+            uptime_seconds = int(time.time() - self.parent_app.session_start_time)
+            hours = uptime_seconds // 3600
+            minutes = (uptime_seconds % 3600) // 60
+            seconds = uptime_seconds % 60
+            self.uptime_label.setText(f"🕐 Session Uptime: {hours:02d}:{minutes:02d}:{seconds:02d}")
+    
+    def update_api_latency_display(self, latency_text):
+        """Update API latency display"""
+        self.api_latency_label.setText(latency_text)
+    
+    def update_api_history(self, history_text):
+        """Update API test history"""
+        self.test_history_label.setText(history_text)
+    
+    def set_api_test_button_state(self, enabled, text="🧪 Test API Latency"):
+        """Set API test button state"""
+        self.api_test_btn.setEnabled(enabled)
+        self.api_test_btn.setText(text)
+    
+    def update_status(self, message: str, color: str = "black"):
+        """Update status for this dialog - placeholder method"""
+        # This method is required by some of the parent app methods
+        # For now, we'll just pass since we don't have a status label in settings
+        pass
+
+
+from rich.console import Console
+from rich.syntax import Syntax
+import pyperclip
+
+class OutputDetailsDialog(QDialog):
+    """Dialog to show detailed OCR output in a resizable window"""
+
+    def __init__(self, parent=None, raw_text="", ocr_result=None):
+        super().__init__(parent)
+        self.setWindowTitle("Output Details")
+        self.setGeometry(300, 150, 1000, 800)
+        self.setModal(True)
+
+        layout = QVBoxLayout(self)
+
+        # Tabs for different outputs
+        tabs = QTabWidget()
+
+        # Raw Text Tab
+        raw_text_tab = QWidget()
+        raw_text_layout = QVBoxLayout(raw_text_tab)
+        self.raw_text_edit = QTextEdit()
+        self.raw_text_edit.setReadOnly(True)
+        self.raw_text_edit.setText(raw_text)
+        raw_text_layout.addWidget(self.raw_text_edit)
+        tabs.addTab(raw_text_tab, "Raw Text")
+
+        # JSON Tab
+        json_tab = QWidget()
+        json_layout = QVBoxLayout(json_tab)
+        self.json_edit = QTextEdit()
+        self.json_edit.setReadOnly(True)
+        console = Console()
+
+        # Apply rich formatting to raw text
+        syntax_raw = Syntax(raw_text, "text", theme="monokai", line_numbers=True)
+        console.print(syntax_raw)
+
+        # Apply rich formatting to JSON
+        formatted_json = json.dumps(ocr_result, indent=2, ensure_ascii=False)
+        syntax_json = Syntax(formatted_json, "json", theme="monokai", line_numbers=True)
+        console.print(syntax_json)
+
+        self.json_edit.setText(formatted_json)
+        json_layout.addWidget(self.json_edit)
+
+        # Copy buttons
+        copy_raw_btn = QPushButton("Copy Raw Text")
+        copy_raw_btn.clicked.connect(lambda: pyperclip.copy(raw_text))
+        raw_text_layout.addWidget(copy_raw_btn)
+
+        copy_json_btn = QPushButton("Copy JSON")
+        copy_json_btn.clicked.connect(lambda: pyperclip.copy(formatted_json))
+        json_layout.addWidget(copy_json_btn)
+        tabs.addTab(json_tab, "JSON")
+
+        layout.addWidget(tabs)
+
+        close_btn = QPushButton("Close")
+        close_btn.clicked.connect(self.accept)
+        layout.addWidget(close_btn)
+
+    def update_contents(self, raw_text, ocr_result):
+        """Update dialog contents with new results"""
+        # Update the text areas
+        self.raw_text_edit.setText(raw_text if raw_text.strip() else "No text detected")
+        formatted_json = json.dumps(ocr_result, indent=2, ensure_ascii=False)
+        self.json_edit.setText(formatted_json)
 
 
 class BiosensorApp(QMainWindow):
@@ -1106,8 +1733,11 @@ class BiosensorApp(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("🔬 Biosensor Data Capture - Professional Edition")
+        self.setWindowTitle("🔬 Grace Biosensor Data Capture - Professional Edition")
         self.setGeometry(100, 100, 1200, 800)
+        
+        # Set application icon
+        self.set_app_icon()
         
         # Theme management
         self.is_dark_theme = True  # Start with dark theme
@@ -1118,29 +1748,40 @@ class BiosensorApp(QMainWindow):
         # Apply modern styling
         self.apply_modern_styling()
         
-        # Create screenshots directory
-        self.screenshots_dir = SCREENSHOTS_FOLDER
+        # Create main storage directories
+        self.screenshots_dir = os.path.join(SCREENSHOTS_FOLDER, "images")
+        self.json_dir = os.path.join(SCREENSHOTS_FOLDER, "json")
+        self.csv_dir = os.path.join(SCREENSHOTS_FOLDER, "csv")
+        
+        # Create directories if they do not exist
         os.makedirs(self.screenshots_dir, exist_ok=True)
+        os.makedirs(self.json_dir, exist_ok=True)
+        os.makedirs(self.csv_dir, exist_ok=True)
         
         # Timer for auto-capture
         self.auto_timer = QTimer()
         self.auto_timer.timeout.connect(self.auto_capture)
         
-        # Timer for auto-refresh (detect new devices)
+        # Timer for auto-refresh (detect new devices) - NOT started by default
         self.refresh_timer = QTimer()
         self.refresh_timer.timeout.connect(self.auto_refresh_windows)
-        self.refresh_timer.start(3000)  # Auto-refresh every 3 seconds for faster detection
+        # self.refresh_timer.start(3000)  # Auto-refresh disabled by default
         
-        # Timer for automatic device detection and UI updates
+        # Timer for automatic device detection and UI updates - NOT started by default
         self.device_detection_timer = QTimer()
         self.device_detection_timer.timeout.connect(self.auto_detect_devices)
-        self.device_detection_timer.start(2000)  # Check for new devices every 2 seconds
+        # self.device_detection_timer.start(2000)  # Device detection disabled by default
         
         # Store last known device count for change detection
         self.last_device_count = 0
         
         # OCR worker thread
         self.ocr_worker = None
+        
+        # Navigation Alert System
+        self.task_queue = []
+        self.current_task = None
+        self.task_progress = 0
         
         # Azure OCR settings from config
         self.azure_api_key = AZURE_API_KEY
@@ -1149,7 +1790,59 @@ class BiosensorApp(QMainWindow):
         # Store last OCR result for manual export
         self.last_ocr_result = None
         
+        # Performance tracking variables
+        self.auto_capture_times = []  # List of processing times for auto captures
+        self.manual_capture_times = []  # List of processing times for manual captures
+        self.api_latency_times = []  # List of API response times
+        self.total_captures = 0
+        self.auto_captures = 0
+        self.manual_captures = 0
+        self.total_processing_time = 0.0
+        self.auto_processing_time = 0.0
+        self.manual_processing_time = 0.0
+        self.session_start_time = time.time()
+        self.last_capture_time = None
+        self.last_api_time = None
+        
+        # Real-time performance updates timer
+        self.performance_timer = QTimer()
+        self.performance_timer.timeout.connect(self.update_performance_displays)
+        self.performance_timer.start(1000)  # Update every second
+        
+        # USB Stability Configuration
+        # Load from config, but default to False for USB stability
+        self.enable_auto_delete_screenshots = ENABLE_AUTO_DELETE_SCREENSHOTS
+        
+        # Initialize cleanup counter for reduced frequency operations
+        self._cleanup_counter = 0
+        
+        # USB Stability Management System
+        self.usb_stability_manager = USBStabilityManager(self)
+        
         self.init_ui()
+    
+    def set_app_icon(self):
+        """Set the application icon"""
+        try:
+            # Check if app_icon.png exists in the current directory
+            icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "app_icon.png")
+            
+            if os.path.exists(icon_path):
+                # Set the window icon
+                icon = QIcon(icon_path)
+                self.setWindowIcon(icon)
+                
+                # Set the application icon (for taskbar, etc.)
+                QApplication.instance().setWindowIcon(icon)
+                
+                print(f"✅ App icon loaded successfully: {icon_path}")
+            else:
+                print(f"⚠️ App icon not found at: {icon_path}")
+                print("📝 Using default system icon")
+                
+        except Exception as e:
+            print(f"❌ Error loading app icon: {str(e)}")
+            print("📝 Using default system icon")
     
     def apply_modern_styling(self):
         """Apply modern professional styling to the application"""
@@ -1191,8 +1884,8 @@ class BiosensorApp(QMainWindow):
         }
         
         QPushButton:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #4a4a4a, stop: 1 #3a3a3a);
         }
         
         QComboBox {
@@ -1525,6 +2218,32 @@ class BiosensorApp(QMainWindow):
         """)
         header_layout.addWidget(self.help_btn)
         
+        # Settings gear button
+        self.settings_btn = QPushButton()
+        if MODERN_UI_AVAILABLE:
+            self.settings_btn.setIcon(qta.icon('fa5s.cog', color='white'))
+        self.settings_btn.setText("⚙️ Settings")
+        self.settings_btn.setToolTip("Open settings for performance, API, capture, and USB")
+        self.settings_btn.clicked.connect(self.open_settings_dialog)
+        self.settings_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #607D8B, stop: 1 #455A64);
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                font-size: 11px;
+                font-weight: bold;
+                border-radius: 20px;
+                min-width: 80px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #455A64, stop: 1 #37474F);
+            }
+        """)
+        header_layout.addWidget(self.settings_btn)
+        
         main_layout.addLayout(header_layout)
         
         # Add separator line
@@ -1552,6 +2271,38 @@ class BiosensorApp(QMainWindow):
         self.refresh_btn.setToolTip("Click to manually scan for new devices and windows")
         window_select_layout.addWidget(self.refresh_btn)
         
+        # Auto-scan toggle button
+        self.auto_scan_btn = QPushButton("🔄 Auto-Scan: OFF")
+        self.auto_scan_btn.setCheckable(True)
+        self.auto_scan_btn.clicked.connect(self.toggle_auto_scan)
+        self.auto_scan_btn.setToolTip("Enable/disable automatic device scanning")
+        self.auto_scan_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #9E9E9E, stop: 1 #757575);
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 6px;
+                min-width: 120px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #757575, stop: 1 #616161);
+            }
+            QPushButton:checked {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #4CAF50, stop: 1 #388E3C);
+            }
+            QPushButton:checked:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #388E3C, stop: 1 #2E7D32);
+            }
+        """)
+        window_select_layout.addWidget(self.auto_scan_btn)
+        
         window_layout.addLayout(window_select_layout)
         main_layout.addWidget(window_group)
         
@@ -1562,11 +2313,41 @@ class BiosensorApp(QMainWindow):
         # Main controls row
         main_controls = QHBoxLayout()
         
-        # Capture button with modern styling
+        # Background capture button with modern styling (main method)
+        self.background_capture_btn = QPushButton()
+        if MODERN_UI_AVAILABLE:
+            self.background_capture_btn.setIcon(qta.icon('fa5s.camera', color='white'))
+        self.background_capture_btn.setText("📸 Smart Background Capture")
+        self.background_capture_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #2196F3, stop: 1 #1976D2);
+                color: white;
+                border: none;
+                padding: 15px 30px;
+                font-size: 14px;
+                font-weight: bold;
+                border-radius: 8px;
+                min-height: 25px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #1976D2, stop: 1 #1565C0);
+            }
+            QPushButton:pressed {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #1565C0, stop: 1 #0D47A1);
+            }
+        """)
+        self.background_capture_btn.clicked.connect(self.capture_background_window)
+        self.background_capture_btn.setToolTip("Captures the selected window without bringing it to foreground - No interruption to your workflow!")
+        main_controls.addWidget(self.background_capture_btn)
+        
+        # Traditional capture button (fallback method)
         self.capture_btn = QPushButton()
         if MODERN_UI_AVAILABLE:
             self.capture_btn.setIcon(qta.icon('fa5s.camera', color='white'))
-        self.capture_btn.setText("📸 Capture Selected Window")
+        self.capture_btn.setText("📸 Traditional Capture")
         self.capture_btn.setStyleSheet("""
             QPushButton {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -1582,7 +2363,6 @@ class BiosensorApp(QMainWindow):
             QPushButton:hover {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                           stop: 0 #45a049, stop: 1 #3d8b40);
-                box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
             }
             QPushButton:pressed {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
@@ -1590,6 +2370,7 @@ class BiosensorApp(QMainWindow):
             }
         """)
         self.capture_btn.clicked.connect(self.capture_selected_window)
+        self.capture_btn.setToolTip("Activates the window first, then captures - May interrupt your workflow")
         main_controls.addWidget(self.capture_btn)
         
         # Background service button removed to prevent unwanted captures
@@ -1630,7 +2411,6 @@ class BiosensorApp(QMainWindow):
             QPushButton:hover {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                           stop: 0 #e64a19, stop: 1 #d84315);
-                box-shadow: 0 3px 8px rgba(255, 87, 34, 0.4);
             }
             QPushButton:disabled {
                 background: #666;
@@ -1643,50 +2423,170 @@ class BiosensorApp(QMainWindow):
         auto_layout.addStretch()
         control_layout.addLayout(auto_layout)
         
+        # USB Stability configuration with custom time interval
+        usb_stability_layout = QHBoxLayout()
+        
+        self.usb_stability_checkbox = QCheckBox("🔌 Enable screenshot auto-deletion (may cause USB disconnects)")
+        self.usb_stability_checkbox.setChecked(self.enable_auto_delete_screenshots)
+        self.usb_stability_checkbox.stateChanged.connect(self.toggle_usb_stability)
+        self.usb_stability_checkbox.setToolTip("Disable this to prevent USB disconnection issues during auto-capture")
+        usb_stability_layout.addWidget(self.usb_stability_checkbox)
+        
+        # Custom time interval selector for screenshot deletion
+        deletion_interval_label = QLabel("Delete screenshots older than:")
+        deletion_interval_label.setToolTip("Set custom time interval for automatic screenshot deletion")
+        usb_stability_layout.addWidget(deletion_interval_label)
+        
+        self.deletion_interval_spinbox = QSpinBox()
+        self.deletion_interval_spinbox.setRange(1, 1440)  # 1 minute to 24 hours
+        self.deletion_interval_spinbox.setValue(60)  # Default to 60 minutes
+        self.deletion_interval_spinbox.setSuffix(" minutes")
+        self.deletion_interval_spinbox.setToolTip("Screenshots older than this time will be automatically deleted")
+        usb_stability_layout.addWidget(self.deletion_interval_spinbox)
+        
+        # Custom deletion mode selector
+        self.deletion_mode_combo = QComboBox()
+        self.deletion_mode_combo.addItem("🕐 By Time (minutes)", "time")
+        self.deletion_mode_combo.addItem("📁 By Count (keep last N)", "count")
+        self.deletion_mode_combo.setCurrentIndex(0)  # Default to time-based
+        self.deletion_mode_combo.currentTextChanged.connect(self.update_deletion_mode)
+        self.deletion_mode_combo.setToolTip("Choose deletion method: by time or by count")
+        usb_stability_layout.addWidget(self.deletion_mode_combo)
+        
+        # USB Stability Mode Toggle Button
+        self.usb_stability_btn = QPushButton("🔌 Max USB Stability")
+        self.usb_stability_btn.setCheckable(True)
+        self.usb_stability_btn.setChecked(True)  # Start in stability mode
+        self.usb_stability_btn.clicked.connect(self.toggle_usb_stability_mode)
+        self.usb_stability_btn.setToolTip("Toggle between maximum USB stability and fast mode")
+        self.usb_stability_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #4CAF50, stop: 1 #45a049);
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                font-size: 11px;
+                font-weight: bold;
+                border-radius: 6px;
+                min-width: 120px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #45a049, stop: 1 #3d8b40);
+            }
+            QPushButton:checked {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #FF9800, stop: 1 #F57C00);
+            }
+        """)
+        usb_stability_layout.addWidget(self.usb_stability_btn)
+        
+        usb_stability_layout.addStretch()
+        control_layout.addLayout(usb_stability_layout)
+        
         # Note about auto-capture
         auto_note = QLabel("Note: Auto-capture will use the currently selected window")
         auto_note.setStyleSheet("color: #666; font-style: italic; font-size: 11px;")
         control_layout.addWidget(auto_note)
         
+        # USB stability note
+        usb_note = QLabel("💡 Tip: If experiencing USB disconnects, disable screenshot auto-deletion above")
+        usb_note.setStyleSheet("color: #FFA726; font-style: italic; font-size: 10px;")
+        control_layout.addWidget(usb_note)
+        
         # Background service note removed
         main_layout.addWidget(control_group)
         
-        # Status section
-        status_group = QGroupBox("Status")
+        # Status and Navigation Alert System
+        status_group = QGroupBox("Status & Task Queue")
         status_layout = QVBoxLayout(status_group)
         
+        # Current status
         self.status_label = QLabel("🟡 Ready to capture")
         self.status_label.setFont(QFont("Arial", 12))
         status_layout.addWidget(self.status_label)
         
+        # Task queue display
+        self.task_queue_label = QLabel("📋 Task Queue: Empty")
+        self.task_queue_label.setFont(QFont("Arial", 10))
+        self.task_queue_label.setStyleSheet("color: #666; font-style: italic;")
+        status_layout.addWidget(self.task_queue_label)
+        
+        # Gradient progress bar
         self.progress_bar = QProgressBar()
         self.progress_bar.setVisible(False)
+        self.progress_bar.setStyleSheet("""
+            QProgressBar {
+                border: 2px solid #555;
+                border-radius: 8px;
+                text-align: center;
+                background: #2d2d2d;
+                font-size: 12px;
+                font-weight: bold;
+                color: white;
+                min-height: 25px;
+            }
+            QProgressBar::chunk {
+                background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+                    stop: 0 #667eea, stop: 0.25 #764ba2, stop: 0.5 #f093fb, 
+                    stop: 0.75 #f5576c, stop: 1 #4facfe);
+                border-radius: 6px;
+                margin: 1px;
+            }
+        """)
         status_layout.addWidget(self.progress_bar)
+        
+        # Task completion indicator
+        self.completion_label = QLabel("")
+        self.completion_label.setFont(QFont("Arial", 10))
+        self.completion_label.setAlignment(Qt.AlignCenter)
+        self.completion_label.setVisible(False)
+        status_layout.addWidget(self.completion_label)
         
         main_layout.addWidget(status_group)
         
-        # Results section
-        results_group = QGroupBox("OCR Results")
+        # Settings notification
+        settings_notice = QLabel("⚙️ Performance metrics, API testing, and advanced settings moved to Settings button")
+
+        # Fix font: make it italic properly
+        font = QFont("Arial", 10)
+        font.setItalic(True)
+        settings_notice.setFont(font)
+
+        # Fix style: 'text-align' and 'box-shadow' are not valid in Qt stylesheets
+        settings_notice.setStyleSheet("color: #888; padding: 8px;")  # Removed 'text-align'
+        settings_notice.setAlignment(Qt.AlignCenter)
+        main_layout.addWidget(settings_notice)
+
+        
+        # Results section - Minimal display
+        results_group = QGroupBox("OCR Results Preview")
         results_layout = QVBoxLayout(results_group)
         
-        # Result format selection
-        format_layout = QHBoxLayout()
-        format_layout.addWidget(QLabel("Display Format:"))
+        # Status display for last OCR result
+        self.ocr_status_label = QLabel("No OCR results yet. Capture a window to see results.")
+        self.ocr_status_label.setFont(QFont("Arial", 11))
+        self.ocr_status_label.setStyleSheet("""
+            QLabel {
+                color: #888;
+                padding: 20px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.05);
+                border: 2px dashed #555;
+                border-radius: 8px;
+                margin: 10px;
+            }
+        """)
+        self.ocr_status_label.setAlignment(Qt.AlignCenter)
+        results_layout.addWidget(self.ocr_status_label)
         
-        self.format_combo = QComboBox()
-        self.format_combo.addItem("📋 Raw Text Only", "raw")
-        self.format_combo.addItem("📊 JSON Only", "json")
-        self.format_combo.addItem("📋📊 Both (Raw + JSON)", "both")
-        self.format_combo.setCurrentIndex(2)  # Default to both
-        format_layout.addWidget(self.format_combo)
-        
-        format_layout.addStretch()
-        results_layout.addLayout(format_layout)
-        
-        self.results_text = QTextEdit()
-        self.results_text.setFont(QFont("Consolas", 10))
-        self.results_text.setPlaceholderText("OCR results will appear here...")
-        results_layout.addWidget(self.results_text)
+        # Quick stats display
+        self.quick_stats_label = QLabel("")
+        self.quick_stats_label.setFont(QFont("Arial", 10))
+        self.quick_stats_label.setStyleSheet("color: #4CAF50; padding: 5px;")
+        self.quick_stats_label.setAlignment(Qt.AlignCenter)
+        results_layout.addWidget(self.quick_stats_label)
         
         main_layout.addWidget(results_group)
         
@@ -1713,7 +2613,6 @@ class BiosensorApp(QMainWindow):
             QPushButton:hover {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                           stop: 0 #d32f2f, stop: 1 #c62828);
-                box-shadow: 0 3px 8px rgba(244, 67, 54, 0.4);
             }
         """)
         buttons_layout.addWidget(clear_btn)
@@ -1738,7 +2637,6 @@ class BiosensorApp(QMainWindow):
             QPushButton:hover {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                           stop: 0 #1976D2, stop: 1 #1565C0);
-                box-shadow: 0 3px 8px rgba(33, 150, 243, 0.4);
             }
             QPushButton:disabled {
                 background: #666;
@@ -1768,7 +2666,6 @@ class BiosensorApp(QMainWindow):
             QPushButton:hover {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                           stop: 0 #f57c00, stop: 1 #ef6c00);
-                box-shadow: 0 3px 8px rgba(255, 152, 0, 0.4);
             }
             QPushButton:disabled {
                 background: #666;
@@ -1777,6 +2674,35 @@ class BiosensorApp(QMainWindow):
         """)
         self.json_export_btn.setEnabled(False)  # Initially disabled
         buttons_layout.addWidget(self.json_export_btn)
+        
+        # View Output Details button with modern styling
+        self.view_details_btn = QPushButton()
+        if MODERN_UI_AVAILABLE:
+            self.view_details_btn.setIcon(qta.icon('fa5s.eye', color='white'))
+        self.view_details_btn.setText("👁️ View Output Details")
+        self.view_details_btn.clicked.connect(self.show_output_details_dialog)
+        self.view_details_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #9c27b0, stop: 1 #7b1fa2);
+                color: white;
+                border: none;
+                padding: 10px 16px;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 6px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #8e24aa, stop: 1 #6a1b9a);
+            }
+            QPushButton:disabled {
+                background: #666;
+                color: #999;
+            }
+        """)
+        self.view_details_btn.setEnabled(False)  # Initially disabled
+        buttons_layout.addWidget(self.view_details_btn)
         
         # Instant Device Display button with modern styling
         self.instant_device_btn = QPushButton()
@@ -1798,10 +2724,33 @@ class BiosensorApp(QMainWindow):
             QPushButton:hover {
                 background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
                                           stop: 0 #E64A19, stop: 1 #D84315);
-                box-shadow: 0 3px 8px rgba(255, 87, 34, 0.4);
             }
         """)
         buttons_layout.addWidget(self.instant_device_btn)
+        
+        # Clear completed tasks button
+        self.clear_tasks_btn = QPushButton()
+        if MODERN_UI_AVAILABLE:
+            self.clear_tasks_btn.setIcon(qta.icon('fa5s.broom', color='white'))
+        self.clear_tasks_btn.setText("🧹 Clear Completed Tasks")
+        self.clear_tasks_btn.clicked.connect(self.clear_completed_tasks)
+        self.clear_tasks_btn.setStyleSheet("""
+            QPushButton {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #9C27B0, stop: 1 #7B1FA2);
+                color: white;
+                border: none;
+                padding: 10px 16px;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 6px;
+            }
+            QPushButton:hover {
+                background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                          stop: 0 #7B1FA2, stop: 1 #6A1B9A);
+            }
+        """)
+        buttons_layout.addWidget(self.clear_tasks_btn)
         
         main_layout.addLayout(buttons_layout)
         
@@ -1809,7 +2758,18 @@ class BiosensorApp(QMainWindow):
         self.setCentralWidget(central_widget)
         
         # Initialize window list after all UI elements are created
-        self.refresh_windows()
+        # Don't automatically refresh - let user control this
+        self.window_combo.addItem("🔍 Click 'Scan Devices' to start...")
+        self.window_combo.setCurrentIndex(0)
+        
+        # Status message to show that auto-scan is disabled
+        self.update_status("⏹️ Auto-scan disabled - click 'Refresh' to manually scan for devices", "orange")
+        
+        # Debug: Print timer status
+        print("DEBUG: Timer status at startup:")
+        print(f"  - Refresh timer active: {self.refresh_timer.isActive()}")
+        print(f"  - Device detection timer active: {self.device_detection_timer.isActive()}")
+        print(f"  - Auto capture timer active: {self.auto_timer.isActive()}")
     
     def manual_refresh_windows(self):
         """Manual refresh triggered by user clicking refresh button"""
@@ -1829,6 +2789,209 @@ class BiosensorApp(QMainWindow):
             self.refresh_btn.setEnabled(True)
             self.refresh_btn.setText("🔄 Refresh")
             self.update_status(f"❌ Manual refresh failed: {str(e)}", "red")
+    
+    def toggle_auto_scan(self):
+        """Toggle automatic device scanning on/off"""
+        try:
+            if self.auto_scan_btn.isChecked():
+                # Start auto-scanning
+                self.auto_scan_btn.setText("🔄 Auto-Scan: ON")
+                self.refresh_timer.start(3000)  # Refresh every 3 seconds
+                self.device_detection_timer.start(2000)  # Device detection every 2 seconds
+                self.update_status("🔄 Auto-scan enabled - watching for new devices", "green")
+            else:
+                # Stop auto-scanning
+                self.auto_scan_btn.setText("🔄 Auto-Scan: OFF")
+                self.refresh_timer.stop()
+                self.device_detection_timer.stop()
+                self.update_status("⏹️ Auto-scan disabled - manual refresh only", "orange")
+        except Exception as e:
+            self.update_status(f"❌ Auto-scan toggle failed: {str(e)}", "red")
+    
+    def open_settings_dialog(self):
+        """Open the settings dialog"""
+        try:
+            self.settings_dialog = SettingsDialog(self)
+            
+            # Start timer to update performance display in settings
+            self.settings_update_timer = QTimer()
+            self.settings_update_timer.timeout.connect(self.settings_dialog.update_performance_display)
+            self.settings_update_timer.start(1000)  # Update every second
+            
+            result = self.settings_dialog.exec_()
+            
+            # Stop the timer when dialog is closed
+            if hasattr(self, 'settings_update_timer'):
+                self.settings_update_timer.stop()
+            
+            if result == QDialog.Accepted:
+                self.update_status("⚙️ Settings updated successfully", "green")
+                # Apply any settings changes here if needed
+            
+        except Exception as e:
+            self.update_status(f"❌ Error opening settings: {str(e)}", "red")
+    
+
+    def test_network_connection_from_settings(self, settings_dialog):
+        """Check network connection and ping to a well-known server"""
+        try:
+            import subprocess
+            import platform
+            
+            # Use system ping command
+            if platform.system().lower() == 'windows':
+                result = subprocess.run(['ping', '-n', '4', '8.8.8.8'], capture_output=True, text=True, timeout=10)
+            else:
+                result = subprocess.run(['ping', '-c', '4', '8.8.8.8'], capture_output=True, text=True, timeout=10)
+            
+            if result.returncode == 0:
+                # Extract average latency from ping output
+                output_lines = result.stdout.lower()
+                if 'average' in output_lines:
+                    # Try to find average latency
+                    import re
+                    avg_match = re.search(r'average[\s=]*([0-9.]+)', output_lines)
+                    if avg_match:
+                        avg_latency = float(avg_match.group(1))
+                        settings_dialog.ping_latency_label.setText(f"📡 Ping: {avg_latency:.1f} ms")
+                        settings_dialog.ping_latency_label.setStyleSheet("color: #4CAF50; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;")
+                        return
+                
+                # Fallback: just show success
+                settings_dialog.ping_latency_label.setText("📡 Ping: Success")
+                settings_dialog.ping_latency_label.setStyleSheet("color: #4CAF50; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;")
+            else:
+                settings_dialog.ping_latency_label.setText("❌ Ping: Failed")
+                settings_dialog.ping_latency_label.setStyleSheet("color: #F44336; padding: 8px; border: 1px solid #F44336; border-radius: 4px;")
+                
+        except Exception as e:
+            settings_dialog.ping_latency_label.setText(f"❌ Ping: Error")
+            settings_dialog.ping_latency_label.setStyleSheet("color: #F44336; padding: 8px; border: 1px solid #F44336; border-radius: 4px;")
+
+    def test_ocr_processing_from_settings(self, settings_dialog):
+        """Estimate OCR processing time based on the current configuration"""
+        try:
+            if not self.azure_api_key or not self.azure_endpoint:
+                settings_dialog.ocr_estimate_label.setText("❌ OCR Test: API credentials not configured")
+                return
+            
+            # Simulate OCR processing by creating a larger test image
+            test_image = Image.new('RGB', (100, 100), color='white')
+            test_path = os.path.join(self.screenshots_dir, 'settings_ocr_test.png')
+            test_image.save(test_path)
+            
+            start_time = time.time()
+            
+            # Create OCR worker for estimation
+            self.settings_ocr_worker = OCRWorker(test_path, self.azure_api_key, self.azure_endpoint)
+            self.settings_ocr_worker.finished.connect(lambda result: self.on_ocr_estimation_finished(result, settings_dialog, start_time))
+            self.settings_ocr_worker.error.connect(lambda error: self.on_ocr_estimation_error(error, settings_dialog))
+            self.settings_ocr_worker.start()
+            
+        except Exception as e:
+            settings_dialog.ocr_estimate_label.setText(f"❌ OCR estimation failed: {str(e)}")
+
+    def on_ocr_estimation_finished(self, result, settings_dialog, start_time):
+        """Handle OCR processing estimation completion"""
+        try:
+            processing_time = time.time() - start_time
+            settings_dialog.ocr_estimate_label.setText(f"🔍 OCR Estimate: {processing_time:.2f}s")
+            settings_dialog.update_status(f"✅ OCR estimation: {processing_time:.2f}s", "green")
+            
+            # Clean up test image
+            test_path = os.path.join(self.screenshots_dir, 'settings_ocr_test.png')
+            if os.path.exists(test_path):
+                os.remove(test_path)
+        except Exception as e:
+            settings_dialog.ocr_estimate_label.setText(f"❌ OCR estimate error: {str(e)}")
+
+    def on_ocr_estimation_error(self, error_msg, settings_dialog):
+        """Handle OCR processing estimation error"""
+        settings_dialog.ocr_estimate_label.setText(f"❌ OCR test failed: {error_msg}")
+        
+        # Clean up test image
+        test_path = os.path.join(self.screenshots_dir, 'settings_ocr_test.png')
+        if os.path.exists(test_path):
+            os.remove(test_path)
+
+    def check_network_status_from_settings(self, settings_dialog):
+        """Check initial network connectivity start up status"""
+        try:
+            import urllib.request
+            urllib.request.urlopen('http://google.com', timeout=1)
+            settings_dialog.internet_status_label.setText("📶 Internet: Connected")
+            settings_dialog.internet_status_label.setStyleSheet("color: #4CAF50; padding: 8px; border: 1px solid #4CAF50; border-radius: 4px;")
+        except Exception:
+            settings_dialog.internet_status_label.setText("❌ Internet: Disconnected")
+            settings_dialog.internet_status_label.setStyleSheet("color: #F44336; padding: 8px; border: 1px solid #F44336; border-radius: 4px;")
+    
+    def on_settings_latency_test_finished(self, result, settings_dialog, start_time):
+        """Handle latency test completion from settings"""
+        try:
+            latency = time.time() - start_time
+            self.api_latency_times.append(latency)
+            
+            # Keep only last 10 measurements
+            if len(self.api_latency_times) > 10:
+                self.api_latency_times = self.api_latency_times[-10:]
+            
+            settings_dialog.set_api_test_button_state(True)
+            settings_dialog.update_api_latency_display(f"🌐 API Latency: {latency:.2f}s")
+            
+            # Update history
+            avg_latency = sum(self.api_latency_times) / len(self.api_latency_times)
+            settings_dialog.update_api_history(f"📈 Recent Tests: {len(self.api_latency_times)} tests, Avg: {avg_latency:.2f}s")
+            
+            # Clean up test image
+            test_path = os.path.join(self.screenshots_dir, 'settings_api_test.png')
+            if os.path.exists(test_path):
+                os.remove(test_path)
+                
+        except Exception as e:
+            settings_dialog.set_api_test_button_state(True)
+            settings_dialog.update_api_latency_display(f"❌ Test error: {str(e)}")
+    
+    def on_settings_latency_test_error(self, error_msg, settings_dialog):
+        """Handle latency test error from settings"""
+        settings_dialog.set_api_test_button_state(True)
+        settings_dialog.update_api_latency_display(f"❌ API test failed: {error_msg}")
+        
+        # Clean up test image
+        test_path = os.path.join(self.screenshots_dir, 'settings_api_test.png')
+        if os.path.exists(test_path):
+            os.remove(test_path)
+    
+    def reset_performance_stats(self):
+        """Reset all performance statistics"""
+        try:
+            self.auto_capture_times = []
+            self.manual_capture_times = []
+            self.api_latency_times = []
+            self.total_captures = 0
+            self.auto_captures = 0
+            self.manual_captures = 0
+            self.total_processing_time = 0.0
+            self.auto_processing_time = 0.0
+            self.manual_processing_time = 0.0
+            self.session_start_time = time.time()
+            self.last_capture_time = None
+            self.last_api_time = None
+            
+            self.update_status("📊 Performance statistics reset", "blue")
+            
+        except Exception as e:
+            self.update_status(f"❌ Error resetting stats: {str(e)}", "red")
+    
+    def update_performance_displays(self):
+        """Update performance displays in real-time"""
+        try:
+            # Update any open settings dialogs
+            for widget in QApplication.allWidgets():
+                if isinstance(widget, SettingsDialog) and hasattr(widget, 'update_performance_display'):
+                    widget.update_performance_display()
+        except Exception as e:
+            # Silently handle errors to avoid disrupting the UI
+            pass
     
     def auto_refresh_windows(self):
         """Automatically refresh windows to detect new devices"""
@@ -1898,6 +3061,354 @@ class BiosensorApp(QMainWindow):
         """Update status label with colored message"""
         self.status_label.setText(message)
         self.status_label.setStyleSheet(f"color: {color}; font-weight: bold;")
+    
+    def pause_all_operations(self):
+        """Pause all timers and operations to prevent USB disconnection during capture"""
+        try:
+            # Stop all timers
+            if hasattr(self, 'refresh_timer') and self.refresh_timer.isActive():
+                self.refresh_timer.stop()
+                self._refresh_timer_was_active = True
+            else:
+                self._refresh_timer_was_active = False
+                
+            if hasattr(self, 'device_detection_timer') and self.device_detection_timer.isActive():
+                self.device_detection_timer.stop()
+                self._device_timer_was_active = True
+            else:
+                self._device_timer_was_active = False
+                
+            if hasattr(self, 'auto_timer') and self.auto_timer.isActive():
+                self.auto_timer.stop()
+                self._auto_timer_was_active = True
+            else:
+                self._auto_timer_was_active = False
+                
+            print("DEBUG: All operations paused for USB stability")
+            
+        except Exception as e:
+            print(f"DEBUG: Error pausing operations: {e}")
+    
+    def resume_all_operations(self):
+        """Resume all timers and operations after capture is complete"""
+        try:
+            # Wait a moment before resuming to ensure device stability
+            time.sleep(1.0)
+            
+            # Resume timers that were active
+            if hasattr(self, '_refresh_timer_was_active') and self._refresh_timer_was_active:
+                if hasattr(self, 'refresh_timer'):
+                    self.refresh_timer.start(3000)
+                    
+            if hasattr(self, '_device_timer_was_active') and self._device_timer_was_active:
+                if hasattr(self, 'device_detection_timer'):
+                    self.device_detection_timer.start(2000)
+                    
+            if hasattr(self, '_auto_timer_was_active') and self._auto_timer_was_active:
+                if hasattr(self, 'auto_timer') and hasattr(self, 'interval_spinbox'):
+                    interval = self.interval_spinbox.value() * 1000
+                    self.auto_timer.start(interval)
+                    
+            print("DEBUG: All operations resumed after capture")
+            
+        except Exception as e:
+            print(f"DEBUG: Error resuming operations: {e}")
+    
+    def take_screenshot_safe(self, window):
+        """Take screenshot with minimal file operations to prevent USB disconnection"""
+        try:
+            self.update_status("📷 Taking screenshot...", "blue")
+            
+            # Create unique filename with timestamp
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3]
+            filename = f"screenshot_{timestamp}.png"
+            image_path = os.path.join(self.screenshots_dir, filename)
+            
+            # Use the most stable screenshot method
+            success = False
+            
+            # Method 1: Try MSS (most stable)
+            try:
+                with mss.mss() as sct:
+                    monitor = {
+                        "top": window.top,
+                        "left": window.left,
+                        "width": window.width,
+                        "height": window.height
+                    }
+                    screenshot = sct.grab(monitor)
+                    # Save directly without any additional processing
+                    mss.tools.to_png(screenshot.rgb, screenshot.size, output=image_path)
+                    success = True
+                    print(f"DEBUG: Screenshot saved using MSS: {image_path}")
+            except Exception as e:
+                print(f"DEBUG: MSS method failed: {e}")
+            
+            # Method 2: Fallback to pyautogui if MSS fails
+            if not success:
+                try:
+                    screenshot = pyautogui.screenshot(region=(window.left, window.top, window.width, window.height))
+                    screenshot.save(image_path)
+                    success = True
+                    print(f"DEBUG: Screenshot saved using pyautogui: {image_path}")
+                except Exception as e:
+                    print(f"DEBUG: pyautogui method failed: {e}")
+            
+            if success:
+                self.update_status(f"✅ Screenshot captured: {filename}", "green")
+                return image_path
+            else:
+                self.update_status("❌ Failed to capture screenshot", "red")
+                return None
+                
+        except Exception as e:
+            self.update_status(f"❌ Screenshot error: {str(e)}", "red")
+            print(f"DEBUG: Screenshot error: {e}")
+            return None
+    
+    def process_with_ocr_safe(self, image_path, task_name=None):
+        """Process image with OCR using minimal operations"""
+        try:
+            self.update_status("🔍 Processing with OCR...", "blue")
+            
+            # Create and start OCR worker thread
+            self.ocr_worker = OCRWorker(image_path, self.azure_api_key, self.azure_endpoint)
+            self.ocr_worker.finished.connect(lambda result: self.on_ocr_finished_safe(result, task_name))
+            self.ocr_worker.error.connect(lambda error: self.on_ocr_error_safe(error, task_name))
+            self.ocr_worker.start()
+            
+            if task_name:
+                self.update_task_progress(80, "Processing OCR")
+            
+        except Exception as e:
+            self.update_status(f"❌ OCR processing error: {str(e)}", "red")
+            if task_name:
+                self.complete_task(task_name, False)
+            print(f"DEBUG: OCR processing error: {e}")
+    
+    def on_ocr_finished_safe(self, result, task_name=None):
+        """Handle OCR completion with minimal file operations"""
+        try:
+            # Extract text from OCR result
+            raw_text = ""
+            if 'regions' in result:
+                for region in result['regions']:
+                    for line in region['lines']:
+                        for word in line['words']:
+                            raw_text += word['text'] + " "
+                        raw_text += "\n"
+            
+            # Store result for potential export
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            self.last_ocr_result = {
+                'result': result,
+                'raw_text': raw_text,
+                'timestamp': timestamp
+            }
+            
+            # Update task progress
+            if task_name:
+                self.update_task_progress(90, "Displaying results")
+            
+            # Display results without saving files
+            self.display_ocr_results(raw_text, result)
+            
+            # Enable export buttons
+            self.csv_export_btn.setEnabled(True)
+            self.json_export_btn.setEnabled(True)
+            self.view_details_btn.setEnabled(True)
+            
+            self.update_status(f"✅ OCR completed successfully - {len(raw_text)} characters extracted", "green")
+            
+            # Complete the task
+            if task_name:
+                self.update_task_progress(100, "Task completed")
+                self.complete_task(task_name, True)
+            
+        except Exception as e:
+            self.update_status(f"❌ OCR result processing error: {str(e)}", "red")
+            if task_name:
+                self.complete_task(task_name, False)
+            print(f"DEBUG: OCR result processing error: {e}")
+    
+    def on_ocr_error_safe(self, error_message, task_name=None):
+        """Handle OCR error with minimal operations"""
+        self.update_status(f"❌ OCR Error: {error_message}", "red")
+        if task_name:
+            self.complete_task(task_name, False)
+        print(f"DEBUG: OCR Error: {error_message}")
+    
+    def display_ocr_results(self, raw_text, ocr_result):
+        """Display minimal OCR results preview"""
+        try:
+            # Update status label with preview
+            if raw_text.strip():
+                preview_text = raw_text[:100] + "..." if len(raw_text) > 100 else raw_text
+                self.ocr_status_label.setText(f"✅ OCR Complete! Preview: {preview_text}")
+                self.ocr_status_label.setStyleSheet("""
+                    QLabel {
+                        color: #4CAF50;
+                        padding: 15px;
+                        background: rgba(76, 175, 80, 0.1);
+                        border: 2px solid #4CAF50;
+                        border-radius: 8px;
+                        margin: 10px;
+                    }
+                """)
+            else:
+                self.ocr_status_label.setText("⚠️ OCR Complete but no text detected")
+                self.ocr_status_label.setStyleSheet("""
+                    QLabel {
+                        color: #FF9800;
+                        padding: 15px;
+                        background: rgba(255, 152, 0, 0.1);
+                        border: 2px solid #FF9800;
+                        border-radius: 8px;
+                        margin: 10px;
+                    }
+                """)
+            
+            # Update quick stats
+            char_count = len(raw_text)
+            word_count = len(raw_text.split()) if raw_text.strip() else 0
+            regions_count = len(ocr_result.get('regions', []))
+            
+            self.quick_stats_label.setText(
+                f"📊 {char_count} chars | 📝 {word_count} words | 🔍 {regions_count} regions | 👁️ Click 'View Output Details' for full results"
+            )
+                
+        except Exception as e:
+            self.ocr_status_label.setText(f"Error displaying results: {str(e)}")
+            print(f"DEBUG: Error displaying results: {e}")
+    
+    def add_task_to_queue(self, task_name, task_type="capture"):
+        """Add a task to the navigation alert queue"""
+        task = {
+            'name': task_name,
+            'type': task_type,
+            'timestamp': datetime.now().strftime('%H:%M:%S'),
+            'status': 'queued'
+        }
+        self.task_queue.append(task)
+        self.update_task_queue_display()
+        print(f"DEBUG: Task added to queue: {task_name}")
+    
+    def start_task(self, task_name):
+        """Start a task and update the navigation system"""
+        # Find and start the task
+        for task in self.task_queue:
+            if task['name'] == task_name and task['status'] == 'queued':
+                task['status'] = 'running'
+                self.current_task = task
+                self.task_progress = 0
+                break
+        
+        self.update_task_queue_display()
+        self.show_progress_bar(task_name)
+        print(f"DEBUG: Task started: {task_name}")
+    
+    def update_task_progress(self, progress, message=None):
+        """Update the progress of the current task"""
+        self.task_progress = progress
+        self.progress_bar.setValue(progress)
+        
+        if message:
+            self.progress_bar.setFormat(f"{message} ({progress}%)")
+        else:
+            self.progress_bar.setFormat(f"{progress}%")
+        
+        # Update completion indicator
+        if progress < 30:
+            self.completion_label.setText("🔄 Initializing...")
+            self.completion_label.setStyleSheet("color: #FFA726;")
+        elif progress < 70:
+            self.completion_label.setText("⚡ Processing...")
+            self.completion_label.setStyleSheet("color: #2196F3;")
+        elif progress < 100:
+            self.completion_label.setText("🔍 Finalizing...")
+            self.completion_label.setStyleSheet("color: #FF9800;")
+        
+        self.completion_label.setVisible(True)
+    
+    def complete_task(self, task_name, success=True):
+        """Complete a task and update the navigation system"""
+        # Find and complete the task
+        for task in self.task_queue:
+            if task['name'] == task_name and task['status'] == 'running':
+                task['status'] = 'completed' if success else 'failed'
+                task['completion_time'] = datetime.now().strftime('%H:%M:%S')
+                break
+        
+        self.current_task = None
+        self.task_progress = 100 if success else 0
+        
+        # Show completion status
+        if success:
+            self.completion_label.setText("✅ Task Completed Successfully!")
+            self.completion_label.setStyleSheet("color: #4CAF50; font-weight: bold;")
+            self.progress_bar.setValue(100)
+            self.progress_bar.setFormat("✅ Completed")
+        else:
+            self.completion_label.setText("❌ Task Failed")
+            self.completion_label.setStyleSheet("color: #f44336; font-weight: bold;")
+            self.progress_bar.setValue(0)
+            self.progress_bar.setFormat("❌ Failed")
+        
+        # Auto-hide progress bar after 3 seconds
+        QTimer.singleShot(3000, self.hide_progress_bar)
+        
+        self.update_task_queue_display()
+        print(f"DEBUG: Task completed: {task_name} - Success: {success}")
+    
+    def update_task_queue_display(self):
+        """Update the task queue display label"""
+        if not self.task_queue:
+            self.task_queue_label.setText("📋 Task Queue: Empty")
+            self.task_queue_label.setStyleSheet("color: #666; font-style: italic;")
+            return
+        
+        queued_tasks = [t for t in self.task_queue if t['status'] == 'queued']
+        running_tasks = [t for t in self.task_queue if t['status'] == 'running']
+        completed_tasks = [t for t in self.task_queue if t['status'] == 'completed']
+        failed_tasks = [t for t in self.task_queue if t['status'] == 'failed']
+        
+        status_text = f"📋 Queue: {len(queued_tasks)} waiting"
+        if running_tasks:
+            status_text += f" | ⚡ {len(running_tasks)} running"
+        if completed_tasks:
+            status_text += f" | ✅ {len(completed_tasks)} completed"
+        if failed_tasks:
+            status_text += f" | ❌ {len(failed_tasks)} failed"
+        
+        self.task_queue_label.setText(status_text)
+        
+        # Color coding based on queue status
+        if running_tasks:
+            self.task_queue_label.setStyleSheet("color: #2196F3; font-weight: bold;")
+        elif queued_tasks:
+            self.task_queue_label.setStyleSheet("color: #FFA726; font-weight: bold;")
+        else:
+            self.task_queue_label.setStyleSheet("color: #4CAF50; font-weight: bold;")
+    
+    def show_progress_bar(self, task_name):
+        """Show the gradient progress bar for a task"""
+        self.progress_bar.setVisible(True)
+        self.progress_bar.setValue(0)
+        self.progress_bar.setFormat(f"Starting: {task_name}")
+        self.completion_label.setVisible(True)
+        self.completion_label.setText("🔄 Initializing task...")
+        self.completion_label.setStyleSheet("color: #FFA726;")
+    
+    def hide_progress_bar(self):
+        """Hide the progress bar and completion indicator"""
+        self.progress_bar.setVisible(False)
+        self.completion_label.setVisible(False)
+    
+    def clear_completed_tasks(self):
+        """Clear completed and failed tasks from the queue"""
+        self.task_queue = [t for t in self.task_queue if t['status'] in ['queued', 'running']]
+        self.update_task_queue_display()
+        print("DEBUG: Cleared completed tasks from queue")
         
     def get_newer_device_keywords(self) -> list:
         """Get comprehensive list of modern device keywords for 2025"""
@@ -2256,6 +3767,265 @@ class BiosensorApp(QMainWindow):
             self.update_status(f"⚠️ Could not activate window: {str(e)} (Platform: {PLATFORM})", "orange")
             return True  # Still try to capture
     
+    def take_screenshot_background(self, window) -> Optional[str]:
+        """Take screenshot without activating window (background capture)"""
+        try:
+            # Generate unique filename with appropriate directory
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            random_num = random.randint(1000, 9999)
+            
+            # Determine if this is auto-capture or manual capture
+            if hasattr(self, 'auto_checkbox') and self.auto_checkbox.isChecked():
+                # Auto-capture - save to auto directory
+                auto_images_dir = os.path.join(self.screenshots_dir, "auto_captures")
+                os.makedirs(auto_images_dir, exist_ok=True)
+                filename = f"auto_background_{timestamp}_{random_num}.png"
+                filepath = os.path.join(auto_images_dir, filename)
+            else:
+                # Manual capture - save to manual directory
+                manual_images_dir = os.path.join(self.screenshots_dir, "manual_captures")
+                os.makedirs(manual_images_dir, exist_ok=True)
+                filename = f"manual_background_{timestamp}_{random_num}.png"
+                filepath = os.path.join(manual_images_dir, filename)
+            
+            # Refresh window information to get current position
+            try:
+                # Get fresh window list and find our target window
+                all_windows = pywinctl.getAllWindows() if WINDOW_MANAGER_AVAILABLE else gw.getAllWindows()
+                target_window = None
+                
+                for w in all_windows:
+                    if hasattr(w, 'title') and hasattr(window, 'title') and w.title == window.title:
+                        target_window = w
+                        break
+                
+                if target_window:
+                    window = target_window  # Use refreshed window object
+                    print(f"DEBUG: Found refreshed window: {window.title}")
+                else:
+                    print(f"DEBUG: Could not refresh window info for: {window.title}")
+            except Exception as refresh_error:
+                print(f"DEBUG: Window refresh error: {refresh_error}")
+            
+            # Get cross-platform window dimensions and position
+            try:
+                width = getattr(window, 'width', getattr(window, 'size', [0, 0])[0] if hasattr(window, 'size') else 0)
+                height = getattr(window, 'height', getattr(window, 'size', [0, 0])[1] if hasattr(window, 'size') else 0)
+                left = getattr(window, 'left', getattr(window, 'topleft', [0, 0])[0] if hasattr(window, 'topleft') else 0)
+                top = getattr(window, 'top', getattr(window, 'topleft', [0, 0])[1] if hasattr(window, 'topleft') else 0)
+                
+                print(f"DEBUG: Window dimensions - Width: {width}, Height: {height}, Left: {left}, Top: {top}")
+                self.update_status(f"📸 Background capturing: {window.title} ({width}x{height}) at ({left},{top})", "blue")
+            except Exception as e:
+                self.update_status(f"❌ Could not get window properties: {str(e)}", "red")
+                print(f"DEBUG: Window properties error: {e}")
+                return None
+            
+            # Validate window dimensions
+            if width <= 50 or height <= 50:
+                self.update_status(f"❌ Window too small: {width}x{height} (minimum 50x50)", "red")
+                print(f"DEBUG: Window dimensions too small: {width}x{height}")
+                return None
+            
+            # Method 1: Windows - Use PrintWindow API for true background capture
+            if PLATFORM == 'windows':
+                try:
+                    import win32gui
+                    import win32ui
+                    import win32con
+                    from ctypes import windll
+                    
+                    # Get window handle - try multiple methods
+                    hwnd = None
+                    
+                    # Method 1a: Direct _hWnd attribute (pygetwindow)
+                    if hasattr(window, '_hWnd'):
+                        hwnd = window._hWnd
+                        print(f"DEBUG: Got hwnd from _hWnd: {hwnd}")
+                    
+                    # Method 1b: Try handle attribute (pywinctl)
+                    elif hasattr(window, 'handle'):
+                        hwnd = window.handle
+                        print(f"DEBUG: Got hwnd from handle: {hwnd}")
+                    
+                    # Method 1c: Find window by exact title
+                    if not hwnd and hasattr(window, 'title'):
+                        hwnd = win32gui.FindWindow(None, window.title)
+                        print(f"DEBUG: Got hwnd from FindWindow: {hwnd}")
+                    
+                    if hwnd and win32gui.IsWindow(hwnd):
+                        # Get actual window dimensions from Windows API
+                        rect = win32gui.GetWindowRect(hwnd)
+                        left, top, right, bottom = rect
+                        width = right - left
+                        height = bottom - top
+                        
+                        if width > 0 and height > 0:
+                            # Create device contexts
+                            hwndDC = win32gui.GetWindowDC(hwnd)
+                            mfcDC = win32ui.CreateDCFromHandle(hwndDC)
+                            saveDC = mfcDC.CreateCompatibleDC()
+                            
+                            # Create bitmap
+                            saveBitMap = win32ui.CreateBitmap()
+                            saveBitMap.CreateCompatibleBitmap(mfcDC, width, height)
+                            saveDC.SelectObject(saveBitMap)
+                            
+                            # Use PrintWindow with PW_RENDERFULLCONTENT flag for background capture
+                            PW_RENDERFULLCONTENT = 0x00000002
+                            result = windll.user32.PrintWindow(hwnd, saveDC.GetSafeHdc(), PW_RENDERFULLCONTENT)
+                            
+                            if result:
+                                # Convert to PIL Image
+                                bmpinfo = saveBitMap.GetInfo()
+                                bmpstr = saveBitMap.GetBitmapBits(True)
+                                
+                                img = Image.frombuffer(
+                                    'RGB',
+                                    (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
+                                    bmpstr, 'raw', 'BGRX', 0, 1
+                                )
+                                
+                                # Check if image is not blank
+                                extrema = img.getextrema()
+                                is_blank = all(channel == (0, 0) for channel in extrema)
+                                
+                                if not is_blank:
+                                    img.save(filepath)
+                                    
+                                    # Cleanup
+                                    win32gui.DeleteObject(saveBitMap.GetHandle())
+                                    saveDC.DeleteDC()
+                                    mfcDC.DeleteDC()
+                                    win32gui.ReleaseDC(hwnd, hwndDC)
+                                    
+                                    self.update_status(f"✅ Background screenshot saved: {filename}", "green")
+                                    return filepath
+                                else:
+                                    print("PrintWindow returned blank image, trying fallback...")
+                            
+                            # Cleanup on failure
+                            win32gui.DeleteObject(saveBitMap.GetHandle())
+                            saveDC.DeleteDC()
+                            mfcDC.DeleteDC()
+                            win32gui.ReleaseDC(hwnd, hwndDC)
+                            
+                            # Try alternative PrintWindow flags
+                            if not result:
+                                # Recreate contexts for second attempt
+                                hwndDC = win32gui.GetWindowDC(hwnd)
+                                mfcDC = win32ui.CreateDCFromHandle(hwndDC)
+                                saveDC = mfcDC.CreateCompatibleDC()
+                                saveBitMap = win32ui.CreateBitmap()
+                                saveBitMap.CreateCompatibleBitmap(mfcDC, width, height)
+                                saveDC.SelectObject(saveBitMap)
+                                
+                                # Try with flag 0 (standard rendering)
+                                result = windll.user32.PrintWindow(hwnd, saveDC.GetSafeHdc(), 0)
+                                
+                                if result:
+                                    bmpinfo = saveBitMap.GetInfo()
+                                    bmpstr = saveBitMap.GetBitmapBits(True)
+                                    
+                                    img = Image.frombuffer(
+                                        'RGB',
+                                        (bmpinfo['bmWidth'], bmpinfo['bmHeight']),
+                                        bmpstr, 'raw', 'BGRX', 0, 1
+                                    )
+                                    
+                                    extrema = img.getextrema()
+                                    is_blank = all(channel == (0, 0) for channel in extrema)
+                                    
+                                    if not is_blank:
+                                        img.save(filepath)
+                                        
+                                        # Cleanup
+                                        win32gui.DeleteObject(saveBitMap.GetHandle())
+                                        saveDC.DeleteDC()
+                                        mfcDC.DeleteDC()
+                                        win32gui.ReleaseDC(hwnd, hwndDC)
+                                        
+                                        self.update_status(f"✅ Background screenshot saved: {filename}", "green")
+                                        return filepath
+                                
+                                # Final cleanup
+                                win32gui.DeleteObject(saveBitMap.GetHandle())
+                                saveDC.DeleteDC()
+                                mfcDC.DeleteDC()
+                                win32gui.ReleaseDC(hwnd, hwndDC)
+                            
+                except Exception as e:
+                    print(f"Windows PrintWindow failed: {e}")
+            
+            # Method 2: Cross-platform MSS with window coordinates
+            try:
+                with mss.mss() as sct:
+                    monitor = {
+                        "top": top,
+                        "left": left,
+                        "width": width,
+                        "height": height
+                    }
+                    
+                    # Grab the screenshot
+                    sct_img = sct.grab(monitor)
+                    
+                    # Convert to PIL Image
+                    img = Image.frombytes("RGB", sct_img.size, sct_img.bgra, "raw", "BGRX")
+                    
+                    # Check if image is not just black
+                    if img.getextrema() != ((0, 0), (0, 0), (0, 0)):
+                        img.save(filepath)
+                        self.update_status(f"✅ Background screenshot saved (MSS): {filename}", "green")
+                        return filepath
+                    else:
+                        print("MSS captured black image, trying fallback...")
+                    
+            except Exception as e:
+                print(f"MSS failed: {e}")
+            
+            # Method 3: Linux-specific screenshot methods
+            if PLATFORM == 'linux':
+                try:
+                    import subprocess
+                    scrot_cmd = [
+                        "scrot", 
+                        "-a", f"{left},{top},{width},{height}",
+                        filepath
+                    ]
+                    result = subprocess.run(scrot_cmd, capture_output=True, text=True)
+                    if result.returncode == 0 and os.path.exists(filepath):
+                        self.update_status(f"✅ Background screenshot saved (scrot): {filename}", "green")
+                        return filepath
+                except Exception as e:
+                    print(f"scrot failed: {e}")
+            
+            # Method 4: Fallback to pyautogui (may require activation)
+            try:
+                screenshot = pyautogui.screenshot(region=(left, top, width, height))
+                
+                # Check if screenshot is not just black
+                extrema = screenshot.getextrema()
+                if extrema != ((0, 0), (0, 0), (0, 0)):
+                    screenshot.save(filepath)
+                    self.update_status(f"✅ Background screenshot saved (PyAutoGUI): {filename}", "green")
+                    return filepath
+                else:
+                    self.update_status("⚠️ Captured image appears to be black/empty", "orange")
+                    # Save anyway for debugging
+                    screenshot.save(filepath)
+                    return filepath
+                    
+            except Exception as e:
+                print(f"PyAutoGUI failed: {e}")
+            
+            self.update_status(f"❌ All background capture methods failed (Platform: {PLATFORM})", "red")
+            return None
+            
+        except Exception as e:
+            self.update_status(f"❌ Background screenshot failed: {str(e)} (Platform: {PLATFORM})", "red")
+            return None
+    
     def take_screenshot(self, window) -> Optional[str]:
         """Take screenshot with automatic window activation"""
         try:
@@ -2305,11 +4075,23 @@ class BiosensorApp(QMainWindow):
                 self.update_status(f"❌ Could not get window dimensions: {str(e)}", "red")
                 return None
             
-            # Generate unique filename
+            # Generate unique filename with appropriate directory
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             random_num = random.randint(1000, 9999)
-            filename = f"screenshot_{timestamp}_{random_num}.png"
-            filepath = os.path.join(self.screenshots_dir, filename)
+            
+            # Determine if this is auto-capture or manual capture
+            if hasattr(self, 'auto_checkbox') and self.auto_checkbox.isChecked():
+                # Auto-capture - save to auto directory
+                auto_images_dir = os.path.join(self.screenshots_dir, "auto_captures")
+                os.makedirs(auto_images_dir, exist_ok=True)
+                filename = f"auto_screenshot_{timestamp}_{random_num}.png"
+                filepath = os.path.join(auto_images_dir, filename)
+            else:
+                # Manual capture - save to manual directory
+                manual_images_dir = os.path.join(self.screenshots_dir, "manual_captures")
+                os.makedirs(manual_images_dir, exist_ok=True)
+                filename = f"manual_screenshot_{timestamp}_{random_num}.png"
+                filepath = os.path.join(manual_images_dir, filename)
             
             # Get cross-platform window dimensions and position
             try:
@@ -2419,7 +4201,17 @@ class BiosensorApp(QMainWindow):
         """Process image with Azure OCR API"""
         if not self.azure_api_key:
             self.update_status("❌ Azure API key not configured", "red")
-            self.results_text.append("\n⚠️ Please configure your Azure Computer Vision API key and endpoint in your .env file.")
+            self.ocr_status_label.setText("⚠️ Please configure your Azure Computer Vision API key and endpoint in your .env file.")
+            self.ocr_status_label.setStyleSheet("""
+                QLabel {
+                    color: #FF5722;
+                    padding: 15px;
+                    background: rgba(255, 87, 34, 0.1);
+                    border: 2px solid #FF5722;
+                    border-radius: 8px;
+                    margin: 10px;
+                }
+            """)
             return
         
         # Store current image path for potential deletion after CSV export
@@ -2455,31 +4247,10 @@ class BiosensorApp(QMainWindow):
         # Enable export buttons
         self.csv_export_btn.setEnabled(True)
         self.json_export_btn.setEnabled(True)
+        self.view_details_btn.setEnabled(True)
         
-        # Get selected display format
-        display_format = self.format_combo.currentData()
-        
-        # Display results based on selected format
-        self.results_text.append(f"\n{'='*50}")
-        self.results_text.append(f"OCR Result - {timestamp}")
-        self.results_text.append(f"{'='*50}")
-        
-        if display_format in ["raw", "both"]:
-            self.results_text.append("\n📋 RAW TEXT:")
-            self.results_text.append("-" * 30)
-            if raw_text.strip():
-                self.results_text.append(raw_text)
-            else:
-                self.results_text.append("(No text detected)")
-        
-        if display_format in ["json", "both"]:
-            if display_format == "both":
-                self.results_text.append("\n📊 FULL JSON DATA:")
-                self.results_text.append("-" * 30)
-            formatted_json = json.dumps(result, indent=2, ensure_ascii=False)
-            self.results_text.append(formatted_json)
-        
-        self.results_text.append(f"{'='*50}\n")
+        # Display results using new minimal preview approach
+        self.display_ocr_results(raw_text, result)
         
         # Save to CSV based on capture mode
         image_path = getattr(self, 'current_image_path', None)
@@ -2489,11 +4260,6 @@ class BiosensorApp(QMainWindow):
         else:
             # Manual capture mode: save to single_screenshot_time.csv
             self.save_manual_capture(raw_text, timestamp, image_path)
-        
-        # Auto-scroll to bottom
-        cursor = self.results_text.textCursor()
-        cursor.movePosition(cursor.End)
-        self.results_text.setTextCursor(cursor)
     
     def extract_raw_text(self, ocr_result: Dict[Any, Any]) -> str:
         """Extract raw text from OCR result"""
@@ -2555,7 +4321,7 @@ class BiosensorApp(QMainWindow):
     def save_to_csv(self, raw_text: str, timestamp: str, image_path: str = None):
         """Save only raw data to CSV file in proper format"""
         try:
-            csv_file_path = os.path.join(self.screenshots_dir, "auto_data.csv")
+            csv_file_path = os.path.join(self.csv_dir, "auto_data.csv")
             
             # Get current window info
             window = self.get_selected_window()
@@ -2605,8 +4371,12 @@ class BiosensorApp(QMainWindow):
         """Save manual capture data to separate CSV and JSON files in dedicated directory"""
         try:
             # Create manual captures directory
-            manual_dir = os.path.join(self.screenshots_dir, "manual_captures")
-            os.makedirs(manual_dir, exist_ok=True)
+            manual_images_dir = os.path.join(self.screenshots_dir, "manual_images")
+            manual_csv_dir = os.path.join(self.csv_dir, "manual_captures")
+            manual_json_dir = os.path.join(self.json_dir, "manual_captures")
+            os.makedirs(manual_images_dir, exist_ok=True)
+            os.makedirs(manual_csv_dir, exist_ok=True)
+            os.makedirs(manual_json_dir, exist_ok=True)
             
             # Get window title
             window = self.get_selected_window()
@@ -2615,7 +4385,7 @@ class BiosensorApp(QMainWindow):
             # Save to separate CSV file for manual captures with dynamic filename
             timestamp_safe = timestamp.replace(':', '-').replace(' ', '_')
             csv_filename = f"manual_capture_{timestamp_safe}.csv"
-            csv_path = os.path.join(manual_dir, csv_filename)
+            csv_path = os.path.join(manual_csv_dir, csv_filename)
             file_exists = os.path.exists(csv_path)
             
             csv_data = {
@@ -2642,7 +4412,7 @@ class BiosensorApp(QMainWindow):
                 
                 json_timestamp_safe = timestamp.replace(':', '-').replace(' ', '_')
                 json_filename = f"manual_capture_{json_timestamp_safe}.json"
-                json_path = os.path.join(manual_dir, json_filename)
+                json_path = os.path.join(manual_json_dir, json_filename)
                 
                 with open(json_path, 'w', encoding='utf-8') as json_file:
                     json.dump(export_data, json_file, indent=2, ensure_ascii=False)
@@ -2662,54 +4432,119 @@ class BiosensorApp(QMainWindow):
             self.update_status(f"❌ Failed to save manual capture: {str(e)}", "red")
     
     def cleanup_old_screenshots(self):
-        """Clean up old screenshots, keeping only the last 5 files"""
+        """Clean up old screenshots based on custom time interval or count"""
         try:
-            # Get all screenshot files in the screenshots directory
-            screenshot_patterns = [
-                os.path.join(self.screenshots_dir, "*.png"),
-                os.path.join(self.screenshots_dir, "*.jpg"),
-                os.path.join(self.screenshots_dir, "*.jpeg"),
-                os.path.join(self.screenshots_dir, "*.bmp")
-            ]
+            # Get all screenshot files in the auto and manual subdirectories
+            auto_images_dir = os.path.join(self.screenshots_dir, "auto_captures")
+            manual_images_dir = os.path.join(self.screenshots_dir, "manual_captures")
+            
+            screenshot_patterns = []
+            # Add patterns for auto-capture directory
+            if os.path.exists(auto_images_dir):
+                screenshot_patterns.extend([
+                    os.path.join(auto_images_dir, "*.png"),
+                    os.path.join(auto_images_dir, "*.jpg"),
+                    os.path.join(auto_images_dir, "*.jpeg"),
+                    os.path.join(auto_images_dir, "*.bmp")
+                ])
+            # Add patterns for manual capture directory
+            if os.path.exists(manual_images_dir):
+                screenshot_patterns.extend([
+                    os.path.join(manual_images_dir, "*.png"),
+                    os.path.join(manual_images_dir, "*.jpg"),
+                    os.path.join(manual_images_dir, "*.jpeg"),
+                    os.path.join(manual_images_dir, "*.bmp")
+                ])
             
             all_screenshots = []
             for pattern in screenshot_patterns:
                 all_screenshots.extend(glob.glob(pattern))
             
-            if len(all_screenshots) <= 5:
-                return  # No cleanup needed
+            if len(all_screenshots) == 0:
+                return  # No screenshots to clean up
             
-            # Sort by modification time (newest first)
-            all_screenshots.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+            # Get deletion mode and settings
+            deletion_mode = self.deletion_mode_combo.currentData() if hasattr(self, 'deletion_mode_combo') else "count"
+            deletion_value = self.deletion_interval_spinbox.value() if hasattr(self, 'deletion_interval_spinbox') else 5
             
-            # Keep only the first 5 (newest), delete the rest
-            screenshots_to_delete = all_screenshots[5:]
-            
+            screenshots_to_delete = []
             deleted_count = 0
-            for screenshot_path in screenshots_to_delete:
-                try:
-                    os.remove(screenshot_path)
-                    deleted_count += 1
-                    print(f"DEBUG: Cleaned up old screenshot: {os.path.basename(screenshot_path)}")
-                except Exception as delete_error:
-                    print(f"DEBUG: Failed to delete old screenshot {screenshot_path}: {delete_error}")
             
-            if deleted_count > 0:
-                self.update_status(f"🧹 Cleaned up {deleted_count} old screenshots (keeping last 5)", "blue")
+            if deletion_mode == "time":
+                # Delete screenshots older than specified time interval
+                import time
+                current_time = time.time()
+                time_threshold = deletion_value * 60  # Convert minutes to seconds
+                
+                for screenshot_path in all_screenshots:
+                    try:
+                        file_modified_time = os.path.getmtime(screenshot_path)
+                        if (current_time - file_modified_time) > time_threshold:
+                            screenshots_to_delete.append(screenshot_path)
+                    except Exception as e:
+                        print(f"DEBUG: Error checking file time for {screenshot_path}: {e}")
+                
+                # Delete old screenshots
+                for screenshot_path in screenshots_to_delete:
+                    try:
+                        os.remove(screenshot_path)
+                        deleted_count += 1
+                        print(f"DEBUG: Cleaned up old screenshot (time-based): {os.path.basename(screenshot_path)}")
+                    except Exception as delete_error:
+                        print(f"DEBUG: Failed to delete old screenshot {screenshot_path}: {delete_error}")
+                
+                if deleted_count > 0:
+                    self.update_status(f"🧹 Cleaned up {deleted_count} screenshots older than {deletion_value} minutes", "blue")
+                
+            else:  # count mode
+                # Keep only the most recent N screenshots
+                if len(all_screenshots) <= deletion_value:
+                    return  # No cleanup needed
+                
+                # Sort by modification time (newest first)
+                all_screenshots.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+                
+                # Keep only the first N (newest), delete the rest
+                screenshots_to_delete = all_screenshots[deletion_value:]
+                
+                for screenshot_path in screenshots_to_delete:
+                    try:
+                        os.remove(screenshot_path)
+                        deleted_count += 1
+                        print(f"DEBUG: Cleaned up old screenshot (count-based): {os.path.basename(screenshot_path)}")
+                    except Exception as delete_error:
+                        print(f"DEBUG: Failed to delete old screenshot {screenshot_path}: {delete_error}")
+                
+                if deleted_count > 0:
+                    self.update_status(f"🧹 Cleaned up {deleted_count} old screenshots (keeping last {deletion_value} files)", "blue")
                 
         except Exception as e:
             print(f"DEBUG: Screenshot cleanup error: {e}")
             self.update_status(f"⚠️ Screenshot cleanup warning: {str(e)}", "orange")
     
     def save_auto_data(self, raw_text: str, timestamp: str, image_path: str = None):
-        """Save data to both CSV and JSON files when auto-capture is active"""
+        """Save data to both CSV and JSON files when auto-capture is active
+        
+        Enhanced with comprehensive USB stability management:
+        - Intelligent file operation timing
+        - Reduced concurrent I/O operations
+        - Error recovery mechanisms
+        - Device-specific optimizations
+        """
         try:
             # Get window title
             window = self.get_selected_window()
             window_title = window.title if window else "Unknown"
             
-            # Save to CSV
-            csv_path = os.path.join(self.screenshots_dir, "auto_data.csv")
+            # USB STABILITY: Use managed delay based on device type
+            if hasattr(self, 'usb_stability_manager'):
+                stability_delay = self.usb_stability_manager.operation_delays.get('file_write', 0.2)
+                time.sleep(stability_delay)
+            else:
+                time.sleep(0.1)
+            
+            # Save to CSV with proper error handling
+            csv_path = os.path.join(self.csv_dir, "auto_data.csv")
             file_exists = os.path.exists(csv_path)
             
             csv_data = {
@@ -2718,113 +4553,342 @@ class BiosensorApp(QMainWindow):
                 'raw_text': raw_text.replace('\n', ' | ') if raw_text.strip() else 'No text detected'
             }
             
-            with open(csv_path, 'a', newline='', encoding='utf-8') as csvfile:
-                fieldnames = ['timestamp', 'window_title', 'raw_text']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                if not file_exists:
-                    writer.writeheader()
-                writer.writerow(csv_data)
+            try:
+                with open(csv_path, 'a', newline='', encoding='utf-8') as csvfile:
+                    fieldnames = ['timestamp', 'window_title', 'raw_text']
+                    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                    if not file_exists:
+                        writer.writeheader()
+                    writer.writerow(csv_data)
+                    csvfile.flush()  # Ensure data is written immediately
+                    
+            except Exception as csv_error:
+                print(f"DEBUG: CSV write error: {csv_error}")
+                self.update_status(f"⚠️ CSV save failed: {str(csv_error)}", "orange")
+                return  # Don't continue if CSV fails
             
-            # Save to JSON
+            # USB STABILITY FIX 2: Delay between major file operations
+            time.sleep(0.15)
+            
+            # Save to JSON (only if CSV succeeded)
+            json_saved = False
             if hasattr(self, 'last_ocr_result') and self.last_ocr_result:
-                export_data = {
-                    'timestamp': timestamp,
-                    'window_title': window_title,
-                    'raw_text': raw_text,
-                    'full_ocr_result': self.last_ocr_result['result'],
-                    'image_path': image_path
-                }
-                
-                timestamp_safe = timestamp.replace(':', '-').replace(' ', '_')
-                json_filename = f"auto_capture_{timestamp_safe}.json"
-                json_path = os.path.join(self.screenshots_dir, json_filename)
-                
-                with open(json_path, 'w', encoding='utf-8') as json_file:
-                    json.dump(export_data, json_file, indent=2, ensure_ascii=False)
-                
-                self.update_status(f"💾 Auto-saved to CSV and JSON: {os.path.basename(csv_path)}, {json_filename}", "green")
-            else:
+                try:
+                    export_data = {
+                        'timestamp': timestamp,
+                        'window_title': window_title,
+                        'raw_text': raw_text,
+                        'full_ocr_result': self.last_ocr_result['result'],
+                        'image_path': image_path
+                    }
+                    
+                    timestamp_safe = timestamp.replace(':', '-').replace(' ', '_')
+                    json_filename = f"auto_capture_{timestamp_safe}.json"
+                    json_path = os.path.join(self.json_dir, json_filename)
+                    
+                    with open(json_path, 'w', encoding='utf-8') as json_file:
+                        json.dump(export_data, json_file, indent=2, ensure_ascii=False)
+                        json_file.flush()  # Ensure data is written immediately
+                    
+                    json_saved = True
+                    self.update_status(f"💾 Auto-saved to CSV and JSON: {os.path.basename(csv_path)}, {json_filename}", "green")
+                    
+                except Exception as json_error:
+                    print(f"DEBUG: JSON write error: {json_error}")
+                    self.update_status(f"💾 CSV saved successfully, JSON failed: {str(json_error)}", "orange")
+            
+            if not json_saved:
                 self.update_status(f"💾 Auto-saved to CSV: {os.path.basename(csv_path)}", "green")
             
-            # Clean up old screenshots (keep only last 5)
-            self.cleanup_old_screenshots()
-            
-            # Delete current screenshot if provided and exists
-            if image_path and os.path.exists(image_path):
-                try:
-                    os.remove(image_path)
-                    print(f"DEBUG: Screenshot deleted successfully: {image_path}")
-                    self.update_status(f"🗑️ Screenshot auto-deleted: {os.path.basename(image_path)}", "gray")
-                except Exception as delete_error:
-                    print(f"DEBUG: Failed to delete screenshot: {image_path}, Error: {delete_error}")
+            # USB STABILITY: Use managed delay before cleanup operations
+            if hasattr(self, 'usb_stability_manager'):
+                cleanup_delay = self.usb_stability_manager.operation_delays.get('cleanup', 0.5)
+                time.sleep(cleanup_delay)
             else:
-                print(f"DEBUG: Screenshot not deleted - path: {image_path}, exists: {os.path.exists(image_path) if image_path else 'N/A'}")
+                time.sleep(0.2)
+            
+            # Clean up old screenshots with USB stability-aware frequency
+            if not hasattr(self, '_cleanup_counter'):
+                self._cleanup_counter = 0
+            self._cleanup_counter += 1
+            
+            # Get optimal cleanup frequency from USB stability manager
+            cleanup_frequency = 10  # Default
+            if hasattr(self, 'usb_stability_manager'):
+                cleanup_frequency = self.usb_stability_manager.get_optimal_cleanup_frequency()
+            
+            if self._cleanup_counter % cleanup_frequency == 0:
+                try:
+                    if hasattr(self, 'usb_stability_manager'):
+                        self.usb_stability_manager.safe_cleanup(self.cleanup_old_screenshots)
+                    else:
+                        self.cleanup_old_screenshots()
+                except Exception as cleanup_error:
+                    print(f"DEBUG: Screenshot cleanup error: {cleanup_error}")
+                    # Don't fail the operation if cleanup fails
+            
+            # USB STABILITY: Intelligent screenshot deletion management
+            auto_delete_enabled = getattr(self, 'enable_auto_delete_screenshots', False)
+            
+            if auto_delete_enabled and image_path and os.path.exists(image_path):
+                # Check if we should skip deletion for USB stability
+                if hasattr(self, 'usb_stability_manager') and self.usb_stability_manager.should_skip_operation('file_delete'):
+                    print(f"DEBUG: Screenshot deletion skipped for USB stability: {image_path}")
+                    if self._cleanup_counter % 5 == 0:
+                        self.update_status(f"🔌 Screenshot deletion skipped for USB stability", "blue")
+                else:
+                    try:
+                        # Use USB stability manager for safe deletion
+                        if hasattr(self, 'usb_stability_manager'):
+                            success = self.usb_stability_manager.safe_file_delete(image_path)
+                            if success:
+                                print(f"DEBUG: Screenshot safely deleted: {image_path}")
+                                self.update_status(f"🗑️ Screenshot auto-deleted: {os.path.basename(image_path)}", "gray")
+                            else:
+                                print(f"DEBUG: Screenshot not found for deletion: {image_path}")
+                        else:
+                            # Fallback to regular deletion with delay
+                            time.sleep(0.3)
+                            os.remove(image_path)
+                            print(f"DEBUG: Screenshot deleted successfully: {image_path}")
+                            self.update_status(f"🗑️ Screenshot auto-deleted: {os.path.basename(image_path)}", "gray")
+                    except Exception as delete_error:
+                        print(f"DEBUG: Failed to delete screenshot: {image_path}, Error: {delete_error}")
+                        # Don't fail the entire operation if deletion fails
+                        self.update_status(f"⚠️ Screenshot deletion failed, continuing...", "orange")
+            elif image_path and os.path.exists(image_path):
+                if not auto_delete_enabled:
+                    print(f"DEBUG: Auto-deletion disabled for USB stability - preserving: {image_path}")
+                    # Only show this message occasionally to avoid spam
+                    if self._cleanup_counter % 5 == 0:
+                        stability_status = ""
+                        if hasattr(self, 'usb_stability_manager'):
+                            stability_status = f" ({self.usb_stability_manager.get_status_message()})"
+                        self.update_status(f"💾 Screenshots preserved (auto-delete disabled){stability_status}", "blue")
+                else:
+                    print(f"DEBUG: Screenshot not found for deletion - path: {image_path}")
             
         except Exception as e:
+            print(f"DEBUG: Critical error in save_auto_data: {e}")
             self.update_status(f"❌ Failed to save auto data: {str(e)}", "red")
     
     def on_ocr_error(self, error_message: str):
         """Handle OCR error"""
         self.progress_bar.setVisible(False)
         self.update_status(f"❌ OCR Error", "red")
-        self.results_text.append(f"\n❌ OCR Error: {error_message}\n")
+        self.ocr_status_label.setText(f"❌ OCR Error: {error_message}")
+        self.ocr_status_label.setStyleSheet("""
+            QLabel {
+                color: #F44336;
+                padding: 15px;
+                background: rgba(244, 67, 54, 0.1);
+                border: 2px solid #F44336;
+                border-radius: 8px;
+                margin: 10px;
+            }
+        """)
+        self.quick_stats_label.setText("")
+    
+    def capture_background_window(self):
+        """Capture the selected window in background without activating it"""
+        # Start performance tracking
+        capture_start_time = time.time()
+        
+        # Add task to navigation queue
+        task_name = "Background Screenshot Capture"
+        self.add_task_to_queue(task_name)
+        self.start_task(task_name)
+        
+        self.update_status("🔍 Getting selected window for background capture...", "blue")
+        self.update_task_progress(10, "Getting window")
+        
+        try:
+            # Step 1: Get selected window
+            window = self.get_selected_window()
+            if not window:
+                current_text = self.window_combo.currentText()
+                if "Select a window" in current_text or "No windows found" in current_text:
+                    self.update_status("❌ Please select a valid window first", "red")
+                    self.complete_task(task_name, False)
+                    QMessageBox.warning(self, "No Window Selected", 
+                                      "Please select a valid window from the dropdown list.\n\n" +
+                                      "If you don't see your device window:\n" +
+                                      "1. Make sure your device/app is running\n" +
+                                      "2. Click the 'Refresh' button\n" +
+                                      "3. Look for your device in the Mobile/Device section")
+                else:
+                    self.update_status("❌ Invalid window selection", "red")
+                    self.complete_task(task_name, False)
+                    QMessageBox.warning(self, "Invalid Selection", 
+                                      "The selected item is not a valid window. Please choose a window from the list.")
+                return
+            
+            self.update_task_progress(20, "Validating window")
+            
+            # Verify window is still valid
+            try:
+                width = getattr(window, 'width', getattr(window, 'size', [0, 0])[0] if hasattr(window, 'size') else 0)
+                height = getattr(window, 'height', getattr(window, 'size', [0, 0])[1] if hasattr(window, 'size') else 0)
+                visible = getattr(window, 'visible', getattr(window, 'isVisible', True))
+                
+                if not visible or width <= 0 or height <= 0:
+                    self.update_status("❌ Selected window is no longer valid", "red")
+                    self.complete_task(task_name, False)
+                    QMessageBox.warning(self, "Window Not Available", 
+                                      "The selected window is no longer available. Please refresh the list and select again.")
+                    return
+            except:
+                self.update_status("❌ Selected window is no longer accessible", "red")
+                self.complete_task(task_name, False)
+                QMessageBox.warning(self, "Window Error", 
+                                  "Cannot access the selected window. Please refresh the list and try again.")
+                return
+            
+            self.update_status(f"✅ Selected window: {window.title} - Background capture mode", "green")
+            self.update_task_progress(30, "Window validated")
+            
+            # Step 2: Take background screenshot (no activation)
+            self.update_task_progress(40, "Taking background screenshot")
+            image_path = self.take_screenshot_background(window)
+            if not image_path:
+                self.complete_task(task_name, False)
+                return
+            
+            self.update_task_progress(60, "Background screenshot captured")
+            
+            # Step 3: Process with OCR
+            self.update_task_progress(70, "Starting OCR")
+            self.process_with_ocr(image_path)
+            
+            # Update performance metrics for auto capture
+            self.total_captures += 1
+            self.auto_captures += 1
+            processing_time = time.time() - capture_start_time
+            self.total_processing_time += processing_time
+            self.auto_processing_time += processing_time
+            self.auto_capture_times.append(processing_time)
+            
+            # Keep only last 50 measurements
+            if len(self.auto_capture_times) > 50:
+                self.auto_capture_times = self.auto_capture_times[-50:]
+            
+            self.complete_task(task_name, True)
+            
+        except Exception as e:
+            self.update_status(f"❌ Background capture failed: {str(e)}", "red")
+            self.complete_task(task_name, False)
     
     def capture_selected_window(self):
-        """Capture the selected window"""
+        """Capture the selected window with USB stability fix and navigation alerts"""
+        # Start performance tracking
+        capture_start_time = time.time()
+        
+        # Add task to navigation queue
+        task_name = "Manual Screenshot Capture"
+        self.add_task_to_queue(task_name)
+        self.start_task(task_name)
+        
         self.update_status("🔍 Getting selected window...", "blue")
+        self.update_task_progress(10, "Getting window")
         
-        # Step 1: Get selected window
-        window = self.get_selected_window()
-        if not window:
-            current_text = self.window_combo.currentText()
-            if "Select a window" in current_text or "No windows found" in current_text:
-                self.update_status("❌ Please select a valid window first", "red")
-                QMessageBox.warning(self, "No Window Selected", 
-                                  "Please select a valid window from the dropdown list.\n\n" +
-                                  "If you don't see your device window:\n" +
-                                  "1. Make sure your device/app is running\n" +
-                                  "2. Click the 'Refresh' button\n" +
-                                  "3. Look for your device in the Mobile/Device section")
-            else:
-                self.update_status("❌ Invalid window selection", "red")
-                QMessageBox.warning(self, "Invalid Selection", 
-                                  "The selected item is not a valid window. Please choose a window from the list.")
-            return
+        # DISABLE ALL TIMERS AND OPERATIONS TO PREVENT USB DISCONNECTION
+        self.pause_all_operations()
         
-        # Verify window is still valid
         try:
-            if not window.visible or window.width <= 0 or window.height <= 0:
-                self.update_status("❌ Selected window is no longer valid", "red")
-                QMessageBox.warning(self, "Window Not Available", 
-                                  "The selected window is no longer available. Please refresh the list and select again.")
+            # Step 1: Get selected window
+            window = self.get_selected_window()
+            if not window:
+                current_text = self.window_combo.currentText()
+                if "Select a window" in current_text or "No windows found" in current_text:
+                    self.update_status("❌ Please select a valid window first", "red")
+                    self.complete_task(task_name, False)
+                    QMessageBox.warning(self, "No Window Selected", 
+                                      "Please select a valid window from the dropdown list.\n\n" +
+                                      "If you don't see your device window:\n" +
+                                      "1. Make sure your device/app is running\n" +
+                                      "2. Click the 'Refresh' button\n" +
+                                      "3. Look for your device in the Mobile/Device section")
+                else:
+                    self.update_status("❌ Invalid window selection", "red")
+                    self.complete_task(task_name, False)
+                    QMessageBox.warning(self, "Invalid Selection", 
+                                      "The selected item is not a valid window. Please choose a window from the list.")
                 return
-        except:
-            self.update_status("❌ Selected window is no longer accessible", "red")
-            QMessageBox.warning(self, "Window Error", 
-                              "Cannot access the selected window. Please refresh the list and try again.")
-            return
-        
-        self.update_status(f"✅ Selected window: {window.title}", "green")
-        
-        # Step 2: Take screenshot
-        image_path = self.take_screenshot(window)
-        if not image_path:
-            return
-        
-        # Step 3: Process with OCR
-        self.process_with_ocr(image_path)
+            
+            self.update_task_progress(20, "Validating window")
+            
+            # Verify window is still valid
+            try:
+                if not window.visible or window.width <= 0 or window.height <= 0:
+                    self.update_status("❌ Selected window is no longer valid", "red")
+                    self.complete_task(task_name, False)
+                    QMessageBox.warning(self, "Window Not Available", 
+                                      "The selected window is no longer available. Please refresh the list and select again.")
+                    return
+            except:
+                self.update_status("❌ Selected window is no longer accessible", "red")
+                self.complete_task(task_name, False)
+                QMessageBox.warning(self, "Window Error", 
+                                  "Cannot access the selected window. Please refresh the list and try again.")
+                return
+            
+            self.update_status(f"✅ Selected window: {window.title}", "green")
+            self.update_task_progress(30, "Window validated")
+            
+            # Step 2: Take screenshot with minimal file operations
+            self.update_task_progress(40, "Taking screenshot")
+            image_path = self.take_screenshot_safe(window)
+            if not image_path:
+                self.complete_task(task_name, False)
+                return
+            
+            self.update_task_progress(60, "Screenshot captured")
+            
+            # Step 3: Process with OCR (minimal operations)
+            self.update_task_progress(70, "Starting OCR")
+            self.process_with_ocr_safe(image_path, task_name)
+            
+            # Update performance metrics for manual capture
+            self.total_captures += 1
+            self.manual_captures += 1
+            processing_time = time.time() - capture_start_time
+            self.total_processing_time += processing_time
+            self.manual_processing_time += processing_time
+            self.manual_capture_times.append(processing_time)
+            
+            # Keep only last 50 measurements
+            if len(self.manual_capture_times) > 50:
+                self.manual_capture_times = self.manual_capture_times[-50:]
+            
+        except Exception as e:
+            self.update_status(f"❌ Capture failed: {str(e)}", "red")
+            self.complete_task(task_name, False)
+            
+        finally:
+            # ALWAYS RESUME OPERATIONS
+            self.resume_all_operations()
     
     def capture_data(self):
         """Legacy method - redirects to capture_selected_window"""
         self.capture_selected_window()
     
     def auto_capture(self):
-        """Perform automatic capture"""
+        """Perform automatic capture with USB stability management - Uses background capture by default"""
         if self.auto_checkbox.isChecked():
             # Check if a window is selected before auto-capturing
             window = self.get_selected_window()
             if window:
-                self.capture_selected_window()
+                # Optimize USB stability for the selected device
+                if hasattr(self, 'usb_stability_manager'):
+                    self.usb_stability_manager.optimize_for_device(window.title)
+                    
+                    # Check if we should skip this operation for USB stability
+                    if self.usb_stability_manager.should_skip_operation('auto_capture'):
+                        self.update_status("🔌 Auto-capture skipped for USB stability", "blue")
+                        return
+                
+                # Use background capture for auto-capture to avoid interrupting user workflow
+                self.capture_background_window()
             else:
                 self.update_status("⚠️ Auto-capture skipped: No window selected", "orange")
     
@@ -2864,6 +4928,56 @@ class BiosensorApp(QMainWindow):
                 self.auto_checkbox.setChecked(False)
                 self.update_status(f"❌ Invalid interval: {value}s", "red")
     
+    def toggle_usb_stability(self, state):
+        """Toggle USB stability mode (screenshot auto-deletion)"""
+        self.enable_auto_delete_screenshots = (state == Qt.Checked)
+        
+        if self.enable_auto_delete_screenshots:
+            deletion_mode = self.deletion_mode_combo.currentData()
+            if deletion_mode == "time":
+                interval = self.deletion_interval_spinbox.value()
+                self.update_status(f"🔌 Screenshot auto-deletion enabled (every {interval} minutes)", "orange")
+                print(f"DEBUG: USB stability mode disabled - screenshots will be auto-deleted every {interval} minutes")
+            else:
+                count = self.deletion_interval_spinbox.value()
+                self.update_status(f"🔌 Screenshot auto-deletion enabled (keep last {count} files)", "orange")
+                print(f"DEBUG: USB stability mode disabled - will keep last {count} screenshots")
+        else:
+            self.update_status(f"💾 Screenshots will be preserved (USB stability mode enabled)", "green")
+            print("DEBUG: USB stability mode enabled - screenshots will be preserved")
+    
+    def update_deletion_mode(self):
+        """Update the deletion mode interface when user changes selection"""
+        mode = self.deletion_mode_combo.currentData()
+        if mode == "time":
+            self.deletion_interval_spinbox.setRange(1, 1440)  # 1 minute to 24 hours
+            self.deletion_interval_spinbox.setValue(60)  # Default to 60 minutes
+            self.deletion_interval_spinbox.setSuffix(" minutes")
+            self.deletion_interval_spinbox.setToolTip("Screenshots older than this time will be automatically deleted")
+        else:  # count mode
+            self.deletion_interval_spinbox.setRange(1, 100)  # Keep 1 to 100 files
+            self.deletion_interval_spinbox.setValue(5)  # Default to keep last 5 files
+            self.deletion_interval_spinbox.setSuffix(" files")
+            self.deletion_interval_spinbox.setToolTip("Number of most recent screenshots to keep")
+        
+        # Update status if auto-deletion is enabled
+        if hasattr(self, 'enable_auto_delete_screenshots') and self.enable_auto_delete_screenshots:
+            self.toggle_usb_stability(Qt.Checked)
+    
+    def toggle_usb_stability_mode(self):
+        """Toggle between maximum USB stability mode and fast mode"""
+        if hasattr(self, 'usb_stability_manager'):
+            if self.usb_stability_btn.isChecked():
+                self.usb_stability_manager.enable_stability_mode()
+                self.usb_stability_btn.setText("🔌 Max USB Stability")
+                self.update_status("🔌 Maximum USB stability mode enabled - prevents disconnections", "green")
+            else:
+                self.usb_stability_manager.disable_stability_mode()
+                self.usb_stability_btn.setText("⚡ Fast Mode")
+                self.update_status("⚡ Fast mode enabled - faster operations but may cause USB issues", "orange")
+        else:
+            self.update_status("⚠️ USB Stability Manager not available", "red")
+    
     # launch_background_service method removed to prevent unwanted background captures
     
     def export_last_result_to_csv(self):
@@ -2881,7 +4995,7 @@ class BiosensorApp(QMainWindow):
             self.save_to_csv(raw_text, timestamp, None)  # Don't delete screenshot for manual export
             
             # Show success message
-            csv_path = os.path.join(self.screenshots_dir, "auto_data.csv")
+            csv_path = os.path.join(self.csv_dir, "auto_data.csv")
             QMessageBox.information(self, "Export Successful", 
                                   f"Raw data exported to CSV successfully!\n\nFile location:\n{csv_path}")
             
@@ -2907,7 +5021,7 @@ class BiosensorApp(QMainWindow):
             # Generate filename
             timestamp_safe = self.last_ocr_result['timestamp'].replace(':', '-').replace(' ', '_')
             json_filename = f"ocr_export_{timestamp_safe}.json"
-            json_path = os.path.join(self.screenshots_dir, json_filename)
+            json_path = os.path.join(self.json_dir, json_filename)
             
             # Write JSON file
             with open(json_path, 'w', encoding='utf-8') as json_file:
@@ -2923,12 +5037,37 @@ class BiosensorApp(QMainWindow):
             QMessageBox.critical(self, "Export Error", f"Failed to export to JSON:\n{str(e)}")
     
     def clear_results(self):
-        """Clear the results text area"""
-        self.results_text.clear()
-        self.update_status("🗑️ Results cleared", "gray")
-        
-        # Disable export buttons when results are cleared
+        """Clear the results preview and reset UI"""
+        self.ocr_status_label.setText("No OCR results yet. Capture a window to see results.")
+        self.ocr_status_label.setStyleSheet("""
+            QLabel {
+                color: #888;
+                padding: 20px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.05);
+                border: 2px dashed #555;
+                border-radius: 8px;
+                margin: 10px;
+            }
+        """)
+        self.quick_stats_label.setText("")
         self.csv_export_btn.setEnabled(False)
+        self.json_export_btn.setEnabled(False)
+        self.view_details_btn.setEnabled(False)
+        self.last_ocr_result = None
+        self.update_status("Results cleared", "blue")
+    
+    def show_output_details_dialog(self):
+        """Show the enhanced output details dialog"""
+        if not self.last_ocr_result:
+            self.update_status("No output to display", "orange")
+            return
+        
+        raw_text = self.last_ocr_result.get('raw_text', '')
+        ocr_result = self.last_ocr_result.get('result', {})
+        
+        dialog = OutputDetailsDialog(self, raw_text, ocr_result)
+        dialog.exec_()
         self.json_export_btn.setEnabled(False)
         
         # Clear last result

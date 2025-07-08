@@ -1,0 +1,1261 @@
+{
+  "timestamp": "2025-07-09 01:16:20",
+  "window_title": "WhatsApp - Google Chrome",
+  "raw_text": "WhatsAp p\nweb.whatsapp.com\nWhatsApp\nSearch or start a new chat\nAll Bookmarks\nroh\ne\nUnread\nFavorites Groups\nYesterday\nYesterday\nBhai Anas\nwah\n10:16prn\nsahi hy\n10:18prn\nNhi ni\n10:19pm\nyhi bhej do\n1019\nType a message\nmax usb supportage and fast mode and auto screenshot delete from gallery by two method for user first one is by\ntiming and second is by accounting files bang aur ab gradient bar ho gi\nArchived\nHala Nimra\nPhoto\nRiaz Ahmad Toor\n1&17 pm W\naur kuch batai add kar ne ke liya 10:18 pm V/\nWhy is Pakistan spending less than 1% of GDP on education, whe...\nHoney\nPhoto\nMeta Al\nYesterday\nYesterday\nRust can be used with ROS (Robot Operating System), but it's not as\nBaji Asya Iqbal\n0:07\nBaji Atia\nMaria Amjad\nSaima\nGet WhatsApp for Windows\nYesterday\nYesterday\nSunday\nek ghalak deekh lai\nToday\nasslamualkum bhai anas\n12:46 am\nap ese choore maine aur customization ki hai sir ko impress kar ne ke liya\n12:47 am\nap wo check kare ma apko zip file bej dhata hu\n12:47 am\nmake sure maine kuch dependencies change ki hai aur ap bass pip install windows_requirements.txt ko run karke wo\ninstall karle aur python main app ko run kare aur phir apne sir ke impressions record kijai gai\n12:48 am W",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "Up",
+    "regions": [
+      {
+        "boundingBox": "80,24,55,12",
+        "lines": [
+          {
+            "boundingBox": "80,24,55,12",
+            "words": [
+              {
+                "boundingBox": "80,24,48,12",
+                "text": "WhatsAp"
+              },
+              {
+                "boundingBox": "129,27,6,9",
+                "text": "p"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "93,66,217,153",
+        "lines": [
+          {
+            "boundingBox": "165,66,117,13",
+            "words": [
+              {
+                "boundingBox": "165,66,117,13",
+                "text": "web.whatsapp.com"
+              }
+            ]
+          },
+          {
+            "boundingBox": "93,152,103,21",
+            "words": [
+              {
+                "boundingBox": "93,152,103,21",
+                "text": "WhatsApp"
+              }
+            ]
+          },
+          {
+            "boundingBox": "139,208,171,11",
+            "words": [
+              {
+                "boundingBox": "139,208,43,11",
+                "text": "Search"
+              },
+              {
+                "boundingBox": "188,211,14,8",
+                "text": "or"
+              },
+              {
+                "boundingBox": "206,209,29,10",
+                "text": "start"
+              },
+              {
+                "boundingBox": "239,211,7,8",
+                "text": "a"
+              },
+              {
+                "boundingBox": "251,211,27,8",
+                "text": "new"
+              },
+              {
+                "boundingBox": "282,208,28,11",
+                "text": "chat"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1838,103,75,9",
+        "lines": [
+          {
+            "boundingBox": "1838,103,75,9",
+            "words": [
+              {
+                "boundingBox": "1838,103,13,9",
+                "text": "All"
+              },
+              {
+                "boundingBox": "1856,103,57,9",
+                "text": "Bookmarks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "26,195,28,827",
+        "lines": [
+          {
+            "boundingBox": "30,195,20,16",
+            "words": [
+              {
+                "boundingBox": "30,195,20,16",
+                "text": "roh"
+              }
+            ]
+          },
+          {
+            "boundingBox": "26,994,28,28",
+            "words": [
+              {
+                "boundingBox": "26,994,28,28",
+                "text": "e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "155,255,46,11",
+        "lines": [
+          {
+            "boundingBox": "155,255,46,11",
+            "words": [
+              {
+                "boundingBox": "155,255,46,11",
+                "text": "Unread"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "235,255,138,14",
+        "lines": [
+          {
+            "boundingBox": "235,255,138,14",
+            "words": [
+              {
+                "boundingBox": "235,255,58,11",
+                "text": "Favorites"
+              },
+              {
+                "boundingBox": "325,255,48,14",
+                "text": "Groups"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "553,365,50,87",
+        "lines": [
+          {
+            "boundingBox": "553,365,50,11",
+            "words": [
+              {
+                "boundingBox": "553,365,50,11",
+                "text": "Yesterday"
+              }
+            ]
+          },
+          {
+            "boundingBox": "553,441,50,11",
+            "words": [
+              {
+                "boundingBox": "553,441,50,11",
+                "text": "Yesterday"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "710,155,138,856",
+        "lines": [
+          {
+            "boundingBox": "711,155,70,12",
+            "words": [
+              {
+                "boundingBox": "711,155,30,12",
+                "text": "Bhai"
+              },
+              {
+                "boundingBox": "746,156,35,11",
+                "text": "Anas"
+              }
+            ]
+          },
+          {
+            "boundingBox": "710,195,25,10",
+            "words": [
+              {
+                "boundingBox": "710,195,25,10",
+                "text": "wah"
+              }
+            ]
+          },
+          {
+            "boundingBox": "744,203,44,10",
+            "words": [
+              {
+                "boundingBox": "744,203,44,10",
+                "text": "10:16prn"
+              }
+            ]
+          },
+          {
+            "boundingBox": "710,304,44,13",
+            "words": [
+              {
+                "boundingBox": "710,304,24,10",
+                "text": "sahi"
+              },
+              {
+                "boundingBox": "739,304,15,13",
+                "text": "hy"
+              }
+            ]
+          },
+          {
+            "boundingBox": "762,312,44,10",
+            "words": [
+              {
+                "boundingBox": "762,312,44,10",
+                "text": "10:18prn"
+              }
+            ]
+          },
+          {
+            "boundingBox": "711,394,36,10",
+            "words": [
+              {
+                "boundingBox": "711,394,21,10",
+                "text": "Nhi"
+              },
+              {
+                "boundingBox": "737,394,10,10",
+                "text": "ni"
+              }
+            ]
+          },
+          {
+            "boundingBox": "756,402,44,10",
+            "words": [
+              {
+                "boundingBox": "756,402,44,10",
+                "text": "10:19pm"
+              }
+            ]
+          },
+          {
+            "boundingBox": "710,429,70,13",
+            "words": [
+              {
+                "boundingBox": "710,429,18,13",
+                "text": "yhi"
+              },
+              {
+                "boundingBox": "733,429,26,13",
+                "text": "bhej"
+              },
+              {
+                "boundingBox": "764,429,16,10",
+                "text": "do"
+              }
+            ]
+          },
+          {
+            "boundingBox": "789,437,25,8",
+            "words": [
+              {
+                "boundingBox": "789,437,25,8",
+                "text": "1019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "743,997,105,14",
+            "words": [
+              {
+                "boundingBox": "743,997,31,14",
+                "text": "Type"
+              },
+              {
+                "boundingBox": "778,1000,7,8",
+                "text": "a"
+              },
+              {
+                "boundingBox": "790,1000,58,11",
+                "text": "message"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1117,240,714,13",
+        "lines": [
+          {
+            "boundingBox": "1117,240,714,13",
+            "words": [
+              {
+                "boundingBox": "1117,243,25,7",
+                "text": "max"
+              },
+              {
+                "boundingBox": "1146,240,22,10",
+                "text": "usb"
+              },
+              {
+                "boundingBox": "1172,241,72,12",
+                "text": "supportage"
+              },
+              {
+                "boundingBox": "1248,240,23,10",
+                "text": "and"
+              },
+              {
+                "boundingBox": "1275,240,23,10",
+                "text": "fast"
+              },
+              {
+                "boundingBox": "1302,240,36,10",
+                "text": "mode"
+              },
+              {
+                "boundingBox": "1342,240,23,10",
+                "text": "and"
+              },
+              {
+                "boundingBox": "1370,241,27,9",
+                "text": "auto"
+              },
+              {
+                "boundingBox": "1402,240,67,10",
+                "text": "screenshot"
+              },
+              {
+                "boundingBox": "1473,240,39,10",
+                "text": "delete"
+              },
+              {
+                "boundingBox": "1516,240,29,10",
+                "text": "from"
+              },
+              {
+                "boundingBox": "1550,240,42,13",
+                "text": "gallery"
+              },
+              {
+                "boundingBox": "1596,240,15,13",
+                "text": "by"
+              },
+              {
+                "boundingBox": "1614,241,23,9",
+                "text": "two"
+              },
+              {
+                "boundingBox": "1642,240,48,10",
+                "text": "method"
+              },
+              {
+                "boundingBox": "1695,240,18,10",
+                "text": "for"
+              },
+              {
+                "boundingBox": "1717,243,26,7",
+                "text": "user"
+              },
+              {
+                "boundingBox": "1746,240,24,10",
+                "text": "first"
+              },
+              {
+                "boundingBox": "1774,243,24,7",
+                "text": "one"
+              },
+              {
+                "boundingBox": "1802,240,9,10",
+                "text": "is"
+              },
+              {
+                "boundingBox": "1816,240,15,13",
+                "text": "by"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1116,259,446,13",
+        "lines": [
+          {
+            "boundingBox": "1116,259,446,13",
+            "words": [
+              {
+                "boundingBox": "1116,259,39,13",
+                "text": "timing"
+              },
+              {
+                "boundingBox": "1160,259,23,10",
+                "text": "and"
+              },
+              {
+                "boundingBox": "1188,259,44,10",
+                "text": "second"
+              },
+              {
+                "boundingBox": "1237,259,8,10",
+                "text": "is"
+              },
+              {
+                "boundingBox": "1250,259,15,13",
+                "text": "by"
+              },
+              {
+                "boundingBox": "1269,259,68,13",
+                "text": "accounting"
+              },
+              {
+                "boundingBox": "1342,259,24,10",
+                "text": "files"
+              },
+              {
+                "boundingBox": "1371,259,31,13",
+                "text": "bang"
+              },
+              {
+                "boundingBox": "1407,262,20,7",
+                "text": "aur"
+              },
+              {
+                "boundingBox": "1431,259,15,10",
+                "text": "ab"
+              },
+              {
+                "boundingBox": "1450,259,52,13",
+                "text": "gradient"
+              },
+              {
+                "boundingBox": "1507,259,20,10",
+                "text": "bar"
+              },
+              {
+                "boundingBox": "1532,259,15,10",
+                "text": "ho"
+              },
+              {
+                "boundingBox": "1551,259,11,13",
+                "text": "gi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "161,305,126,146",
+        "lines": [
+          {
+            "boundingBox": "164,305,65,13",
+            "words": [
+              {
+                "boundingBox": "164,305,65,13",
+                "text": "Archived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "161,362,83,13",
+            "words": [
+              {
+                "boundingBox": "161,362,32,13",
+                "text": "Hala"
+              },
+              {
+                "boundingBox": "199,362,45,13",
+                "text": "Nimra"
+              }
+            ]
+          },
+          {
+            "boundingBox": "182,386,36,10",
+            "words": [
+              {
+                "boundingBox": "182,386,36,10",
+                "text": "Photo"
+              }
+            ]
+          },
+          {
+            "boundingBox": "161,438,126,13",
+            "words": [
+              {
+                "boundingBox": "161,438,30,13",
+                "text": "Riaz"
+              },
+              {
+                "boundingBox": "195,438,53,13",
+                "text": "Ahmad"
+              },
+              {
+                "boundingBox": "254,439,33,12",
+                "text": "Toor"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1579,265,274,102",
+        "lines": [
+          {
+            "boundingBox": "1790,265,63,12",
+            "words": [
+              {
+                "boundingBox": "1790,267,25,8",
+                "text": "1&17"
+              },
+              {
+                "boundingBox": "1818,269,16,8",
+                "text": "pm"
+              },
+              {
+                "boundingBox": "1837,265,16,11",
+                "text": "W"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1579,349,274,18",
+            "words": [
+              {
+                "boundingBox": "1579,352,21,7",
+                "text": "aur"
+              },
+              {
+                "boundingBox": "1604,349,28,10",
+                "text": "kuch"
+              },
+              {
+                "boundingBox": "1637,349,30,10",
+                "text": "batai"
+              },
+              {
+                "boundingBox": "1672,349,23,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "1700,349,19,10",
+                "text": "kar"
+              },
+              {
+                "boundingBox": "1723,352,15,7",
+                "text": "ne"
+              },
+              {
+                "boundingBox": "1742,349,14,10",
+                "text": "ke"
+              },
+              {
+                "boundingBox": "1761,349,20,13",
+                "text": "liya"
+              },
+              {
+                "boundingBox": "1790,357,25,8",
+                "text": "10:18"
+              },
+              {
+                "boundingBox": "1818,359,15,8",
+                "text": "pm"
+              },
+              {
+                "boundingBox": "1838,355,15,11",
+                "text": "V/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "184,462,412,13",
+        "lines": [
+          {
+            "boundingBox": "184,462,412,13",
+            "words": [
+              {
+                "boundingBox": "184,462,28,13",
+                "text": "Why"
+              },
+              {
+                "boundingBox": "216,462,9,10",
+                "text": "is"
+              },
+              {
+                "boundingBox": "229,462,50,10",
+                "text": "Pakistan"
+              },
+              {
+                "boundingBox": "283,462,57,13",
+                "text": "spending"
+              },
+              {
+                "boundingBox": "345,462,22,10",
+                "text": "less"
+              },
+              {
+                "boundingBox": "371,462,27,10",
+                "text": "than"
+              },
+              {
+                "boundingBox": "403,462,18,10",
+                "text": "1%"
+              },
+              {
+                "boundingBox": "425,462,13,10",
+                "text": "of"
+              },
+              {
+                "boundingBox": "442,462,26,10",
+                "text": "GDP"
+              },
+              {
+                "boundingBox": "473,465,15,7",
+                "text": "on"
+              },
+              {
+                "boundingBox": "493,462,63,11",
+                "text": "education,"
+              },
+              {
+                "boundingBox": "560,462,36,10",
+                "text": "whe..."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "161,515,57,88",
+        "lines": [
+          {
+            "boundingBox": "161,515,48,16",
+            "words": [
+              {
+                "boundingBox": "161,515,48,16",
+                "text": "Honey"
+              }
+            ]
+          },
+          {
+            "boundingBox": "182,538,36,10",
+            "words": [
+              {
+                "boundingBox": "182,538,36,10",
+                "text": "Photo"
+              }
+            ]
+          },
+          {
+            "boundingBox": "161,591,57,12",
+            "words": [
+              {
+                "boundingBox": "161,591,37,12",
+                "text": "Meta"
+              },
+              {
+                "boundingBox": "203,591,15,12",
+                "text": "Al"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "553,517,50,87",
+        "lines": [
+          {
+            "boundingBox": "553,517,50,11",
+            "words": [
+              {
+                "boundingBox": "553,517,50,11",
+                "text": "Yesterday"
+              }
+            ]
+          },
+          {
+            "boundingBox": "553,593,50,11",
+            "words": [
+              {
+                "boundingBox": "553,593,50,11",
+                "text": "Yesterday"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "161,614,418,13",
+        "lines": [
+          {
+            "boundingBox": "161,614,418,13",
+            "words": [
+              {
+                "boundingBox": "161,614,26,10",
+                "text": "Rust"
+              },
+              {
+                "boundingBox": "191,617,21,7",
+                "text": "can"
+              },
+              {
+                "boundingBox": "217,614,15,10",
+                "text": "be"
+              },
+              {
+                "boundingBox": "236,614,28,10",
+                "text": "used"
+              },
+              {
+                "boundingBox": "269,614,25,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "300,614,25,10",
+                "text": "ROS"
+              },
+              {
+                "boundingBox": "330,614,41,12",
+                "text": "(Robot"
+              },
+              {
+                "boundingBox": "375,614,61,13",
+                "text": "Operating"
+              },
+              {
+                "boundingBox": "441,614,50,13",
+                "text": "System),"
+              },
+              {
+                "boundingBox": "496,614,21,10",
+                "text": "but"
+              },
+              {
+                "boundingBox": "521,614,16,10",
+                "text": "it's"
+              },
+              {
+                "boundingBox": "542,615,20,9",
+                "text": "not"
+              },
+              {
+                "boundingBox": "566,617,13,7",
+                "text": "as"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "161,666,309,355",
+        "lines": [
+          {
+            "boundingBox": "161,666,106,17",
+            "words": [
+              {
+                "boundingBox": "161,666,25,17",
+                "text": "Baji"
+              },
+              {
+                "boundingBox": "191,667,35,16",
+                "text": "Asya"
+              },
+              {
+                "boundingBox": "232,666,35,17",
+                "text": "Iqbal"
+              }
+            ]
+          },
+          {
+            "boundingBox": "175,690,26,10",
+            "words": [
+              {
+                "boundingBox": "175,690,26,10",
+                "text": "0:07"
+              }
+            ]
+          },
+          {
+            "boundingBox": "161,742,59,17",
+            "words": [
+              {
+                "boundingBox": "161,742,25,17",
+                "text": "Baji"
+              },
+              {
+                "boundingBox": "191,742,29,13",
+                "text": "Atia"
+              }
+            ]
+          },
+          {
+            "boundingBox": "161,818,98,17",
+            "words": [
+              {
+                "boundingBox": "161,818,41,13",
+                "text": "Maria"
+              },
+              {
+                "boundingBox": "212,818,47,17",
+                "text": "Amjad"
+              }
+            ]
+          },
+          {
+            "boundingBox": "161,894,43,13",
+            "words": [
+              {
+                "boundingBox": "161,894,43,13",
+                "text": "Saima"
+              }
+            ]
+          },
+          {
+            "boundingBox": "263,1004,207,17",
+            "words": [
+              {
+                "boundingBox": "263,1005,25,12",
+                "text": "Get"
+              },
+              {
+                "boundingBox": "293,1004,77,17",
+                "text": "WhatsApp"
+              },
+              {
+                "boundingBox": "376,1004,21,13",
+                "text": "for"
+              },
+              {
+                "boundingBox": "401,1004,69,13",
+                "text": "Windows"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "553,669,50,239",
+        "lines": [
+          {
+            "boundingBox": "553,669,50,11",
+            "words": [
+              {
+                "boundingBox": "553,669,50,11",
+                "text": "Yesterday"
+              }
+            ]
+          },
+          {
+            "boundingBox": "553,821,50,11",
+            "words": [
+              {
+                "boundingBox": "553,821,50,11",
+                "text": "Yesterday"
+              }
+            ]
+          },
+          {
+            "boundingBox": "564,897,39,11",
+            "words": [
+              {
+                "boundingBox": "564,897,39,11",
+                "text": "Sunday"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1116,702,737,249",
+        "lines": [
+          {
+            "boundingBox": "1533,702,119,13",
+            "words": [
+              {
+                "boundingBox": "1533,702,15,10",
+                "text": "ek"
+              },
+              {
+                "boundingBox": "1552,702,41,13",
+                "text": "ghalak"
+              },
+              {
+                "boundingBox": "1597,702,38,10",
+                "text": "deekh"
+              },
+              {
+                "boundingBox": "1640,702,12,10",
+                "text": "lai"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1262,769,33,12",
+            "words": [
+              {
+                "boundingBox": "1262,769,33,12",
+                "text": "Today"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1631,809,151,10",
+            "words": [
+              {
+                "boundingBox": "1631,809,87,10",
+                "text": "asslamualkum"
+              },
+              {
+                "boundingBox": "1723,809,26,10",
+                "text": "bhai"
+              },
+              {
+                "boundingBox": "1754,812,28,7",
+                "text": "anas"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1791,817,42,8",
+            "words": [
+              {
+                "boundingBox": "1791,817,25,8",
+                "text": "12:46"
+              },
+              {
+                "boundingBox": "1819,819,14,6",
+                "text": "am"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1324,844,457,13",
+            "words": [
+              {
+                "boundingBox": "1324,847,15,10",
+                "text": "ap"
+              },
+              {
+                "boundingBox": "1343,847,21,7",
+                "text": "ese"
+              },
+              {
+                "boundingBox": "1368,844,44,10",
+                "text": "choore"
+              },
+              {
+                "boundingBox": "1416,844,38,10",
+                "text": "maine"
+              },
+              {
+                "boundingBox": "1458,847,20,7",
+                "text": "aur"
+              },
+              {
+                "boundingBox": "1482,844,87,10",
+                "text": "customization"
+              },
+              {
+                "boundingBox": "1574,844,9,10",
+                "text": "ki"
+              },
+              {
+                "boundingBox": "1588,844,18,10",
+                "text": "hai"
+              },
+              {
+                "boundingBox": "1610,844,15,10",
+                "text": "sir"
+              },
+              {
+                "boundingBox": "1629,844,15,10",
+                "text": "ko"
+              },
+              {
+                "boundingBox": "1648,844,48,13",
+                "text": "impress"
+              },
+              {
+                "boundingBox": "1701,844,19,10",
+                "text": "kar"
+              },
+              {
+                "boundingBox": "1724,847,14,7",
+                "text": "ne"
+              },
+              {
+                "boundingBox": "1743,844,14,10",
+                "text": "ke"
+              },
+              {
+                "boundingBox": "1762,844,19,13",
+                "text": "liya"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1791,852,42,8",
+            "words": [
+              {
+                "boundingBox": "1791,852,25,8",
+                "text": "12:47"
+              },
+              {
+                "boundingBox": "1819,854,14,6",
+                "text": "am"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1489,879,292,13",
+            "words": [
+              {
+                "boundingBox": "1489,882,14,10",
+                "text": "ap"
+              },
+              {
+                "boundingBox": "1507,882,19,7",
+                "text": "wo"
+              },
+              {
+                "boundingBox": "1530,879,36,10",
+                "text": "check"
+              },
+              {
+                "boundingBox": "1570,879,26,10",
+                "text": "kare"
+              },
+              {
+                "boundingBox": "1601,882,18,7",
+                "text": "ma"
+              },
+              {
+                "boundingBox": "1624,879,30,13",
+                "text": "apko"
+              },
+              {
+                "boundingBox": "1658,879,18,13",
+                "text": "zip"
+              },
+              {
+                "boundingBox": "1680,879,19,10",
+                "text": "file"
+              },
+              {
+                "boundingBox": "1704,879,18,13",
+                "text": "bej"
+              },
+              {
+                "boundingBox": "1727,879,34,10",
+                "text": "dhata"
+              },
+              {
+                "boundingBox": "1767,879,14,10",
+                "text": "hu"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1791,887,42,8",
+            "words": [
+              {
+                "boundingBox": "1791,887,25,8",
+                "text": "12:47"
+              },
+              {
+                "boundingBox": "1819,889,14,6",
+                "text": "am"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1117,914,726,13",
+            "words": [
+              {
+                "boundingBox": "1117,914,33,10",
+                "text": "make"
+              },
+              {
+                "boundingBox": "1154,917,26,7",
+                "text": "sure"
+              },
+              {
+                "boundingBox": "1185,914,37,10",
+                "text": "maine"
+              },
+              {
+                "boundingBox": "1227,914,28,10",
+                "text": "kuch"
+              },
+              {
+                "boundingBox": "1260,914,86,13",
+                "text": "dependencies"
+              },
+              {
+                "boundingBox": "1351,914,45,13",
+                "text": "change"
+              },
+              {
+                "boundingBox": "1401,914,9,10",
+                "text": "ki"
+              },
+              {
+                "boundingBox": "1415,914,17,10",
+                "text": "hai"
+              },
+              {
+                "boundingBox": "1437,917,21,7",
+                "text": "aur"
+              },
+              {
+                "boundingBox": "1461,917,15,10",
+                "text": "ap"
+              },
+              {
+                "boundingBox": "1481,914,27,10",
+                "text": "bass"
+              },
+              {
+                "boundingBox": "1513,914,19,13",
+                "text": "pip"
+              },
+              {
+                "boundingBox": "1537,914,35,10",
+                "text": "install"
+              },
+              {
+                "boundingBox": "1576,914,163,13",
+                "text": "windows_requirements.txt"
+              },
+              {
+                "boundingBox": "1744,914,14,10",
+                "text": "ko"
+              },
+              {
+                "boundingBox": "1763,917,20,7",
+                "text": "run"
+              },
+              {
+                "boundingBox": "1788,914,33,10",
+                "text": "karke"
+              },
+              {
+                "boundingBox": "1825,917,18,7",
+                "text": "wo"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1116,933,581,13",
+            "words": [
+              {
+                "boundingBox": "1116,933,36,10",
+                "text": "install"
+              },
+              {
+                "boundingBox": "1157,933,29,10",
+                "text": "karle"
+              },
+              {
+                "boundingBox": "1190,936,21,7",
+                "text": "aur"
+              },
+              {
+                "boundingBox": "1215,933,43,13",
+                "text": "python"
+              },
+              {
+                "boundingBox": "1263,933,30,10",
+                "text": "main"
+              },
+              {
+                "boundingBox": "1298,936,23,10",
+                "text": "app"
+              },
+              {
+                "boundingBox": "1326,933,14,10",
+                "text": "ko"
+              },
+              {
+                "boundingBox": "1345,936,20,7",
+                "text": "run"
+              },
+              {
+                "boundingBox": "1370,933,26,10",
+                "text": "kare"
+              },
+              {
+                "boundingBox": "1400,936,20,7",
+                "text": "aur"
+              },
+              {
+                "boundingBox": "1425,933,24,13",
+                "text": "phir"
+              },
+              {
+                "boundingBox": "1453,936,30,10",
+                "text": "apne"
+              },
+              {
+                "boundingBox": "1488,933,14,10",
+                "text": "sir"
+              },
+              {
+                "boundingBox": "1506,933,14,10",
+                "text": "ke"
+              },
+              {
+                "boundingBox": "1525,933,73,13",
+                "text": "impressions"
+              },
+              {
+                "boundingBox": "1603,933,39,10",
+                "text": "record"
+              },
+              {
+                "boundingBox": "1647,933,27,13",
+                "text": "kijai"
+              },
+              {
+                "boundingBox": "1679,933,18,13",
+                "text": "gai"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1791,940,62,11",
+            "words": [
+              {
+                "boundingBox": "1791,942,25,8",
+                "text": "12:48"
+              },
+              {
+                "boundingBox": "1819,944,15,6",
+                "text": "am"
+              },
+              {
+                "boundingBox": "1837,940,16,11",
+                "text": "W"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\images\\manual_captures\\manual_background_20250709_011616_8894.png"
+}

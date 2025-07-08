@@ -21,3 +21,26 @@ PyQt5-stubs==5.15.6.0
 # Windows-specific
 pywin32==310
 dxcam==0.0.5
+pythonping==1.1.4
+
+# Modern JSON and formatting libraries
+pygments==2.17.2
+jsonschema==4.21.1
+rich==13.7.1
+tabulate==0.9.0
+colorama==0.4.6
+
+# Advanced text and JSON formatting
+markdown==3.5.1
+jinja2==3.1.2
+beautifulsoup4==4.12.2
+
+# Enhanced UI and styling (Windows-compatible)
+qtpy==2.4.1
+jsonformatter==0.3.2
+colorful==0.5.5
+termcolor==2.4.0
+six==1.16.0
+
+# Clipboard functionality
+pyperclip==1.8.2

@@ -1,0 +1,2052 @@
+{
+  "timestamp": "2025-07-08 23:51:03",
+  "window_title": "3q19_rawdata_card.jpg (826×465) - Google Chrome",
+  "raw_text": "Wazirabad, Punjab, Pakistan W X\nbal Citizenship or Residency X e\n3q19_rawdata_card.jpg (826x4d\nIncognito\nAll Bookmarks\ncounty\nunited States\nAlabama\nAutauga County\nBaldwin County\nBarbour County\nBibb County\nBlount County\nBullock County\nButler County\nCalhoun County\nChambers County\nCherokee County\nChilton County\nChoctaw County\nClarke County\nClay County\nCleburne County\nCoffee County\nColbert County\nConecuh County\nyea r\ncounty_ra v001_rawn v001_n u rr v001_den. v001_cilov v001_cihiE v001_race v001_race v001_r\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n2019\n6900.63 3745538 9.08E+08\n9917.233\n1\n8824.057\n1\n7224.632\n1\n9586.165\n1\n11783.54\n1\n10908.1\n1\n12066.91\n1\n14018.61\n1\n12217.76\n1\n11273.17\n1\n11294.41\n1\n10831.92\n1\n12047.19\n1\n9688.374\n1\n9666.041\n1\n11985.56\n1\n7933.13\n1\n10332.48\n1 10635.37\n80440 13636816\n815\n2827\n451\n445\n1050\n205\n393\n2333\n691\n575\n850\n273\n412\n271\n334\n743\n1016\n272\n156132\n576496\n72222\n63653\n161107\n29266\n54804\n321406\n93770\n71014\n123617\n35489\n67037\n35916\n41389\n143899\n149595\n34170\n6890.349\n9815.191\n7935.326\n6794.128\n8200.118\n10159.98\n9895.583\n9519.704\n11976.43\n11484.59\n9948.759\n9767.023\n9733.842\n9740.13\n8207.626\n7821.948\n9955.606\n7085.258\n9321.505\n8546.834\n6910.912\n10019.27\n9712.788\n7655.136\n10972.21\n13407.11\n11920.62\n14614.12\n16060.78\n12950.93\n12597.58\n12821.8\n11929.99\n14354.24\n11169.12\n11510.13\n14015.5\n8781.002\n11343.46\n12723.9\n10471.25\n10042.47\n11332.56\n14812.54\n14336.54\n15793.58\n12955.02\n10774.82\n16395.25\n12000.44\n12215.47\n12447.32\n12628.16\n10333.51\n11604.94\n11100.61\n3086.606\n5619.645\n6033.742\n8706.6\n7277.7\n7309.6\n11327.\n11336.\n6638.6\n12797.\n12447.\n11794.\n10965.\n12163\n7394.5\n9302.0\n7652.6\n1038\n10319.",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "Up",
+    "regions": [
+      {
+        "boundingBox": "80,24,188,12",
+        "lines": [
+          {
+            "boundingBox": "80,24,188,12",
+            "words": [
+              {
+                "boundingBox": "80,24,58,11",
+                "text": "Wazirabad,"
+              },
+              {
+                "boundingBox": "142,24,38,12",
+                "text": "Punjab,"
+              },
+              {
+                "boundingBox": "184,24,43,9",
+                "text": "Pakistan"
+              },
+              {
+                "boundingBox": "230,24,15,9",
+                "text": "W"
+              },
+              {
+                "boundingBox": "260,24,8,8",
+                "text": "X"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "337,21,385,15",
+        "lines": [
+          {
+            "boundingBox": "337,21,210,15",
+            "words": [
+              {
+                "boundingBox": "337,24,15,9",
+                "text": "bal"
+              },
+              {
+                "boundingBox": "356,24,57,12",
+                "text": "Citizenship"
+              },
+              {
+                "boundingBox": "417,27,11,6",
+                "text": "or"
+              },
+              {
+                "boundingBox": "432,24,51,12",
+                "text": "Residency"
+              },
+              {
+                "boundingBox": "498,24,8,8",
+                "text": "X"
+              },
+              {
+                "boundingBox": "533,21,14,14",
+                "text": "e"
+              }
+            ]
+          },
+          {
+            "boundingBox": "556,24,166,12",
+            "words": [
+              {
+                "boundingBox": "556,24,121,12",
+                "text": "3q19_rawdata_card.jpg"
+              },
+              {
+                "boundingBox": "681,24,41,11",
+                "text": "(826x4d"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1822,66,91,46",
+        "lines": [
+          {
+            "boundingBox": "1822,66,49,12",
+            "words": [
+              {
+                "boundingBox": "1822,66,49,12",
+                "text": "Incognito"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1838,103,75,9",
+            "words": [
+              {
+                "boundingBox": "1838,103,13,9",
+                "text": "All"
+              },
+              {
+                "boundingBox": "1856,103,57,9",
+                "text": "Bookmarks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "561,362,119,451",
+        "lines": [
+          {
+            "boundingBox": "561,362,45,13",
+            "words": [
+              {
+                "boundingBox": "561,362,45,13",
+                "text": "county"
+              }
+            ]
+          },
+          {
+            "boundingBox": "562,382,86,12",
+            "words": [
+              {
+                "boundingBox": "562,382,42,12",
+                "text": "united"
+              },
+              {
+                "boundingBox": "609,383,39,11",
+                "text": "States"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,404,58,12",
+            "words": [
+              {
+                "boundingBox": "561,404,58,12",
+                "text": "Alabama"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,426,106,14",
+            "words": [
+              {
+                "boundingBox": "561,426,54,14",
+                "text": "Autauga"
+              },
+              {
+                "boundingBox": "620,426,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "562,448,103,14",
+            "words": [
+              {
+                "boundingBox": "562,448,51,12",
+                "text": "Baldwin"
+              },
+              {
+                "boundingBox": "618,448,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "562,469,104,15",
+            "words": [
+              {
+                "boundingBox": "562,469,53,12",
+                "text": "Barbour"
+              },
+              {
+                "boundingBox": "619,470,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "562,491,80,15",
+            "words": [
+              {
+                "boundingBox": "562,491,28,12",
+                "text": "Bibb"
+              },
+              {
+                "boundingBox": "594,492,48,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "562,514,94,14",
+            "words": [
+              {
+                "boundingBox": "562,514,42,11",
+                "text": "Blount"
+              },
+              {
+                "boundingBox": "608,514,48,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "562,535,97,15",
+            "words": [
+              {
+                "boundingBox": "562,535,46,12",
+                "text": "Bullock"
+              },
+              {
+                "boundingBox": "612,536,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "562,557,90,15",
+            "words": [
+              {
+                "boundingBox": "562,557,38,12",
+                "text": "Butler"
+              },
+              {
+                "boundingBox": "605,558,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,579,106,15",
+            "words": [
+              {
+                "boundingBox": "561,579,54,12",
+                "text": "Calhoun"
+              },
+              {
+                "boundingBox": "620,580,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,601,119,15",
+            "words": [
+              {
+                "boundingBox": "561,601,67,12",
+                "text": "Chambers"
+              },
+              {
+                "boundingBox": "632,602,48,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,623,114,15",
+            "words": [
+              {
+                "boundingBox": "561,623,63,12",
+                "text": "Cherokee"
+              },
+              {
+                "boundingBox": "628,624,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,645,98,15",
+            "words": [
+              {
+                "boundingBox": "561,645,46,12",
+                "text": "Chilton"
+              },
+              {
+                "boundingBox": "612,646,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,667,109,15",
+            "words": [
+              {
+                "boundingBox": "561,667,57,12",
+                "text": "Choctaw"
+              },
+              {
+                "boundingBox": "622,668,48,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,689,92,15",
+            "words": [
+              {
+                "boundingBox": "561,689,41,12",
+                "text": "Clarke"
+              },
+              {
+                "boundingBox": "606,690,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,711,78,15",
+            "words": [
+              {
+                "boundingBox": "561,711,27,14",
+                "text": "Clay"
+              },
+              {
+                "boundingBox": "592,712,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,733,111,14",
+            "words": [
+              {
+                "boundingBox": "561,733,60,12",
+                "text": "Cleburne"
+              },
+              {
+                "boundingBox": "625,733,47,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,755,94,15",
+            "words": [
+              {
+                "boundingBox": "561,755,43,11",
+                "text": "Coffee"
+              },
+              {
+                "boundingBox": "608,755,47,15",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,777,100,14",
+            "words": [
+              {
+                "boundingBox": "561,777,49,11",
+                "text": "Colbert"
+              },
+              {
+                "boundingBox": "613,777,48,14",
+                "text": "County"
+              }
+            ]
+          },
+          {
+            "boundingBox": "561,799,109,14",
+            "words": [
+              {
+                "boundingBox": "561,799,57,11",
+                "text": "Conecuh"
+              },
+              {
+                "boundingBox": "623,799,47,14",
+                "text": "County"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "697,364,30,11",
+        "lines": [
+          {
+            "boundingBox": "697,364,30,11",
+            "words": [
+              {
+                "boundingBox": "697,364,23,11",
+                "text": "yea"
+              },
+              {
+                "boundingBox": "722,364,5,8",
+                "text": "r"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "768,360,606,15",
+        "lines": [
+          {
+            "boundingBox": "768,360,606,15",
+            "words": [
+              {
+                "boundingBox": "768,362,66,13",
+                "text": "county_ra"
+              },
+              {
+                "boundingBox": "838,361,68,14",
+                "text": "v001_rawn"
+              },
+              {
+                "boundingBox": "908,361,47,14",
+                "text": "v001_n"
+              },
+              {
+                "boundingBox": "957,364,7,8",
+                "text": "u"
+              },
+              {
+                "boundingBox": "966,364,10,8",
+                "text": "rr"
+              },
+              {
+                "boundingBox": "978,360,68,15",
+                "text": "v001_den."
+              },
+              {
+                "boundingBox": "1048,360,68,15",
+                "text": "v001_cilov"
+              },
+              {
+                "boundingBox": "1119,360,67,15",
+                "text": "v001_cihiE"
+              },
+              {
+                "boundingBox": "1189,361,68,14",
+                "text": "v001_race"
+              },
+              {
+                "boundingBox": "1259,361,68,14",
+                "text": "v001_race"
+              },
+              {
+                "boundingBox": "1329,361,45,14",
+                "text": "v001_r"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "731,382,32,428",
+        "lines": [
+          {
+            "boundingBox": "731,382,32,12",
+            "words": [
+              {
+                "boundingBox": "731,382,32,12",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,404,32,12",
+            "words": [
+              {
+                "boundingBox": "731,404,32,12",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,426,32,11",
+            "words": [
+              {
+                "boundingBox": "731,426,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,448,32,12",
+            "words": [
+              {
+                "boundingBox": "731,448,32,12",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,470,32,11",
+            "words": [
+              {
+                "boundingBox": "731,470,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,492,32,11",
+            "words": [
+              {
+                "boundingBox": "731,492,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,514,32,11",
+            "words": [
+              {
+                "boundingBox": "731,514,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,536,32,11",
+            "words": [
+              {
+                "boundingBox": "731,536,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,558,31,11",
+            "words": [
+              {
+                "boundingBox": "731,558,31,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,580,32,11",
+            "words": [
+              {
+                "boundingBox": "731,580,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,602,32,11",
+            "words": [
+              {
+                "boundingBox": "731,602,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,624,31,11",
+            "words": [
+              {
+                "boundingBox": "731,624,31,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,646,31,11",
+            "words": [
+              {
+                "boundingBox": "731,646,31,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,668,32,11",
+            "words": [
+              {
+                "boundingBox": "731,668,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,690,32,11",
+            "words": [
+              {
+                "boundingBox": "731,690,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,712,32,11",
+            "words": [
+              {
+                "boundingBox": "731,712,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,733,32,12",
+            "words": [
+              {
+                "boundingBox": "731,733,32,12",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,755,32,12",
+            "words": [
+              {
+                "boundingBox": "731,755,32,12",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,777,32,11",
+            "words": [
+              {
+                "boundingBox": "731,777,32,11",
+                "text": "2019"
+              }
+            ]
+          },
+          {
+            "boundingBox": "731,799,31,11",
+            "words": [
+              {
+                "boundingBox": "731,799,31,11",
+                "text": "2019"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "851,382,192,12",
+        "lines": [
+          {
+            "boundingBox": "851,382,192,12",
+            "words": [
+              {
+                "boundingBox": "851,382,52,12",
+                "text": "6900.63"
+              },
+              {
+                "boundingBox": "917,382,56,12",
+                "text": "3745538"
+              },
+              {
+                "boundingBox": "983,383,60,11",
+                "text": "9.08E+08"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "825,404,78,406",
+        "lines": [
+          {
+            "boundingBox": "843,404,60,12",
+            "words": [
+              {
+                "boundingBox": "843,404,60,12",
+                "text": "9917.233"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,426,8,12",
+            "words": [
+              {
+                "boundingBox": "825,426,8,12",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,426,60,11",
+            "words": [
+              {
+                "boundingBox": "843,426,60,11",
+                "text": "8824.057"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,448,7,12",
+            "words": [
+              {
+                "boundingBox": "826,448,7,12",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,448,60,11",
+            "words": [
+              {
+                "boundingBox": "843,448,60,11",
+                "text": "7224.632"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,470,7,11",
+            "words": [
+              {
+                "boundingBox": "826,470,7,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,470,60,11",
+            "words": [
+              {
+                "boundingBox": "843,470,60,11",
+                "text": "9586.165"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,492,7,12",
+            "words": [
+              {
+                "boundingBox": "826,492,7,12",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,492,60,11",
+            "words": [
+              {
+                "boundingBox": "843,492,60,11",
+                "text": "11783.54"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,514,8,11",
+            "words": [
+              {
+                "boundingBox": "825,514,8,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "851,514,52,11",
+            "words": [
+              {
+                "boundingBox": "851,514,52,11",
+                "text": "10908.1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,536,8,11",
+            "words": [
+              {
+                "boundingBox": "825,536,8,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,536,60,11",
+            "words": [
+              {
+                "boundingBox": "843,536,60,11",
+                "text": "12066.91"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,558,7,11",
+            "words": [
+              {
+                "boundingBox": "826,558,7,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,558,60,11",
+            "words": [
+              {
+                "boundingBox": "843,558,60,11",
+                "text": "14018.61"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,580,7,11",
+            "words": [
+              {
+                "boundingBox": "826,580,7,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,580,60,11",
+            "words": [
+              {
+                "boundingBox": "843,580,60,11",
+                "text": "12217.76"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,602,8,11",
+            "words": [
+              {
+                "boundingBox": "825,602,8,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,602,60,11",
+            "words": [
+              {
+                "boundingBox": "843,602,60,11",
+                "text": "11273.17"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,624,8,11",
+            "words": [
+              {
+                "boundingBox": "825,624,8,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,624,60,11",
+            "words": [
+              {
+                "boundingBox": "843,624,60,11",
+                "text": "11294.41"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,646,6,11",
+            "words": [
+              {
+                "boundingBox": "826,646,6,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,646,59,11",
+            "words": [
+              {
+                "boundingBox": "843,646,59,11",
+                "text": "10831.92"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,668,8,11",
+            "words": [
+              {
+                "boundingBox": "825,668,8,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,668,60,11",
+            "words": [
+              {
+                "boundingBox": "843,668,60,11",
+                "text": "12047.19"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,689,8,12",
+            "words": [
+              {
+                "boundingBox": "825,689,8,12",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,689,60,12",
+            "words": [
+              {
+                "boundingBox": "843,689,60,12",
+                "text": "9688.374"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,712,7,11",
+            "words": [
+              {
+                "boundingBox": "826,712,7,11",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,712,60,11",
+            "words": [
+              {
+                "boundingBox": "843,712,60,11",
+                "text": "9666.041"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,733,7,12",
+            "words": [
+              {
+                "boundingBox": "826,733,7,12",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,733,60,12",
+            "words": [
+              {
+                "boundingBox": "843,733,60,12",
+                "text": "11985.56"
+              }
+            ]
+          },
+          {
+            "boundingBox": "825,755,8,12",
+            "words": [
+              {
+                "boundingBox": "825,755,8,12",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "851,755,52,12",
+            "words": [
+              {
+                "boundingBox": "851,755,52,12",
+                "text": "7933.13"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,777,7,12",
+            "words": [
+              {
+                "boundingBox": "826,777,7,12",
+                "text": "1"
+              }
+            ]
+          },
+          {
+            "boundingBox": "843,777,60,11",
+            "words": [
+              {
+                "boundingBox": "843,777,60,11",
+                "text": "10332.48"
+              }
+            ]
+          },
+          {
+            "boundingBox": "826,799,77,11",
+            "words": [
+              {
+                "boundingBox": "826,799,6,11",
+                "text": "1"
+              },
+              {
+                "boundingBox": "843,799,60,11",
+                "text": "10635.37"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "933,404,110,12",
+        "lines": [
+          {
+            "boundingBox": "933,404,110,12",
+            "words": [
+              {
+                "boundingBox": "933,404,40,12",
+                "text": "80440"
+              },
+              {
+                "boundingBox": "980,404,63,12",
+                "text": "13636816"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "941,426,32,384",
+        "lines": [
+          {
+            "boundingBox": "949,426,24,12",
+            "words": [
+              {
+                "boundingBox": "949,426,24,12",
+                "text": "815"
+              }
+            ]
+          },
+          {
+            "boundingBox": "941,448,32,11",
+            "words": [
+              {
+                "boundingBox": "941,448,32,11",
+                "text": "2827"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,470,24,11",
+            "words": [
+              {
+                "boundingBox": "949,470,24,11",
+                "text": "451"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,492,24,11",
+            "words": [
+              {
+                "boundingBox": "949,492,24,11",
+                "text": "445"
+              }
+            ]
+          },
+          {
+            "boundingBox": "942,514,31,11",
+            "words": [
+              {
+                "boundingBox": "942,514,31,11",
+                "text": "1050"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,536,24,11",
+            "words": [
+              {
+                "boundingBox": "949,536,24,11",
+                "text": "205"
+              }
+            ]
+          },
+          {
+            "boundingBox": "950,558,23,11",
+            "words": [
+              {
+                "boundingBox": "950,558,23,11",
+                "text": "393"
+              }
+            ]
+          },
+          {
+            "boundingBox": "941,580,32,11",
+            "words": [
+              {
+                "boundingBox": "941,580,32,11",
+                "text": "2333"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,602,24,11",
+            "words": [
+              {
+                "boundingBox": "949,602,24,11",
+                "text": "691"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,624,24,11",
+            "words": [
+              {
+                "boundingBox": "949,624,24,11",
+                "text": "575"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,646,24,11",
+            "words": [
+              {
+                "boundingBox": "949,646,24,11",
+                "text": "850"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,668,24,11",
+            "words": [
+              {
+                "boundingBox": "949,668,24,11",
+                "text": "273"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,689,24,12",
+            "words": [
+              {
+                "boundingBox": "949,689,24,12",
+                "text": "412"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,712,24,11",
+            "words": [
+              {
+                "boundingBox": "949,712,24,11",
+                "text": "271"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,733,24,11",
+            "words": [
+              {
+                "boundingBox": "949,733,24,11",
+                "text": "334"
+              }
+            ]
+          },
+          {
+            "boundingBox": "949,755,24,12",
+            "words": [
+              {
+                "boundingBox": "949,755,24,12",
+                "text": "743"
+              }
+            ]
+          },
+          {
+            "boundingBox": "942,777,31,12",
+            "words": [
+              {
+                "boundingBox": "942,777,31,12",
+                "text": "1016"
+              }
+            ]
+          },
+          {
+            "boundingBox": "950,799,23,11",
+            "words": [
+              {
+                "boundingBox": "950,799,23,11",
+                "text": "272"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "995,426,48,384",
+        "lines": [
+          {
+            "boundingBox": "996,426,47,12",
+            "words": [
+              {
+                "boundingBox": "996,426,47,12",
+                "text": "156132"
+              }
+            ]
+          },
+          {
+            "boundingBox": "996,448,47,11",
+            "words": [
+              {
+                "boundingBox": "996,448,47,11",
+                "text": "576496"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1004,470,39,11",
+            "words": [
+              {
+                "boundingBox": "1004,470,39,11",
+                "text": "72222"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1004,492,39,11",
+            "words": [
+              {
+                "boundingBox": "1004,492,39,11",
+                "text": "63653"
+              }
+            ]
+          },
+          {
+            "boundingBox": "996,514,47,11",
+            "words": [
+              {
+                "boundingBox": "996,514,47,11",
+                "text": "161107"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1004,536,39,11",
+            "words": [
+              {
+                "boundingBox": "1004,536,39,11",
+                "text": "29266"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1004,558,39,11",
+            "words": [
+              {
+                "boundingBox": "1004,558,39,11",
+                "text": "54804"
+              }
+            ]
+          },
+          {
+            "boundingBox": "995,580,48,11",
+            "words": [
+              {
+                "boundingBox": "995,580,48,11",
+                "text": "321406"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1003,602,40,11",
+            "words": [
+              {
+                "boundingBox": "1003,602,40,11",
+                "text": "93770"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1004,624,39,11",
+            "words": [
+              {
+                "boundingBox": "1004,624,39,11",
+                "text": "71014"
+              }
+            ]
+          },
+          {
+            "boundingBox": "996,646,47,11",
+            "words": [
+              {
+                "boundingBox": "996,646,47,11",
+                "text": "123617"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1003,668,40,11",
+            "words": [
+              {
+                "boundingBox": "1003,668,40,11",
+                "text": "35489"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1004,689,39,12",
+            "words": [
+              {
+                "boundingBox": "1004,689,39,12",
+                "text": "67037"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1003,712,40,11",
+            "words": [
+              {
+                "boundingBox": "1003,712,40,11",
+                "text": "35916"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1003,733,40,11",
+            "words": [
+              {
+                "boundingBox": "1003,733,40,11",
+                "text": "41389"
+              }
+            ]
+          },
+          {
+            "boundingBox": "996,755,47,12",
+            "words": [
+              {
+                "boundingBox": "996,755,47,12",
+                "text": "143899"
+              }
+            ]
+          },
+          {
+            "boundingBox": "996,777,47,11",
+            "words": [
+              {
+                "boundingBox": "996,777,47,11",
+                "text": "149595"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1004,799,39,11",
+            "words": [
+              {
+                "boundingBox": "1004,799,39,11",
+                "text": "34170"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1053,382,61,428",
+        "lines": [
+          {
+            "boundingBox": "1053,382,60,12",
+            "words": [
+              {
+                "boundingBox": "1053,382,60,12",
+                "text": "6890.349"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,404,60,12",
+            "words": [
+              {
+                "boundingBox": "1053,404,60,12",
+                "text": "9815.191"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,426,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,426,60,11",
+                "text": "7935.326"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,448,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,448,60,11",
+                "text": "6794.128"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,470,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,470,60,11",
+                "text": "8200.118"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1054,492,59,11",
+            "words": [
+              {
+                "boundingBox": "1054,492,59,11",
+                "text": "10159.98"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,514,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,514,60,11",
+                "text": "9895.583"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,536,61,11",
+            "words": [
+              {
+                "boundingBox": "1053,536,61,11",
+                "text": "9519.704"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1054,558,59,11",
+            "words": [
+              {
+                "boundingBox": "1054,558,59,11",
+                "text": "11976.43"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1054,580,59,11",
+            "words": [
+              {
+                "boundingBox": "1054,580,59,11",
+                "text": "11484.59"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,602,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,602,60,11",
+                "text": "9948.759"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,624,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,624,60,11",
+                "text": "9767.023"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,646,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,646,60,11",
+                "text": "9733.842"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1061,668,52,11",
+            "words": [
+              {
+                "boundingBox": "1061,668,52,11",
+                "text": "9740.13"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,689,60,12",
+            "words": [
+              {
+                "boundingBox": "1053,689,60,12",
+                "text": "8207.626"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,712,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,712,60,11",
+                "text": "7821.948"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,733,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,733,60,11",
+                "text": "9955.606"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,755,60,12",
+            "words": [
+              {
+                "boundingBox": "1053,755,60,12",
+                "text": "7085.258"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,777,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,777,60,11",
+                "text": "9321.505"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1053,799,60,11",
+            "words": [
+              {
+                "boundingBox": "1053,799,60,11",
+                "text": "8546.834"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1123,382,61,428",
+        "lines": [
+          {
+            "boundingBox": "1123,382,60,12",
+            "words": [
+              {
+                "boundingBox": "1123,382,60,12",
+                "text": "6910.912"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,404,59,12",
+            "words": [
+              {
+                "boundingBox": "1124,404,59,12",
+                "text": "10019.27"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1123,426,61,12",
+            "words": [
+              {
+                "boundingBox": "1123,426,61,12",
+                "text": "9712.788"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1123,448,61,12",
+            "words": [
+              {
+                "boundingBox": "1123,448,61,12",
+                "text": "7655.136"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,470,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,470,59,11",
+                "text": "10972.21"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,492,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,492,59,11",
+                "text": "13407.11"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,514,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,514,59,11",
+                "text": "11920.62"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,536,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,536,59,11",
+                "text": "14614.12"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,558,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,558,59,11",
+                "text": "16060.78"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,580,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,580,59,11",
+                "text": "12950.93"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,602,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,602,59,11",
+                "text": "12597.58"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1132,624,51,11",
+            "words": [
+              {
+                "boundingBox": "1132,624,51,11",
+                "text": "12821.8"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,645,59,12",
+            "words": [
+              {
+                "boundingBox": "1124,645,59,12",
+                "text": "11929.99"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,668,60,11",
+            "words": [
+              {
+                "boundingBox": "1124,668,60,11",
+                "text": "14354.24"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,689,59,12",
+            "words": [
+              {
+                "boundingBox": "1124,689,59,12",
+                "text": "11169.12"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,712,59,11",
+            "words": [
+              {
+                "boundingBox": "1124,712,59,11",
+                "text": "11510.13"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1132,733,51,12",
+            "words": [
+              {
+                "boundingBox": "1132,733,51,12",
+                "text": "14015.5"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1123,755,60,12",
+            "words": [
+              {
+                "boundingBox": "1123,755,60,12",
+                "text": "8781.002"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1124,777,60,12",
+            "words": [
+              {
+                "boundingBox": "1124,777,60,12",
+                "text": "11343.46"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1132,799,51,11",
+            "words": [
+              {
+                "boundingBox": "1132,799,51,11",
+                "text": "12723.9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1194,426,60,384",
+        "lines": [
+          {
+            "boundingBox": "1194,426,59,12",
+            "words": [
+              {
+                "boundingBox": "1194,426,59,12",
+                "text": "10471.25"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,448,60,12",
+            "words": [
+              {
+                "boundingBox": "1194,448,60,12",
+                "text": "10042.47"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,470,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,470,60,11",
+                "text": "11332.56"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,492,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,492,60,11",
+                "text": "14812.54"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,536,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,536,60,11",
+                "text": "14336.54"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,558,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,558,60,11",
+                "text": "15793.58"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,580,59,11",
+            "words": [
+              {
+                "boundingBox": "1194,580,59,11",
+                "text": "12955.02"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,602,59,11",
+            "words": [
+              {
+                "boundingBox": "1194,602,59,11",
+                "text": "10774.82"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,624,59,11",
+            "words": [
+              {
+                "boundingBox": "1194,624,59,11",
+                "text": "16395.25"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,646,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,646,60,11",
+                "text": "12000.44"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,668,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,668,60,11",
+                "text": "12215.47"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,690,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,690,60,11",
+                "text": "12447.32"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,712,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,712,60,11",
+                "text": "12628.16"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,755,60,12",
+            "words": [
+              {
+                "boundingBox": "1194,755,60,12",
+                "text": "10333.51"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,777,60,11",
+            "words": [
+              {
+                "boundingBox": "1194,777,60,11",
+                "text": "11604.94"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1194,799,59,11",
+            "words": [
+              {
+                "boundingBox": "1194,799,59,11",
+                "text": "11100.61"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1263,448,61,319",
+        "lines": [
+          {
+            "boundingBox": "1263,448,61,11",
+            "words": [
+              {
+                "boundingBox": "1263,448,61,11",
+                "text": "3086.606"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1264,514,59,11",
+            "words": [
+              {
+                "boundingBox": "1264,514,59,11",
+                "text": "5619.645"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1263,755,60,12",
+            "words": [
+              {
+                "boundingBox": "1263,755,60,12",
+                "text": "6033.742"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1333,426,45,384",
+        "lines": [
+          {
+            "boundingBox": "1333,426,45,12",
+            "words": [
+              {
+                "boundingBox": "1333,426,45,12",
+                "text": "8706.6"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,448,43,11",
+            "words": [
+              {
+                "boundingBox": "1334,448,43,11",
+                "text": "7277.7"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,470,44,11",
+            "words": [
+              {
+                "boundingBox": "1334,470,44,11",
+                "text": "7309.6"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,492,43,11",
+            "words": [
+              {
+                "boundingBox": "1334,492,43,11",
+                "text": "11327."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,514,43,11",
+            "words": [
+              {
+                "boundingBox": "1334,514,43,11",
+                "text": "11336."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,536,44,11",
+            "words": [
+              {
+                "boundingBox": "1334,536,44,11",
+                "text": "6638.6"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,558,43,11",
+            "words": [
+              {
+                "boundingBox": "1334,558,43,11",
+                "text": "12797."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,580,43,11",
+            "words": [
+              {
+                "boundingBox": "1334,580,43,11",
+                "text": "12447."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,602,43,11",
+            "words": [
+              {
+                "boundingBox": "1334,602,43,11",
+                "text": "11794."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,624,43,11",
+            "words": [
+              {
+                "boundingBox": "1334,624,43,11",
+                "text": "10965."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,668,39,11",
+            "words": [
+              {
+                "boundingBox": "1334,668,39,11",
+                "text": "12163"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,689,43,12",
+            "words": [
+              {
+                "boundingBox": "1334,689,43,12",
+                "text": "7394.5"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,712,44,11",
+            "words": [
+              {
+                "boundingBox": "1334,712,44,11",
+                "text": "9302.0"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,755,44,12",
+            "words": [
+              {
+                "boundingBox": "1334,755,44,12",
+                "text": "7652.6"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1342,777,31,11",
+            "words": [
+              {
+                "boundingBox": "1342,777,31,11",
+                "text": "1038"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1334,799,42,11",
+            "words": [
+              {
+                "boundingBox": "1334,799,42,11",
+                "text": "10319."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\images\\auto_captures\\auto_background_20250708_235058_5362.png"
+}
