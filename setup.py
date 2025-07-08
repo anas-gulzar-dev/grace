@@ -112,12 +112,12 @@ def check_config():
     try:
         from config import AZURE_API_KEY, AZURE_ENDPOINT
         
-        if AZURE_API_KEY == "2SA7VXoIBF9J1rmZEPSGrtyZXmIxfRFm7nCfe21nb79jJ3cuyNc3JQQJ99BGACYeBjFXJ3w3AAAFACOGc50F":
+        if AZURE_API_KEY == "AZURE_API_KEY":
             print("⚠️ Azure API key not configured in config.py")
             print("   Please update AZURE_API_KEY with your actual API key")
             return False
         
-        if AZURE_ENDPOINT == "https://wrist.cognitiveservices.azure.com/":
+        if AZURE_ENDPOINT == "AZURE_ENDPOINT":
             print("⚠️ Azure endpoint not configured in config.py")
             print("   Please update AZURE_ENDPOINT with your actual endpoint")
             return False
