@@ -1,11 +1,13 @@
-# 🔬 Biosensor Data Capture - Professional Edition
+# 🔬 Grace Biosensor Data Capture - Professional Suite
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
-![Python](https://img.shields.io/badge/python-3.7+-green.svg)
+![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)
+![Python](https://img.shields.io/badge/python-3.7%2B-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
+![GUI](https://img.shields.io/badge/GUI-PyQt5-orange.svg)
+![CLI](https://img.shields.io/badge/CLI-Rich%20%26%20Textual-purple.svg)
 
-A professional-grade **cross-platform** application for capturing, processing, and analyzing data from biosensor devices through automated screen capture and OCR technology. Now fully supports Windows, macOS, and Linux distributions.
+A comprehensive **dual-interface suite** for capturing, processing, and analyzing data from biosensor devices through automated screen capture and AI-powered OCR technology. Grace offers both a professional GUI application and a beautiful command-line interface, with full cross-platform support for Windows, macOS, and Linux.
 
 ## 🌟 Features
 

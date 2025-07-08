@@ -23,6 +23,11 @@ SCRCPY_WINDOW_TITLES = os.getenv('SCRCPY_WINDOW_TITLES', 'scrcpy,Mi Band,Android
 OCR_LANGUAGE = os.getenv('OCR_LANGUAGE', 'en')
 DETECT_ORIENTATION = os.getenv('DETECT_ORIENTATION', 'true').lower() == 'true'
 
+# USB Stability Settings
+# Set to 'true' to enable screenshot auto-deletion (may cause USB disconnects)
+# Set to 'false' to preserve screenshots and improve USB stability
+ENABLE_AUTO_DELETE_SCREENSHOTS = os.getenv('ENABLE_AUTO_DELETE_SCREENSHOTS', 'false').lower() == 'true'
+
 # Validate required environment variables
 if not AZURE_API_KEY:
     print("ERROR: AZURE_API_KEY not set in .env file")
