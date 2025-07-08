@@ -1,0 +1,845 @@
+{
+  "timestamp": "2025-07-08 23:46:53",
+  "window_title": "Wazirabad, Punjab, Pakistan Weather Forecast | AccuWeather - Google Chrome",
+  "raw_text": "Wazirabad, Punjab, Pakistan W\nGlobal Citizenship or Residency X +\nC\nFor Btßiness I\n2; accuweather.com/en/pk/wazirabad/259632/weather-forecast/259632\nWarnings Data Suite Newsletters Advertising Superior Accuracy•\nAccuWeather Wazirabad,punjab 3t•c\nTONIGHT'S WEATHER\nIncognito\nAll Bookmarks\n•\nQ Address, City or Zip Code\nLocation v\nDual Citizenship by Investment\nCitizenship by Investment Programmes for Whole\nFamily. Free Consultation\nCS Global Partners\nTUE JUL 8\nLearn More >\nMostly cloudy and humid; a couple of heavy late-night\nthunderstorms Lo•. 25•\nTomorrow: Mostly cloudy and humid with a thunderstorm in parts of\nthe area Hi: 31'\nCURRENT WEATHER\no\nc\n390\nPartly cloudy\nMORE DETAILS >\nLOOKING AHEAD\nWind\nWind Gusts\nAir Quality\n11:37 PM\nWNW 5 krnm\n6 km/h\nPoor\nCopilot+PC\nAspire 14 Al\nThe fastest, most intelligent\nWindows PCs ever\nSHOP NOW\nThi Indprstnrms snrnp hpavv late Tilpsdav night",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "Up",
+    "regions": [
+      {
+        "boundingBox": "80,24,165,12",
+        "lines": [
+          {
+            "boundingBox": "80,24,165,12",
+            "words": [
+              {
+                "boundingBox": "80,24,58,11",
+                "text": "Wazirabad,"
+              },
+              {
+                "boundingBox": "142,24,38,12",
+                "text": "Punjab,"
+              },
+              {
+                "boundingBox": "184,24,43,9",
+                "text": "Pakistan"
+              },
+              {
+                "boundingBox": "230,24,15,9",
+                "text": "W"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "318,23,225,13",
+        "lines": [
+          {
+            "boundingBox": "318,23,225,13",
+            "words": [
+              {
+                "boundingBox": "318,24,34,9",
+                "text": "Global"
+              },
+              {
+                "boundingBox": "356,24,57,12",
+                "text": "Citizenship"
+              },
+              {
+                "boundingBox": "417,27,11,6",
+                "text": "or"
+              },
+              {
+                "boundingBox": "432,24,51,12",
+                "text": "Residency"
+              },
+              {
+                "boundingBox": "498,24,8,8",
+                "text": "X"
+              },
+              {
+                "boundingBox": "533,23,10,10",
+                "text": "+"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "29,65,96,87",
+        "lines": [
+          {
+            "boundingBox": "96,65,12,12",
+            "words": [
+              {
+                "boundingBox": "96,65,12,12",
+                "text": "C"
+              }
+            ]
+          },
+          {
+            "boundingBox": "29,138,96,14",
+            "words": [
+              {
+                "boundingBox": "29,138,22,13",
+                "text": "For"
+              },
+              {
+                "boundingBox": "54,138,59,13",
+                "text": "Btßiness"
+              },
+              {
+                "boundingBox": "124,138,1,14",
+                "text": "I"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "137,65,675,443",
+        "lines": [
+          {
+            "boundingBox": "139,65,453,14",
+            "words": [
+              {
+                "boundingBox": "139,65,12,12",
+                "text": "2;"
+              },
+              {
+                "boundingBox": "165,66,427,13",
+                "text": "accuweather.com/en/pk/wazirabad/259632/weather-forecast/259632"
+              }
+            ]
+          },
+          {
+            "boundingBox": "137,138,447,15",
+            "words": [
+              {
+                "boundingBox": "137,138,61,15",
+                "text": "Warnings"
+              },
+              {
+                "boundingBox": "209,139,29,11",
+                "text": "Data"
+              },
+              {
+                "boundingBox": "243,138,33,12",
+                "text": "Suite"
+              },
+              {
+                "boundingBox": "287,139,78,11",
+                "text": "Newsletters"
+              },
+              {
+                "boundingBox": "376,138,74,15",
+                "text": "Advertising"
+              },
+              {
+                "boundingBox": "460,138,55,15",
+                "text": "Superior"
+              },
+              {
+                "boundingBox": "519,139,65,14",
+                "text": "Accuracy•"
+              }
+            ]
+          },
+          {
+            "boundingBox": "508,183,304,18",
+            "words": [
+              {
+                "boundingBox": "508,183,141,18",
+                "text": "AccuWeather"
+              },
+              {
+                "boundingBox": "664,185,120,16",
+                "text": "Wazirabad,punjab"
+              },
+              {
+                "boundingBox": "790,185,22,13",
+                "text": "3t•c"
+              }
+            ]
+          },
+          {
+            "boundingBox": "500,498,111,10",
+            "words": [
+              {
+                "boundingBox": "500,498,57,10",
+                "text": "TONIGHT'S"
+              },
+              {
+                "boundingBox": "560,498,51,10",
+                "text": "WEATHER"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1822,66,103,75",
+        "lines": [
+          {
+            "boundingBox": "1822,66,49,12",
+            "words": [
+              {
+                "boundingBox": "1822,66,49,12",
+                "text": "Incognito"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1838,103,75,9",
+            "words": [
+              {
+                "boundingBox": "1838,103,13,9",
+                "text": "All"
+              },
+              {
+                "boundingBox": "1856,103,57,9",
+                "text": "Bookmarks"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1916,134,9,7",
+            "words": [
+              {
+                "boundingBox": "1916,134,9,7",
+                "text": "•"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1053,184,171,16",
+        "lines": [
+          {
+            "boundingBox": "1053,184,171,16",
+            "words": [
+              {
+                "boundingBox": "1053,184,15,15",
+                "text": "Q"
+              },
+              {
+                "boundingBox": "1082,187,49,12",
+                "text": "Address,"
+              },
+              {
+                "boundingBox": "1135,187,22,13",
+                "text": "City"
+              },
+              {
+                "boundingBox": "1160,190,12,7",
+                "text": "or"
+              },
+              {
+                "boundingBox": "1174,187,18,13",
+                "text": "Zip"
+              },
+              {
+                "boundingBox": "1195,187,29,10",
+                "text": "Code"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1272,187,71,10",
+        "lines": [
+          {
+            "boundingBox": "1272,187,71,10",
+            "words": [
+              {
+                "boundingBox": "1272,187,50,10",
+                "text": "Location"
+              },
+              {
+                "boundingBox": "1333,191,10,6",
+                "text": "v"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "980,242,427,95",
+        "lines": [
+          {
+            "boundingBox": "982,242,425,29",
+            "words": [
+              {
+                "boundingBox": "982,242,59,23",
+                "text": "Dual"
+              },
+              {
+                "boundingBox": "1050,242,153,29",
+                "text": "Citizenship"
+              },
+              {
+                "boundingBox": "1212,242,33,29",
+                "text": "by"
+              },
+              {
+                "boundingBox": "1253,242,154,23",
+                "text": "Investment"
+              }
+            ]
+          },
+          {
+            "boundingBox": "980,298,399,19",
+            "words": [
+              {
+                "boundingBox": "980,298,89,18",
+                "text": "Citizenship"
+              },
+              {
+                "boundingBox": "1074,299,19,17",
+                "text": "by"
+              },
+              {
+                "boundingBox": "1098,299,89,13",
+                "text": "Investment"
+              },
+              {
+                "boundingBox": "1193,299,103,18",
+                "text": "Programmes"
+              },
+              {
+                "boundingBox": "1300,299,24,14",
+                "text": "for"
+              },
+              {
+                "boundingBox": "1328,299,51,14",
+                "text": "Whole"
+              }
+            ]
+          },
+          {
+            "boundingBox": "981,320,200,17",
+            "words": [
+              {
+                "boundingBox": "981,320,53,17",
+                "text": "Family."
+              },
+              {
+                "boundingBox": "1039,320,35,14",
+                "text": "Free"
+              },
+              {
+                "boundingBox": "1079,320,102,14",
+                "text": "Consultation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "980,403,153,106",
+        "lines": [
+          {
+            "boundingBox": "980,403,153,15",
+            "words": [
+              {
+                "boundingBox": "980,403,23,15",
+                "text": "CS"
+              },
+              {
+                "boundingBox": "1008,403,52,15",
+                "text": "Global"
+              },
+              {
+                "boundingBox": "1066,404,67,14",
+                "text": "Partners"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1035,498,58,11",
+            "words": [
+              {
+                "boundingBox": "1035,498,25,11",
+                "text": "TUE"
+              },
+              {
+                "boundingBox": "1063,498,20,10",
+                "text": "JUL"
+              },
+              {
+                "boundingBox": "1085,498,8,10",
+                "text": "8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1293,403,120,17",
+        "lines": [
+          {
+            "boundingBox": "1293,403,120,17",
+            "words": [
+              {
+                "boundingBox": "1293,403,48,15",
+                "text": "Learn"
+              },
+              {
+                "boundingBox": "1347,403,45,15",
+                "text": "More"
+              },
+              {
+                "boundingBox": "1403,404,10,16",
+                "text": ">"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "531,548,558,76",
+        "lines": [
+          {
+            "boundingBox": "532,548,444,18",
+            "words": [
+              {
+                "boundingBox": "532,548,53,18",
+                "text": "Mostly"
+              },
+              {
+                "boundingBox": "590,548,55,18",
+                "text": "cloudy"
+              },
+              {
+                "boundingBox": "650,548,29,14",
+                "text": "and"
+              },
+              {
+                "boundingBox": "685,548,55,16",
+                "text": "humid;"
+              },
+              {
+                "boundingBox": "746,552,8,10",
+                "text": "a"
+              },
+              {
+                "boundingBox": "760,548,55,18",
+                "text": "couple"
+              },
+              {
+                "boundingBox": "821,548,15,14",
+                "text": "of"
+              },
+              {
+                "boundingBox": "841,548,48,18",
+                "text": "heavy"
+              },
+              {
+                "boundingBox": "894,548,82,18",
+                "text": "late-night"
+              }
+            ]
+          },
+          {
+            "boundingBox": "531,571,181,16",
+            "words": [
+              {
+                "boundingBox": "531,572,122,14",
+                "text": "thunderstorms"
+              },
+              {
+                "boundingBox": "658,571,24,16",
+                "text": "Lo•."
+              },
+              {
+                "boundingBox": "687,571,25,16",
+                "text": "25•"
+              }
+            ]
+          },
+          {
+            "boundingBox": "531,606,558,18",
+            "words": [
+              {
+                "boundingBox": "531,606,86,14",
+                "text": "Tomorrow:"
+              },
+              {
+                "boundingBox": "624,606,53,18",
+                "text": "Mostly"
+              },
+              {
+                "boundingBox": "682,606,55,18",
+                "text": "cloudy"
+              },
+              {
+                "boundingBox": "742,606,29,14",
+                "text": "and"
+              },
+              {
+                "boundingBox": "778,606,49,14",
+                "text": "humid"
+              },
+              {
+                "boundingBox": "832,606,35,14",
+                "text": "with"
+              },
+              {
+                "boundingBox": "874,610,8,10",
+                "text": "a"
+              },
+              {
+                "boundingBox": "888,606,112,14",
+                "text": "thunderstorm"
+              },
+              {
+                "boundingBox": "1007,606,13,14",
+                "text": "in"
+              },
+              {
+                "boundingBox": "1027,608,41,16",
+                "text": "parts"
+              },
+              {
+                "boundingBox": "1074,606,15,14",
+                "text": "of"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "500,629,206,359",
+        "lines": [
+          {
+            "boundingBox": "531,629,118,16",
+            "words": [
+              {
+                "boundingBox": "531,630,26,14",
+                "text": "the"
+              },
+              {
+                "boundingBox": "563,634,34,10",
+                "text": "area"
+              },
+              {
+                "boundingBox": "604,629,20,16",
+                "text": "Hi:"
+              },
+              {
+                "boundingBox": "628,629,21,16",
+                "text": "31'"
+              }
+            ]
+          },
+          {
+            "boundingBox": "500,712,103,10",
+            "words": [
+              {
+                "boundingBox": "500,712,49,10",
+                "text": "CURRENT"
+              },
+              {
+                "boundingBox": "552,712,51,10",
+                "text": "WEATHER"
+              }
+            ]
+          },
+          {
+            "boundingBox": "661,773,23,22",
+            "words": [
+              {
+                "boundingBox": "661,773,23,22",
+                "text": "o"
+              }
+            ]
+          },
+          {
+            "boundingBox": "668,816,13,19",
+            "words": [
+              {
+                "boundingBox": "668,816,13,19",
+                "text": "c"
+              }
+            ]
+          },
+          {
+            "boundingBox": "681,847,25,14",
+            "words": [
+              {
+                "boundingBox": "681,847,25,14",
+                "text": "390"
+              }
+            ]
+          },
+          {
+            "boundingBox": "501,883,96,17",
+            "words": [
+              {
+                "boundingBox": "501,883,43,17",
+                "text": "Partly"
+              },
+              {
+                "boundingBox": "547,883,50,17",
+                "text": "cloudy"
+              }
+            ]
+          },
+          {
+            "boundingBox": "500,903,91,11",
+            "words": [
+              {
+                "boundingBox": "500,903,31,10",
+                "text": "MORE"
+              },
+              {
+                "boundingBox": "534,903,43,10",
+                "text": "DETAILS"
+              },
+              {
+                "boundingBox": "585,904,6,10",
+                "text": ">"
+              }
+            ]
+          },
+          {
+            "boundingBox": "501,978,85,10",
+            "words": [
+              {
+                "boundingBox": "501,978,46,10",
+                "text": "LOOKING"
+              },
+              {
+                "boundingBox": "550,978,36,10",
+                "text": "AHEAD"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "796,784,75,107",
+        "lines": [
+          {
+            "boundingBox": "796,784,34,12",
+            "words": [
+              {
+                "boundingBox": "796,784,34,12",
+                "text": "Wind"
+              }
+            ]
+          },
+          {
+            "boundingBox": "796,830,75,12",
+            "words": [
+              {
+                "boundingBox": "796,830,34,12",
+                "text": "Wind"
+              },
+              {
+                "boundingBox": "834,831,37,11",
+                "text": "Gusts"
+              }
+            ]
+          },
+          {
+            "boundingBox": "796,876,69,15",
+            "words": [
+              {
+                "boundingBox": "796,876,19,12",
+                "text": "Air"
+              },
+              {
+                "boundingBox": "818,876,47,15",
+                "text": "Quality"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "996,712,97,178",
+        "lines": [
+          {
+            "boundingBox": "1050,712,42,10",
+            "words": [
+              {
+                "boundingBox": "1050,712,24,10",
+                "text": "11:37"
+              },
+              {
+                "boundingBox": "1076,712,16,10",
+                "text": "PM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "996,784,96,14",
+            "words": [
+              {
+                "boundingBox": "996,784,42,14",
+                "text": "WNW"
+              },
+              {
+                "boundingBox": "1041,784,9,14",
+                "text": "5"
+              },
+              {
+                "boundingBox": "1054,784,38,14",
+                "text": "krnm"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1041,830,51,14",
+            "words": [
+              {
+                "boundingBox": "1041,830,10,14",
+                "text": "6"
+              },
+              {
+                "boundingBox": "1054,830,38,14",
+                "text": "km/h"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1060,876,33,14",
+            "words": [
+              {
+                "boundingBox": "1060,876,33,14",
+                "text": "Poor"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1172,657,205,344",
+        "lines": [
+          {
+            "boundingBox": "1172,657,84,16",
+            "words": [
+              {
+                "boundingBox": "1172,657,84,16",
+                "text": "Copilot+PC"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1205,907,168,35",
+            "words": [
+              {
+                "boundingBox": "1205,907,92,35",
+                "text": "Aspire"
+              },
+              {
+                "boundingBox": "1307,909,31,25",
+                "text": "14"
+              },
+              {
+                "boundingBox": "1346,908,27,26",
+                "text": "Al"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1201,943,176,15",
+            "words": [
+              {
+                "boundingBox": "1201,943,24,12",
+                "text": "The"
+              },
+              {
+                "boundingBox": "1229,943,46,13",
+                "text": "fastest,"
+              },
+              {
+                "boundingBox": "1279,945,31,10",
+                "text": "most"
+              },
+              {
+                "boundingBox": "1314,943,63,15",
+                "text": "intelligent"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1234,961,113,12",
+            "words": [
+              {
+                "boundingBox": "1234,961,56,12",
+                "text": "Windows"
+              },
+              {
+                "boundingBox": "1294,961,23,12",
+                "text": "PCs"
+              },
+              {
+                "boundingBox": "1321,964,26,9",
+                "text": "ever"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1258,993,61,8",
+            "words": [
+              {
+                "boundingBox": "1258,993,30,8",
+                "text": "SHOP"
+              },
+              {
+                "boundingBox": "1292,993,27,8",
+                "text": "NOW"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "501,1028,390,12",
+        "lines": [
+          {
+            "boundingBox": "501,1028,390,12",
+            "words": [
+              {
+                "boundingBox": "501,1028,24,12",
+                "text": "Thi"
+              },
+              {
+                "boundingBox": "528,1028,99,12",
+                "text": "Indprstnrms"
+              },
+              {
+                "boundingBox": "636,1032,44,8",
+                "text": "snrnp"
+              },
+              {
+                "boundingBox": "685,1028,48,12",
+                "text": "hpavv"
+              },
+              {
+                "boundingBox": "741,1028,31,12",
+                "text": "late"
+              },
+              {
+                "boundingBox": "777,1028,67,12",
+                "text": "Tilpsdav"
+              },
+              {
+                "boundingBox": "850,1028,41,12",
+                "text": "night"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\images\\manual_captures\\manual_background_20250708_234649_6817.png"
+}

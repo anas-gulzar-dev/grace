@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-07-09 01:51:39",
+  "window_title": "Settings",
+  "raw_text": "",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "NotDetected",
+    "regions": [],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\images\\manual_captures\\manual_background_20250709_015137_3909.png"
+}

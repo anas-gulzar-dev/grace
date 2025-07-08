@@ -1,0 +1,1659 @@
+{
+  "timestamp": "2025-07-09 00:34:41",
+  "window_title": "anas-gulzar-dev/grace: A professional-grade application for capturing, processing, and analyzing data from biosensor devices through automated screen capture and OCR technology. and 3 more pages - Personal - Microsoft​ Edge",
+  "raw_text": "VPS with the Best Price-to-Perfor X Powerful Dedicated Servers Host\nC https://github.com/anas-gulzar-dev/grace/\nX\nCursor - The Al Code Editor\nProjects\nO Tags\nanas-gulzar-dev/grace: A profess\no\nCode\nanas-gulzar-dev\n@ Issues\nn\ngrace\nPull requests\nDiscussions\ngrace\nmain\nActions\nPublic\n1 Branch\nInsights\nQ Go to file\nanas-gulzar-dev\nfeat(grace-cli-client): add cross-platform CLI client with background...\nAdd file\nc58Scb9 • 10 hours ago\ngrace-cli-client\nscreenshots\n.env.example\n.gitignore\nLICENSE\nREADME.md\nTROUBLESHOOTING.md\nconfig.py\nconfig_template.py\ninstall linux.sh\nlinux_requirements.txt\nma ln.py\nrequirements.txt\nsetup.py\nwi ndows\nREADM\nrequirements. txt\nfeat(grace-cli-client): add cross-platform CLI client with back..\nfeat(grace-cli-client): add cross-platform CLI client with back..\nInitial clean commit\nInitial clean commit\nInitial clean commit\nfeat(grace-cli-client): add cross-platform CLI client with back..\nInitial clean commit\nInitial clean commit\nInitial clean commit\nfeat(grace-cli-client): add cross-platform CLI client with back..\nfeat(grace-cli-client): add cross-platform CLI client with back..\nfeat(grace-cli-client): add cross-platform CLI client with back..\nfeat(grace-cli-client): add cross-platform CLI client with back..\nAdded Missing Dependency File\nfeat(grace-cli-client): add cross-platform CLI client with back...\nCode\n6\n10 hours ago\n10 hours ago\n2 days ago\n2 days ago\n2 days ago\n10 hours ago\n2 days ago\n2 days ago\n2 days ago\n10 hours ago\n10 hours ago\n10 hours ago\n10 hours ago\nyesterday\n10 hours ago\nlice\nQ Type to search\nFork O\nAbout\nA professional-grade application for\ncapturing, processing, and analyzing data\nfrom biosensor devices through\nautomated screen capture and OCR\ntechnology.\nReadme\nApache-2.0 license\nActivity\nO stars\nO watching\nO forks\nReport repository\nReleases\nNo releases published\nPackages\nNo packages published\nContributors 2\nanas-gulzar-dev\nzainriaz-dev Muhammad Zain Riaz\nLanquaqes",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "Up",
+    "regions": [
+      {
+        "boundingBox": "56,19,482,51",
+        "lines": [
+          {
+            "boundingBox": "125,19,413,10",
+            "words": [
+              {
+                "boundingBox": "125,19,20,9",
+                "text": "VPS"
+              },
+              {
+                "boundingBox": "149,19,22,9",
+                "text": "with"
+              },
+              {
+                "boundingBox": "174,19,18,9",
+                "text": "the"
+              },
+              {
+                "boundingBox": "196,19,21,9",
+                "text": "Best"
+              },
+              {
+                "boundingBox": "221,19,80,9",
+                "text": "Price-to-Perfor"
+              },
+              {
+                "boundingBox": "312,20,9,9",
+                "text": "X"
+              },
+              {
+                "boundingBox": "365,19,44,9",
+                "text": "Powerful"
+              },
+              {
+                "boundingBox": "414,19,52,9",
+                "text": "Dedicated"
+              },
+              {
+                "boundingBox": "471,19,37,9",
+                "text": "Servers"
+              },
+              {
+                "boundingBox": "512,19,26,9",
+                "text": "Host"
+              }
+            ]
+          },
+          {
+            "boundingBox": "56,54,332,16",
+            "words": [
+              {
+                "boundingBox": "56,54,16,16",
+                "text": "C"
+              },
+              {
+                "boundingBox": "123,57,265,13",
+                "text": "https://github.com/anas-gulzar-dev/grace/"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "551,20,9,9",
+        "lines": [
+          {
+            "boundingBox": "551,20,9,9",
+            "words": [
+              {
+                "boundingBox": "551,20,9,9",
+                "text": "X"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "574,19,175,278",
+        "lines": [
+          {
+            "boundingBox": "603,19,146,9",
+            "words": [
+              {
+                "boundingBox": "603,19,35,9",
+                "text": "Cursor"
+              },
+              {
+                "boundingBox": "642,24,3,1",
+                "text": "-"
+              },
+              {
+                "boundingBox": "649,19,19,9",
+                "text": "The"
+              },
+              {
+                "boundingBox": "672,19,10,9",
+                "text": "Al"
+              },
+              {
+                "boundingBox": "686,19,28,9",
+                "text": "Code"
+              },
+              {
+                "boundingBox": "718,19,31,9",
+                "text": "Editor"
+              }
+            ]
+          },
+          {
+            "boundingBox": "574,157,47,13",
+            "words": [
+              {
+                "boundingBox": "574,157,47,13",
+                "text": "Projects"
+              }
+            ]
+          },
+          {
+            "boundingBox": "582,284,40,13",
+            "words": [
+              {
+                "boundingBox": "582,284,8,10",
+                "text": "O"
+              },
+              {
+                "boundingBox": "594,284,28,13",
+                "text": "Tags"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "842,19,174,12",
+        "lines": [
+          {
+            "boundingBox": "842,19,174,12",
+            "words": [
+              {
+                "boundingBox": "842,19,121,12",
+                "text": "anas-gulzar-dev/grace:"
+              },
+              {
+                "boundingBox": "967,19,8,9",
+                "text": "A"
+              },
+              {
+                "boundingBox": "979,19,37,12",
+                "text": "profess"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "60,99,43,68",
+        "lines": [
+          {
+            "boundingBox": "73,99,30,29",
+            "words": [
+              {
+                "boundingBox": "73,99,30,29",
+                "text": "o"
+              }
+            ]
+          },
+          {
+            "boundingBox": "60,157,33,10",
+            "words": [
+              {
+                "boundingBox": "60,157,33,10",
+                "text": "Code"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "118,109,99,13",
+        "lines": [
+          {
+            "boundingBox": "118,109,99,13",
+            "words": [
+              {
+                "boundingBox": "118,109,99,13",
+                "text": "anas-gulzar-dev"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "117,154,61,16",
+        "lines": [
+          {
+            "boundingBox": "117,154,61,16",
+            "words": [
+              {
+                "boundingBox": "117,154,16,16",
+                "text": "@"
+              },
+              {
+                "boundingBox": "142,157,36,10",
+                "text": "Issues"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "204,155,14,14",
+        "lines": [
+          {
+            "boundingBox": "204,155,14,14",
+            "words": [
+              {
+                "boundingBox": "204,155,14,14",
+                "text": "n"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "229,112,78,58",
+        "lines": [
+          {
+            "boundingBox": "246,112,34,10",
+            "words": [
+              {
+                "boundingBox": "246,112,34,10",
+                "text": "grace"
+              }
+            ]
+          },
+          {
+            "boundingBox": "229,157,78,13",
+            "words": [
+              {
+                "boundingBox": "229,157,21,10",
+                "text": "Pull"
+              },
+              {
+                "boundingBox": "255,158,52,12",
+                "text": "requests"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "358,157,76,137",
+        "lines": [
+          {
+            "boundingBox": "358,157,70,10",
+            "words": [
+              {
+                "boundingBox": "358,157,70,10",
+                "text": "Discussions"
+              }
+            ]
+          },
+          {
+            "boundingBox": "385,215,49,15",
+            "words": [
+              {
+                "boundingBox": "385,215,49,15",
+                "text": "grace"
+              }
+            ]
+          },
+          {
+            "boundingBox": "390,287,31,7",
+            "words": [
+              {
+                "boundingBox": "390,287,31,7",
+                "text": "main"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "450,157,98,137",
+        "lines": [
+          {
+            "boundingBox": "477,157,46,10",
+            "words": [
+              {
+                "boundingBox": "477,157,46,10",
+                "text": "Actions"
+              }
+            ]
+          },
+          {
+            "boundingBox": "450,213,33,9",
+            "words": [
+              {
+                "boundingBox": "450,213,33,9",
+                "text": "Public"
+              }
+            ]
+          },
+          {
+            "boundingBox": "495,284,53,10",
+            "words": [
+              {
+                "boundingBox": "495,284,5,10",
+                "text": "1"
+              },
+              {
+                "boundingBox": "505,284,43,10",
+                "text": "Branch"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "771,157,126,140",
+        "lines": [
+          {
+            "boundingBox": "771,157,47,13",
+            "words": [
+              {
+                "boundingBox": "771,157,47,13",
+                "text": "Insights"
+              }
+            ]
+          },
+          {
+            "boundingBox": "817,283,80,14",
+            "words": [
+              {
+                "boundingBox": "817,283,14,14",
+                "text": "Q"
+              },
+              {
+                "boundingBox": "840,284,17,10",
+                "text": "Go"
+              },
+              {
+                "boundingBox": "862,285,12,9",
+                "text": "to"
+              },
+              {
+                "boundingBox": "878,284,19,10",
+                "text": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "395,344,101,13",
+        "lines": [
+          {
+            "boundingBox": "395,344,101,13",
+            "words": [
+              {
+                "boundingBox": "395,344,101,13",
+                "text": "anas-gulzar-dev"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "504,344,426,13",
+        "lines": [
+          {
+            "boundingBox": "504,344,426,13",
+            "words": [
+              {
+                "boundingBox": "504,344,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "635,344,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "662,344,89,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "756,344,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "779,344,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "816,344,25,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "847,344,83,13",
+                "text": "background..."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1009,284,122,72",
+        "lines": [
+          {
+            "boundingBox": "1051,284,50,10",
+            "words": [
+              {
+                "boundingBox": "1051,284,26,10",
+                "text": "Add"
+              },
+              {
+                "boundingBox": "1081,284,20,10",
+                "text": "file"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1009,344,122,12",
+            "words": [
+              {
+                "boundingBox": "1009,344,43,9",
+                "text": "c58Scb9"
+              },
+              {
+                "boundingBox": "1056,349,2,2",
+                "text": "•"
+              },
+              {
+                "boundingBox": "1063,344,11,9",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1078,344,29,9",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1111,347,20,9",
+                "text": "ago"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "396,391,149,505",
+        "lines": [
+          {
+            "boundingBox": "396,391,91,13",
+            "words": [
+              {
+                "boundingBox": "396,391,91,13",
+                "text": "grace-cli-client"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,432,72,10",
+            "words": [
+              {
+                "boundingBox": "396,432,72,10",
+                "text": "screenshots"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,473,79,13",
+            "words": [
+              {
+                "boundingBox": "396,473,79,13",
+                "text": ".env.example"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,514,59,13",
+            "words": [
+              {
+                "boundingBox": "396,514,59,13",
+                "text": ".gitignore"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,555,51,10",
+            "words": [
+              {
+                "boundingBox": "396,555,51,10",
+                "text": "LICENSE"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,596,76,10",
+            "words": [
+              {
+                "boundingBox": "396,596,76,10",
+                "text": "README.md"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,637,149,10",
+            "words": [
+              {
+                "boundingBox": "396,637,149,10",
+                "text": "TROUBLESHOOTING.md"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,678,56,13",
+            "words": [
+              {
+                "boundingBox": "396,678,56,13",
+                "text": "config.py"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,719,117,13",
+            "words": [
+              {
+                "boundingBox": "396,719,117,13",
+                "text": "config_template.py"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,760,87,10",
+            "words": [
+              {
+                "boundingBox": "396,760,35,10",
+                "text": "install"
+              },
+              {
+                "boundingBox": "438,760,45,10",
+                "text": "linux.sh"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,801,135,13",
+            "words": [
+              {
+                "boundingBox": "396,801,135,13",
+                "text": "linux_requirements.txt"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,845,48,10",
+            "words": [
+              {
+                "boundingBox": "396,845,18,7",
+                "text": "ma"
+              },
+              {
+                "boundingBox": "416,845,28,10",
+                "text": "ln.py"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,883,100,13",
+            "words": [
+              {
+                "boundingBox": "396,883,100,13",
+                "text": "requirements.txt"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "394,925,55,111",
+        "lines": [
+          {
+            "boundingBox": "396,925,52,12",
+            "words": [
+              {
+                "boundingBox": "396,925,52,12",
+                "text": "setup.py"
+              }
+            ]
+          },
+          {
+            "boundingBox": "396,965,53,10",
+            "words": [
+              {
+                "boundingBox": "396,965,12,10",
+                "text": "wi"
+              },
+              {
+                "boundingBox": "410,965,39,10",
+                "text": "ndows"
+              }
+            ]
+          },
+          {
+            "boundingBox": "394,1026,47,10",
+            "words": [
+              {
+                "boundingBox": "394,1026,47,10",
+                "text": "READM"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "456,965,100,13",
+        "lines": [
+          {
+            "boundingBox": "456,965,100,13",
+            "words": [
+              {
+                "boundingBox": "456,965,84,13",
+                "text": "requirements."
+              },
+              {
+                "boundingBox": "540,966,16,9",
+                "text": "txt"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "727,391,381,587",
+        "lines": [
+          {
+            "boundingBox": "727,391,381,13",
+            "words": [
+              {
+                "boundingBox": "727,391,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,391,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,391,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,391,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,391,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,391,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,391,38,10",
+                "text": "back.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,432,381,13",
+            "words": [
+              {
+                "boundingBox": "727,432,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,432,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,432,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,432,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,432,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,432,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,432,38,10",
+                "text": "back.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "728,473,120,10",
+            "words": [
+              {
+                "boundingBox": "728,473,32,10",
+                "text": "Initial"
+              },
+              {
+                "boundingBox": "765,473,31,10",
+                "text": "clean"
+              },
+              {
+                "boundingBox": "801,473,47,10",
+                "text": "commit"
+              }
+            ]
+          },
+          {
+            "boundingBox": "728,514,120,10",
+            "words": [
+              {
+                "boundingBox": "728,514,32,10",
+                "text": "Initial"
+              },
+              {
+                "boundingBox": "765,514,31,10",
+                "text": "clean"
+              },
+              {
+                "boundingBox": "801,514,47,10",
+                "text": "commit"
+              }
+            ]
+          },
+          {
+            "boundingBox": "728,555,119,10",
+            "words": [
+              {
+                "boundingBox": "728,555,32,10",
+                "text": "Initial"
+              },
+              {
+                "boundingBox": "765,555,31,10",
+                "text": "clean"
+              },
+              {
+                "boundingBox": "801,555,46,10",
+                "text": "commit"
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,596,381,13",
+            "words": [
+              {
+                "boundingBox": "727,596,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,596,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,596,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,596,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,596,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,596,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,596,38,10",
+                "text": "back.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "728,637,119,10",
+            "words": [
+              {
+                "boundingBox": "728,637,32,10",
+                "text": "Initial"
+              },
+              {
+                "boundingBox": "765,637,31,10",
+                "text": "clean"
+              },
+              {
+                "boundingBox": "801,637,46,10",
+                "text": "commit"
+              }
+            ]
+          },
+          {
+            "boundingBox": "728,678,119,10",
+            "words": [
+              {
+                "boundingBox": "728,678,32,10",
+                "text": "Initial"
+              },
+              {
+                "boundingBox": "765,678,31,10",
+                "text": "clean"
+              },
+              {
+                "boundingBox": "801,678,46,10",
+                "text": "commit"
+              }
+            ]
+          },
+          {
+            "boundingBox": "728,719,119,10",
+            "words": [
+              {
+                "boundingBox": "728,719,32,10",
+                "text": "Initial"
+              },
+              {
+                "boundingBox": "765,719,31,10",
+                "text": "clean"
+              },
+              {
+                "boundingBox": "801,719,46,10",
+                "text": "commit"
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,760,381,13",
+            "words": [
+              {
+                "boundingBox": "727,760,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,760,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,760,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,760,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,760,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,760,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,760,38,10",
+                "text": "back.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,801,381,13",
+            "words": [
+              {
+                "boundingBox": "727,801,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,801,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,801,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,801,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,801,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,801,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,801,38,10",
+                "text": "back.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,842,381,13",
+            "words": [
+              {
+                "boundingBox": "727,842,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,842,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,842,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,842,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,842,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,842,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,842,38,10",
+                "text": "back.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,883,381,13",
+            "words": [
+              {
+                "boundingBox": "727,883,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,883,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,883,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,883,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,883,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,883,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,883,38,10",
+                "text": "back.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,924,198,13",
+            "words": [
+              {
+                "boundingBox": "727,924,41,10",
+                "text": "Added"
+              },
+              {
+                "boundingBox": "773,924,46,13",
+                "text": "Missing"
+              },
+              {
+                "boundingBox": "824,924,77,13",
+                "text": "Dependency"
+              },
+              {
+                "boundingBox": "906,924,19,10",
+                "text": "File"
+              }
+            ]
+          },
+          {
+            "boundingBox": "727,965,381,13",
+            "words": [
+              {
+                "boundingBox": "727,965,126,13",
+                "text": "feat(grace-cli-client):"
+              },
+              {
+                "boundingBox": "858,965,22,10",
+                "text": "add"
+              },
+              {
+                "boundingBox": "886,965,88,13",
+                "text": "cross-platform"
+              },
+              {
+                "boundingBox": "979,965,18,10",
+                "text": "CLI"
+              },
+              {
+                "boundingBox": "1002,965,33,10",
+                "text": "client"
+              },
+              {
+                "boundingBox": "1039,965,26,10",
+                "text": "with"
+              },
+              {
+                "boundingBox": "1070,965,38,10",
+                "text": "back..."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1152,284,80,694",
+        "lines": [
+          {
+            "boundingBox": "1179,284,33,10",
+            "words": [
+              {
+                "boundingBox": "1179,284,33,10",
+                "text": "Code"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1168,344,7,9",
+            "words": [
+              {
+                "boundingBox": "1168,344,7,9",
+                "text": "6"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,391,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,391,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,391,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,394,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,432,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,432,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,432,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,435,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1165,473,66,13",
+            "words": [
+              {
+                "boundingBox": "1165,473,7,10",
+                "text": "2"
+              },
+              {
+                "boundingBox": "1176,473,28,13",
+                "text": "days"
+              },
+              {
+                "boundingBox": "1208,476,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1165,514,66,13",
+            "words": [
+              {
+                "boundingBox": "1165,514,7,10",
+                "text": "2"
+              },
+              {
+                "boundingBox": "1176,514,28,13",
+                "text": "days"
+              },
+              {
+                "boundingBox": "1208,517,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1165,555,66,13",
+            "words": [
+              {
+                "boundingBox": "1165,555,7,10",
+                "text": "2"
+              },
+              {
+                "boundingBox": "1176,555,28,13",
+                "text": "days"
+              },
+              {
+                "boundingBox": "1208,558,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,596,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,596,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,596,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,599,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1165,637,66,13",
+            "words": [
+              {
+                "boundingBox": "1165,637,7,10",
+                "text": "2"
+              },
+              {
+                "boundingBox": "1176,637,28,13",
+                "text": "days"
+              },
+              {
+                "boundingBox": "1208,640,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1165,678,66,13",
+            "words": [
+              {
+                "boundingBox": "1165,678,7,10",
+                "text": "2"
+              },
+              {
+                "boundingBox": "1176,678,28,13",
+                "text": "days"
+              },
+              {
+                "boundingBox": "1208,681,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1165,719,66,13",
+            "words": [
+              {
+                "boundingBox": "1165,719,7,10",
+                "text": "2"
+              },
+              {
+                "boundingBox": "1176,719,28,13",
+                "text": "days"
+              },
+              {
+                "boundingBox": "1208,722,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,760,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,760,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,760,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,763,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,801,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,801,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,801,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,804,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,842,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,842,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,842,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,845,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,883,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,883,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,883,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,886,23,10",
+                "text": "ago"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1173,924,59,13",
+            "words": [
+              {
+                "boundingBox": "1173,924,59,13",
+                "text": "yesterday"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1152,965,79,13",
+            "words": [
+              {
+                "boundingBox": "1152,965,13,10",
+                "text": "10"
+              },
+              {
+                "boundingBox": "1170,965,34,10",
+                "text": "hours"
+              },
+              {
+                "boundingBox": "1208,968,23,10",
+                "text": "ago"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "573,1026,20,10",
+        "lines": [
+          {
+            "boundingBox": "573,1026,20,10",
+            "words": [
+              {
+                "boundingBox": "573,1026,20,10",
+                "text": "lice"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1272,107,292,929",
+        "lines": [
+          {
+            "boundingBox": "1333,107,131,15",
+            "words": [
+              {
+                "boundingBox": "1333,107,14,14",
+                "text": "Q"
+              },
+              {
+                "boundingBox": "1356,109,29,13",
+                "text": "Type"
+              },
+              {
+                "boundingBox": "1409,110,12,9",
+                "text": "to"
+              },
+              {
+                "boundingBox": "1426,109,38,10",
+                "text": "search"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1332,212,42,9",
+            "words": [
+              {
+                "boundingBox": "1332,212,23,9",
+                "text": "Fork"
+              },
+              {
+                "boundingBox": "1367,212,7,9",
+                "text": "O"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1272,283,46,12",
+            "words": [
+              {
+                "boundingBox": "1272,283,46,12",
+                "text": "About"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1272,323,255,16",
+            "words": [
+              {
+                "boundingBox": "1272,324,11,11",
+                "text": "A"
+              },
+              {
+                "boundingBox": "1288,323,132,16",
+                "text": "professional-grade"
+              },
+              {
+                "boundingBox": "1425,323,77,16",
+                "text": "application"
+              },
+              {
+                "boundingBox": "1507,323,20,12",
+                "text": "for"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,347,291,16",
+            "words": [
+              {
+                "boundingBox": "1273,347,70,16",
+                "text": "capturing,"
+              },
+              {
+                "boundingBox": "1349,347,78,16",
+                "text": "processing,"
+              },
+              {
+                "boundingBox": "1432,347,25,12",
+                "text": "and"
+              },
+              {
+                "boundingBox": "1463,347,65,16",
+                "text": "analyzing"
+              },
+              {
+                "boundingBox": "1534,347,30,12",
+                "text": "data"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,371,223,16",
+            "words": [
+              {
+                "boundingBox": "1273,371,32,12",
+                "text": "from"
+              },
+              {
+                "boundingBox": "1311,371,69,12",
+                "text": "biosensor"
+              },
+              {
+                "boundingBox": "1384,371,51,12",
+                "text": "devices"
+              },
+              {
+                "boundingBox": "1440,371,56,16",
+                "text": "through"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,395,251,16",
+            "words": [
+              {
+                "boundingBox": "1273,395,76,12",
+                "text": "automated"
+              },
+              {
+                "boundingBox": "1354,399,45,8",
+                "text": "screen"
+              },
+              {
+                "boundingBox": "1404,397,53,14",
+                "text": "capture"
+              },
+              {
+                "boundingBox": "1462,395,26,12",
+                "text": "and"
+              },
+              {
+                "boundingBox": "1493,396,31,11",
+                "text": "OCR"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1272,419,83,16",
+            "words": [
+              {
+                "boundingBox": "1272,419,83,16",
+                "text": "technology."
+              }
+            ]
+          },
+          {
+            "boundingBox": "1301,459,49,10",
+            "words": [
+              {
+                "boundingBox": "1301,459,49,10",
+                "text": "Readme"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1300,488,116,13",
+            "words": [
+              {
+                "boundingBox": "1300,488,70,13",
+                "text": "Apache-2.0"
+              },
+              {
+                "boundingBox": "1375,488,41,10",
+                "text": "license"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1300,517,46,13",
+            "words": [
+              {
+                "boundingBox": "1300,517,46,13",
+                "text": "Activity"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1301,546,40,10",
+            "words": [
+              {
+                "boundingBox": "1301,546,7,10",
+                "text": "O"
+              },
+              {
+                "boundingBox": "1312,547,29,9",
+                "text": "stars"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1301,575,66,13",
+            "words": [
+              {
+                "boundingBox": "1301,575,7,10",
+                "text": "O"
+              },
+              {
+                "boundingBox": "1312,575,55,13",
+                "text": "watching"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1301,604,41,10",
+            "words": [
+              {
+                "boundingBox": "1301,604,7,10",
+                "text": "O"
+              },
+              {
+                "boundingBox": "1312,604,30,10",
+                "text": "forks"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1274,633,107,13",
+            "words": [
+              {
+                "boundingBox": "1274,633,40,13",
+                "text": "Report"
+              },
+              {
+                "boundingBox": "1319,633,62,13",
+                "text": "repository"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,687,61,12",
+            "words": [
+              {
+                "boundingBox": "1273,687,61,12",
+                "text": "Releases"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,726,116,12",
+            "words": [
+              {
+                "boundingBox": "1273,726,15,9",
+                "text": "No"
+              },
+              {
+                "boundingBox": "1293,726,41,9",
+                "text": "releases"
+              },
+              {
+                "boundingBox": "1338,726,51,12",
+                "text": "published"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,778,66,16",
+            "words": [
+              {
+                "boundingBox": "1273,778,66,16",
+                "text": "Packages"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,817,123,12",
+            "words": [
+              {
+                "boundingBox": "1273,817,15,9",
+                "text": "No"
+              },
+              {
+                "boundingBox": "1293,817,48,12",
+                "text": "packages"
+              },
+              {
+                "boundingBox": "1345,817,51,12",
+                "text": "published"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,869,109,12",
+            "words": [
+              {
+                "boundingBox": "1273,869,92,12",
+                "text": "Contributors"
+              },
+              {
+                "boundingBox": "1375,871,7,9",
+                "text": "2"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1313,915,101,13",
+            "words": [
+              {
+                "boundingBox": "1313,915,101,13",
+                "text": "anas-gulzar-dev"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1313,955,215,10",
+            "words": [
+              {
+                "boundingBox": "1313,955,77,10",
+                "text": "zainriaz-dev"
+              },
+              {
+                "boundingBox": "1394,955,73,10",
+                "text": "Muhammad"
+              },
+              {
+                "boundingBox": "1472,955,26,10",
+                "text": "Zain"
+              },
+              {
+                "boundingBox": "1503,955,25,10",
+                "text": "Riaz"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1273,1023,78,13",
+            "words": [
+              {
+                "boundingBox": "1273,1023,78,13",
+                "text": "Lanquaqes"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\images\\auto_captures\\auto_background_20250709_003438_1172.png"
+}
