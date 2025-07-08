@@ -1,3 +1,70 @@
+#!/usr/bin/env python3
+"""
+Grace Biosensor Data Capture - Cross-Platform Professional Edition
+
+A comprehensive, cross-platform application for capturing and analyzing biosensor data
+through automated screen capture and OCR processing using Azure Computer Vision API.
+
+🌟 KEY FEATURES:
+• Cross-platform support (Windows, macOS, Linux)
+• Real-time window detection and management
+• Automated screenshot capture with multiple methods
+• Azure Computer Vision OCR integration
+• Auto-capture with configurable intervals
+• CSV and JSON data export
+• Modern PyQt5 interface with dark theme
+• Device discovery and categorization
+• Zoom functionality and accessibility features
+
+🔧 SUPPORTED PLATFORMS:
+• Windows 10/11 (with dxcam acceleration)
+• macOS 10.14+ (with PyObjC frameworks)
+• Linux (Ubuntu, Fedora, Arch with X11 tools)
+
+📦 INSTALLATION:
+
+1. Universal Installer (Recommended):
+   python install_universal.py
+
+2. All-Platform Dependencies:
+   pip install -r all_platform_requirements.txt
+
+3. Platform-Specific:
+   Windows: install_windows.ps1
+   Linux: install_linux.sh
+   macOS: install_macos.sh
+
+🚀 QUICK START:
+1. Install dependencies using one of the methods above
+2. Copy .env.example to .env and add your Azure API credentials
+3. Connect your biosensor device
+4. Start screen mirroring (e.g., scrcpy for Android)
+5. Run: python main.py
+
+🔍 DEPENDENCIES:
+• Core: PyQt5, PyWinCtl, requests, Pillow, pyautogui, mss
+• Windows: pywin32, dxcam (optional)
+• Linux: python3-xlib, xdotool, wmctrl, scrot
+• macOS: pyobjc, pyobjc-frameworks
+
+📋 CONFIGURATION:
+Create a .env file with:
+- AZURE_API_KEY=your_azure_api_key
+- AZURE_ENDPOINT=your_azure_endpoint
+- DEFAULT_CAPTURE_INTERVAL=5
+- SCREENSHOTS_FOLDER=screenshots
+- OCR_LANGUAGE=en
+
+🛠️ TROUBLESHOOTING:
+• For installation issues, see TROUBLESHOOTING.md
+• For missing dependencies, run the universal installer
+• For platform-specific issues, check the README.md
+
+📄 LICENSE: MIT License
+👨‍💻 AUTHOR: Anas Gulzar (https://github.com/anas-gulzar-dev/grace/)
+📅 VERSION: 2.0.0 - Cross-Platform Edition
+"""
+
 import sys
 import os
 import json
@@ -8,7 +75,18 @@ import glob
 from datetime import datetime
 from typing import Optional, Dict, Any
 
-import pygetwindow as gw
+# Cross-platform window management
+try:
+    import pywinctl as gw  # Cross-platform replacement for pygetwindow
+    WINDOW_MANAGER_AVAILABLE = True
+except ImportError:
+    try:
+        import pygetwindow as gw  # Fallback for Windows-only environments
+        WINDOW_MANAGER_AVAILABLE = True
+        print("Using pygetwindow (Windows-only fallback)")
+    except ImportError:
+        WINDOW_MANAGER_AVAILABLE = False
+        print("❌ No window manager available. Please install PyWinCtl: pip install PyWinCtl")
 import pyautogui
 from PyQt5.QtWidgets import (
     QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, 
@@ -37,12 +115,43 @@ try:
 except ImportError:
     requests = None
 
+# Platform detection and platform-specific imports
+import platform
+PLATFORM = platform.system().lower()
+
+# Platform-specific screen capture
 try:
-    import dxcam
-    DXCAM_AVAILABLE = True
+    if PLATFORM == 'windows':
+        import dxcam
+        DXCAM_AVAILABLE = True
+    else:
+        DXCAM_AVAILABLE = False
 except ImportError:
     DXCAM_AVAILABLE = False
-    print("DXcam not available, using MSS fallback")
+    if PLATFORM == 'windows':
+        print("DXcam not available, using MSS fallback")
+
+# Platform-specific window management tools
+if PLATFORM == 'linux':
+    try:
+        import subprocess
+        # Test if xdotool and wmctrl are available
+        subprocess.run(['which', 'xdotool'], check=True, capture_output=True)
+        subprocess.run(['which', 'wmctrl'], check=True, capture_output=True)
+        LINUX_TOOLS_AVAILABLE = True
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        LINUX_TOOLS_AVAILABLE = False
+        print("⚠️  Linux window management tools not found. Please install: sudo apt-get install xdotool wmctrl")
+else:
+    LINUX_TOOLS_AVAILABLE = False
+
+# Cross-platform process management
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    PSUTIL_AVAILABLE = False
+    print("psutil not available, some features may be limited")
 
 try:
     from config import (
@@ -141,16 +250,37 @@ class InstantDeviceDialog(QDialog):
         layout.addLayout(button_layout)
     
     def refresh_devices(self):
-        """Refresh the device list"""
+        """Refresh the device list - Cross-platform implementation"""
         try:
+            if not WINDOW_MANAGER_AVAILABLE:
+                QMessageBox.warning(self, "Window Manager Error", 
+                                  "Window manager not available. Please install PyWinCtl: pip install PyWinCtl")
+                return
+            
             # Get updated device list
             all_windows = gw.getAllWindows()
             self.device_list = []
             
+            # Platform-specific filtering
+            excluded_titles = ['Program Manager', 'Desktop Window Manager']  # Windows
+            if PLATFORM == 'linux':
+                excluded_titles.extend(['Desktop', 'Panel', 'Taskbar', 'Unity Panel', 'gnome-panel'])
+            elif PLATFORM == 'darwin':  # macOS
+                excluded_titles.extend(['Dock', 'Menu Bar', 'Spotlight'])
+            
             for window in all_windows:
                 if window.title and window.title.strip():
-                    if window.title not in ['Program Manager', 'Desktop Window Manager']:
-                        self.device_list.append(window)
+                    if window.title not in excluded_titles:
+                        # Additional filtering for very small windows (likely system windows)
+                        try:
+                            if hasattr(window, 'width') and hasattr(window, 'height'):
+                                if window.width > 50 and window.height > 50:  # Filter out tiny windows
+                                    self.device_list.append(window)
+                            else:
+                                self.device_list.append(window)
+                        except:
+                            # If we can't get dimensions, include it anyway
+                            self.device_list.append(window)
             
             # Update table
             self.device_table.setRowCount(len(self.device_list))
@@ -162,18 +292,33 @@ class InstantDeviceDialog(QDialog):
                 name_item.setFont(QFont("Arial", 10, QFont.Bold))
                 self.device_table.setItem(i, 1, name_item)
                 
-                size_text = f"{window.width} x {window.height}"
+                # Handle potential attribute differences between PyWinCtl and pygetwindow
+                try:
+                    width = getattr(window, 'width', getattr(window, 'size', [0, 0])[0] if hasattr(window, 'size') else 0)
+                    height = getattr(window, 'height', getattr(window, 'size', [0, 0])[1] if hasattr(window, 'size') else 0)
+                    size_text = f"{width} x {height}"
+                except:
+                    size_text = "Unknown"
                 self.device_table.setItem(i, 2, QTableWidgetItem(size_text))
                 
-                pos_text = f"({window.left}, {window.top})"
+                try:
+                    left = getattr(window, 'left', getattr(window, 'topleft', [0, 0])[0] if hasattr(window, 'topleft') else 0)
+                    top = getattr(window, 'top', getattr(window, 'topleft', [0, 0])[1] if hasattr(window, 'topleft') else 0)
+                    pos_text = f"({left}, {top})"
+                except:
+                    pos_text = "Unknown"
                 self.device_table.setItem(i, 3, QTableWidgetItem(pos_text))
                 
-                visible_text = "✅ Yes" if window.visible else "❌ No"
-                visible_item = QTableWidgetItem(visible_text)
-                if window.visible:
-                    visible_item.setForeground(QColor("green"))
-                else:
-                    visible_item.setForeground(QColor("red"))
+                try:
+                    visible = getattr(window, 'visible', getattr(window, 'isVisible', True))
+                    visible_text = "✅ Yes" if visible else "❌ No"
+                    visible_item = QTableWidgetItem(visible_text)
+                    if visible:
+                        visible_item.setForeground(QColor("green"))
+                    else:
+                        visible_item.setForeground(QColor("red"))
+                except:
+                    visible_item = QTableWidgetItem("Unknown")
                 self.device_table.setItem(i, 4, visible_item)
             
             # Update count label
@@ -181,13 +326,13 @@ class InstantDeviceDialog(QDialog):
             if count_label:
                 for child in self.findChildren(QLabel):
                     if "Total Devices Found" in child.text():
-                        child.setText(f"🎯 Total Devices Found: {len(self.device_list)}")
+                        child.setText(f"🎯 Total Devices Found: {len(self.device_list)} (Platform: {PLATFORM.title()})")
                         break
             
             self.device_table.resizeColumnsToContents()
             
         except Exception as e:
-            QMessageBox.warning(self, "Refresh Error", f"Failed to refresh devices: {str(e)}")
+            QMessageBox.warning(self, "Refresh Error", f"Failed to refresh devices: {str(e)}\nPlatform: {PLATFORM}")
 
 
 class DeviceDiscoveryDialog(QDialog):
@@ -890,6 +1035,75 @@ pip install -r requirements.txt
 
 
 class BiosensorApp(QMainWindow):
+    """
+    Grace Biosensor Data Capture - Cross-Platform Main Application Class
+    
+    A comprehensive PyQt5-based application for capturing and analyzing biosensor data
+    through automated screen capture and OCR processing. Supports Windows, macOS, and Linux
+    with platform-specific optimizations and fallback mechanisms.
+    
+    🌟 Core Features:
+    • Cross-platform window detection and management (PyWinCtl/pygetwindow)
+    • Multi-method screenshot capture (dxcam, mss, pyautogui, scrot)
+    • Azure Computer Vision OCR integration
+    • Real-time device discovery and categorization
+    • Automated capture with configurable intervals
+    • CSV and JSON data export capabilities
+    • Modern UI with dark/light theme support
+    • Zoom functionality and accessibility features
+    • Platform-specific error handling and diagnostics
+    
+    🔧 Platform Support:
+    • Windows 10/11: Full feature support with dxcam acceleration
+    • macOS 10.14+: PyObjC-based window management
+    • Linux (X11): xdotool, wmctrl, and scrot integration
+    
+    📦 Dependencies:
+    • Core: PyQt5, requests, Pillow, pyautogui, mss
+    • Cross-platform: PyWinCtl (primary), pygetwindow (fallback)
+    • Windows-specific: pywin32, dxcam (optional)
+    • Linux-specific: python3-xlib, system tools (xdotool, wmctrl, scrot)
+    • macOS-specific: pyobjc, pyobjc-frameworks
+    
+    🎨 UI Features:
+    • Modern dark/light theme switching
+    • Responsive layout with zoom support
+    • Real-time status updates and progress indicators
+    • Tabbed interface for organized functionality
+    • Comprehensive help and documentation system
+    
+    🔄 Auto-Detection:
+    • Automatic device discovery every 2 seconds
+    • Window refresh every 3 seconds
+    • Platform-specific window filtering
+    • Smart categorization (phones, tablets, emulators, dev tools)
+    
+    📊 Data Management:
+    • Automatic screenshot organization
+    • Configurable data retention
+    • Multiple export formats (CSV, JSON)
+    • Timestamp-based file naming
+    
+    🛡️ Error Handling:
+    • Graceful degradation for missing dependencies
+    • Platform-specific error messages
+    • Comprehensive logging and diagnostics
+    • User-friendly error reporting
+    
+    Attributes:
+        is_dark_theme (bool): Current theme state (True for dark, False for light)
+        zoom_level (float): Current UI zoom level (0.5 to 2.0)
+        screenshots_dir (str): Directory for storing captured screenshots
+        auto_timer (QTimer): Timer for automated capture intervals
+        refresh_timer (QTimer): Timer for window list refresh
+        device_detection_timer (QTimer): Timer for device discovery
+        last_device_count (int): Cache for device count change detection
+        ocr_worker (OCRWorker): Background thread for OCR processing
+        azure_api_key (str): Azure Computer Vision API key
+        azure_endpoint (str): Azure Computer Vision endpoint URL
+        last_ocr_result (dict): Cache of most recent OCR result for export
+    """
+    
     def __init__(self):
         super().__init__()
         self.setWindowTitle("🔬 Biosensor Data Capture - Professional Edition")
@@ -1730,7 +1944,7 @@ class BiosensorApp(QMainWindow):
         ]
     
     def discover_newer_devices(self) -> dict:
-        """Discover and categorize all newer devices connected to the system"""
+        """Discover and categorize all newer devices connected to the system - Cross-platform implementation"""
         device_info = {
             'mobile_phones': [],
             'tablets': [],
@@ -1741,6 +1955,10 @@ class BiosensorApp(QMainWindow):
         }
         
         try:
+            if not WINDOW_MANAGER_AVAILABLE:
+                print("ERROR: Window manager not available for device discovery")
+                return device_info
+            
             all_windows = gw.getAllWindows()
             device_keywords = self.get_newer_device_keywords()
             
@@ -1754,13 +1972,30 @@ class BiosensorApp(QMainWindow):
                 matched_keywords = [kw for kw in device_keywords if kw in title_lower]
                 
                 if matched_keywords:
-                    device_entry = {
-                        'title': window.title,
-                        'size': f"{window.width}x{window.height}",
-                        'position': f"({window.left}, {window.top})",
-                        'visible': window.visible,
-                        'matched_keywords': matched_keywords
-                    }
+                    # Cross-platform attribute handling
+                    try:
+                        width = getattr(window, 'width', getattr(window, 'size', [0, 0])[0] if hasattr(window, 'size') else 0)
+                        height = getattr(window, 'height', getattr(window, 'size', [0, 0])[1] if hasattr(window, 'size') else 0)
+                        left = getattr(window, 'left', getattr(window, 'topleft', [0, 0])[0] if hasattr(window, 'topleft') else 0)
+                        top = getattr(window, 'top', getattr(window, 'topleft', [0, 0])[1] if hasattr(window, 'topleft') else 0)
+                        visible = getattr(window, 'visible', getattr(window, 'isVisible', True))
+                        
+                        device_entry = {
+                            'title': window.title,
+                            'size': f"{width}x{height}",
+                            'position': f"({left}, {top})",
+                            'visible': visible,
+                            'matched_keywords': matched_keywords
+                        }
+                    except Exception as attr_error:
+                        print(f"DEBUG: Error getting window attributes: {attr_error}")
+                        device_entry = {
+                            'title': window.title,
+                            'size': "Unknown",
+                            'position': "Unknown",
+                            'visible': True,
+                            'matched_keywords': matched_keywords
+                        }
                     
                     # Categorize device
                     if any(kw in title_lower for kw in ['phone', 'sm-', 'iphone', 'pixel', 'oneplus', 'xiaomi', 'huawei', 'oppo', 'vivo']):
@@ -1777,21 +2012,32 @@ class BiosensorApp(QMainWindow):
                         device_info['unknown_devices'].append(device_entry)
                         
         except Exception as e:
-            print(f"DEBUG: Error in device discovery: {e}")
+            print(f"DEBUG: Error in device discovery: {e} (Platform: {PLATFORM})")
             
         return device_info
     
     def show_all_devices_instantly(self):
-        """Show ALL devices instantly in a separate dialog window - no filtering!"""
+        """Show ALL devices instantly in a separate dialog window - Cross-platform implementation"""
         try:
+            if not WINDOW_MANAGER_AVAILABLE:
+                self.update_status("❌ Window manager not available. Install PyWinCtl: pip install PyWinCtl", "red")
+                return
+            
             # Get ALL windows immediately
             all_windows = gw.getAllWindows()
             device_list = []
             
+            # Platform-specific system window exclusions
+            excluded_titles = ['Program Manager', 'Desktop Window Manager']  # Windows
+            if PLATFORM == 'linux':
+                excluded_titles.extend(['Desktop', 'Panel', 'Taskbar', 'Unity Panel', 'gnome-panel'])
+            elif PLATFORM == 'darwin':  # macOS
+                excluded_titles.extend(['Dock', 'Menu Bar', 'Spotlight'])
+            
             for window in all_windows:
                 if window.title and window.title.strip():
-                    # Skip only the most basic system windows
-                    if window.title not in ['Program Manager', 'Desktop Window Manager']:
+                    # Skip platform-specific system windows
+                    if window.title not in excluded_titles:
                         device_list.append(window)
             
             # Create and show the instant device dialog
@@ -1799,21 +2045,34 @@ class BiosensorApp(QMainWindow):
             dialog.exec_()
             
             # Update status
-            self.update_status(f"📱 Displayed {len(device_list)} devices in separate window!", "green")
+            self.update_status(f"📱 Displayed {len(device_list)} devices in separate window! (Platform: {PLATFORM.title()})", "green")
             
             # Also refresh the combo box
             self.refresh_windows()
             
         except Exception as e:
-            self.update_status(f"❌ Error showing devices: {str(e)}", "red")
+            self.update_status(f"❌ Error showing devices: {str(e)} (Platform: {PLATFORM})", "red")
     
     def get_all_windows(self) -> list:
-        """Get ALL windows without any filtering - show everything instantly"""
+        """Get ALL windows without any filtering - Cross-platform implementation"""
         try:
+            if not WINDOW_MANAGER_AVAILABLE:
+                print("ERROR: Window manager not available")
+                self.update_status("❌ Window manager not available. Install PyWinCtl: pip install PyWinCtl", "red")
+                return []
+            
             all_windows = gw.getAllWindows()
             visible_windows = []
             
-            print(f"DEBUG: Processing {len(all_windows)} total windows...")
+            print(f"DEBUG: Processing {len(all_windows)} total windows on {PLATFORM}...")
+            
+            # Platform-specific system window exclusions
+            excluded_titles = ['Program Manager', 'Desktop Window Manager']  # Windows
+            if PLATFORM == 'linux':
+                excluded_titles.extend(['Desktop', 'Panel', 'Taskbar', 'Unity Panel', 'gnome-panel', 
+                                      'Plasma', 'plasmashell', 'kwin', 'compiz'])
+            elif PLATFORM == 'darwin':  # macOS
+                excluded_titles.extend(['Dock', 'Menu Bar', 'Spotlight', 'SystemUIServer'])
             
             for window in all_windows:
                 try:
@@ -1821,14 +2080,23 @@ class BiosensorApp(QMainWindow):
                     if not window.title or not window.title.strip():
                         continue
                     
-                    # Skip only the most basic system windows
-                    if window.title in ['Program Manager', 'Desktop Window Manager']:
+                    # Skip platform-specific system windows
+                    if window.title in excluded_titles:
                         continue
                     
-                    # Add ALL other windows - no filtering!
-                    if window.width > 0 and window.height > 0:
+                    # Cross-platform dimension checking
+                    try:
+                        width = getattr(window, 'width', getattr(window, 'size', [0, 0])[0] if hasattr(window, 'size') else 0)
+                        height = getattr(window, 'height', getattr(window, 'size', [0, 0])[1] if hasattr(window, 'size') else 0)
+                        
+                        # Add windows with reasonable dimensions
+                        if width > 0 and height > 0:
+                            visible_windows.append(window)
+                            print(f"DEBUG: Added window: {window.title} ({width}x{height})")
+                    except:
+                        # If we can't get dimensions, include it anyway
                         visible_windows.append(window)
-                        print(f"DEBUG: Added window: {window.title} ({window.width}x{window.height})")
+                        print(f"DEBUG: Added window (no dims): {window.title}")
                             
                 except Exception as window_error:
                     print(f"DEBUG: Error processing window: {window_error}")
@@ -1836,11 +2104,11 @@ class BiosensorApp(QMainWindow):
             
             # Sort windows by title
             visible_windows.sort(key=lambda w: w.title.lower())
-            print(f"DEBUG: Total windows found: {len(visible_windows)}")
+            print(f"DEBUG: Total windows found: {len(visible_windows)} on {PLATFORM}")
             return visible_windows
             
         except Exception as e:
-            self.update_status(f"❌ Error getting windows: {str(e)}", "red")
+            self.update_status(f"❌ Error getting windows: {str(e)} (Platform: {PLATFORM})", "red")
             return []
     
     def refresh_windows(self):
@@ -1883,7 +2151,7 @@ class BiosensorApp(QMainWindow):
         except Exception as e:
             self.update_status(f"❌ Error refreshing windows: {str(e)}", "red")
     
-    def get_selected_window(self) -> Optional[gw.Win32Window]:
+    def get_selected_window(self):
         """Get the currently selected window from combo box"""
         try:
             current_index = self.window_combo.currentIndex()
@@ -1898,39 +2166,94 @@ class BiosensorApp(QMainWindow):
             return None
     
     def activate_window(self, window) -> bool:
-        """Bring window to foreground and ensure it's visible"""
+        """Bring window to foreground and ensure it's visible - Cross-platform implementation"""
         try:
-            import win32gui
-            import win32con
+            if PLATFORM == 'windows':
+                # Windows-specific activation using win32gui
+                try:
+                    import win32gui
+                    import win32con
+                    
+                    # Get window handle
+                    hwnd = window._hWnd
+                    
+                    # Check if window is minimized
+                    if win32gui.IsIconic(hwnd):
+                        # Restore the window
+                        win32gui.ShowWindow(hwnd, win32con.SW_RESTORE)
+                        time.sleep(0.2)  # Give time for window to restore
+                    
+                    # Bring window to foreground
+                    win32gui.SetForegroundWindow(hwnd)
+                    time.sleep(0.3)  # Give time for window to come to front
+                    
+                    # Ensure window is visible
+                    win32gui.ShowWindow(hwnd, win32con.SW_SHOW)
+                    time.sleep(0.2)
+                    
+                    # Verify window is now in foreground
+                    foreground_hwnd = win32gui.GetForegroundWindow()
+                    if foreground_hwnd == hwnd:
+                        self.update_status(f"✅ Window activated: {window.title}", "green")
+                        return True
+                    else:
+                        self.update_status(f"⚠️ Window partially activated: {window.title}", "orange")
+                        return True  # Still proceed with capture
+                        
+                except ImportError:
+                    # Fallback if win32gui not available
+                    self.update_status(f"⚠️ win32gui not available, using PyWinCtl activation", "orange")
+                    
+            elif PLATFORM == 'linux':
+                # Linux-specific activation using xdotool/wmctrl
+                try:
+                    if LINUX_TOOLS_AVAILABLE:
+                        # Try to activate using xdotool
+                        result = subprocess.run(['xdotool', 'search', '--name', window.title], 
+                                              capture_output=True, text=True)
+                        if result.returncode == 0 and result.stdout.strip():
+                            window_id = result.stdout.strip().split('\n')[0]
+                            subprocess.run(['xdotool', 'windowactivate', window_id], check=True)
+                            time.sleep(0.3)
+                            self.update_status(f"✅ Window activated (Linux): {window.title}", "green")
+                            return True
+                    else:
+                        self.update_status(f"⚠️ Linux window tools not available, using PyWinCtl", "orange")
+                except Exception as linux_error:
+                    print(f"Linux activation failed: {linux_error}")
+                    
+            elif PLATFORM == 'darwin':  # macOS
+                # macOS-specific activation
+                try:
+                    # Use PyWinCtl's cross-platform activation
+                    if hasattr(window, 'activate'):
+                        window.activate()
+                        time.sleep(0.3)
+                        self.update_status(f"✅ Window activated (macOS): {window.title}", "green")
+                        return True
+                except Exception as macos_error:
+                    print(f"macOS activation failed: {macos_error}")
             
-            # Get window handle
-            hwnd = window._hWnd
-            
-            # Check if window is minimized
-            if win32gui.IsIconic(hwnd):
-                # Restore the window
-                win32gui.ShowWindow(hwnd, win32con.SW_RESTORE)
-                time.sleep(0.2)  # Give time for window to restore
-            
-            # Bring window to foreground
-            win32gui.SetForegroundWindow(hwnd)
-            time.sleep(0.3)  # Give time for window to come to front
-            
-            # Ensure window is visible
-            win32gui.ShowWindow(hwnd, win32con.SW_SHOW)
-            time.sleep(0.2)
-            
-            # Verify window is now in foreground
-            foreground_hwnd = win32gui.GetForegroundWindow()
-            if foreground_hwnd == hwnd:
-                self.update_status(f"✅ Window activated: {window.title}", "green")
-                return True
-            else:
-                self.update_status(f"⚠️ Window partially activated: {window.title}", "orange")
-                return True  # Still proceed with capture
+            # Cross-platform fallback using PyWinCtl
+            try:
+                if hasattr(window, 'activate'):
+                    window.activate()
+                    time.sleep(0.3)
+                    self.update_status(f"✅ Window activated (PyWinCtl): {window.title}", "green")
+                    return True
+                elif hasattr(window, 'setFocus'):
+                    window.setFocus()
+                    time.sleep(0.3)
+                    self.update_status(f"✅ Window focused: {window.title}", "green")
+                    return True
+                else:
+                    self.update_status(f"⚠️ Window activation method not available for: {window.title}", "orange")
+                    return True  # Still proceed with capture
+            except Exception as fallback_error:
+                print(f"PyWinCtl activation failed: {fallback_error}")
                 
         except Exception as e:
-            self.update_status(f"⚠️ Could not activate window: {str(e)}", "orange")
+            self.update_status(f"⚠️ Could not activate window: {str(e)} (Platform: {PLATFORM})", "orange")
             return True  # Still try to capture
     
     def take_screenshot(self, window) -> Optional[str]:
@@ -1940,19 +2263,46 @@ class BiosensorApp(QMainWindow):
             self.update_status("🔄 Activating target window...", "blue")
             self.activate_window(window)
             
-            # Step 2: Refresh window position (in case it moved)
-            try:
-                window_list = gw.getWindowsWithTitle(window.title)
-                for w in window_list:
-                    if w.visible and w.width > 0 and w.height > 0:
-                        window = w  # Use updated window object
-                        break
-            except:
-                pass  # Use original window if refresh fails
+            # Step 2: Refresh window position (in case it moved) - Cross-platform
+            if WINDOW_MANAGER_AVAILABLE:
+                try:
+                    # Use PyWinCtl for cross-platform window refresh
+                    all_windows = pywinctl.getAllWindows()
+                    for w in all_windows:
+                        if hasattr(w, 'title') and w.title == window.title:
+                            # Check if window has valid dimensions
+                            width = getattr(w, 'width', getattr(w, 'size', [0, 0])[0] if hasattr(w, 'size') else 0)
+                            height = getattr(w, 'height', getattr(w, 'size', [0, 0])[1] if hasattr(w, 'size') else 0)
+                            visible = getattr(w, 'visible', getattr(w, 'isVisible', True))
+                            
+                            if visible and width > 0 and height > 0:
+                                window = w  # Use updated window object
+                                break
+                except Exception as e:
+                    print(f"Window refresh failed: {e}")
+                    pass  # Use original window if refresh fails
+            else:
+                # Fallback for systems without PyWinCtl
+                try:
+                    if hasattr(gw, 'getWindowsWithTitle'):
+                        window_list = gw.getWindowsWithTitle(window.title)
+                        for w in window_list:
+                            if w.visible and w.width > 0 and w.height > 0:
+                                window = w  # Use updated window object
+                                break
+                except:
+                    pass  # Use original window if refresh fails
             
-            # Step 3: Validate window region
-            if window.width <= 0 or window.height <= 0:
-                self.update_status("❌ Invalid window dimensions", "red")
+            # Step 3: Validate window region - Cross-platform attribute handling
+            try:
+                width = getattr(window, 'width', getattr(window, 'size', [0, 0])[0] if hasattr(window, 'size') else 0)
+                height = getattr(window, 'height', getattr(window, 'size', [0, 0])[1] if hasattr(window, 'size') else 0)
+                
+                if width <= 0 or height <= 0:
+                    self.update_status("❌ Invalid window dimensions", "red")
+                    return None
+            except Exception as e:
+                self.update_status(f"❌ Could not get window dimensions: {str(e)}", "red")
                 return None
             
             # Generate unique filename
@@ -1961,16 +2311,24 @@ class BiosensorApp(QMainWindow):
             filename = f"screenshot_{timestamp}_{random_num}.png"
             filepath = os.path.join(self.screenshots_dir, filename)
             
-            self.update_status(f"📸 Capturing window: {window.title} ({window.width}x{window.height})", "blue")
+            # Get cross-platform window dimensions and position
+            try:
+                width = getattr(window, 'width', getattr(window, 'size', [0, 0])[0] if hasattr(window, 'size') else 0)
+                height = getattr(window, 'height', getattr(window, 'size', [0, 0])[1] if hasattr(window, 'size') else 0)
+                left = getattr(window, 'left', getattr(window, 'topleft', [0, 0])[0] if hasattr(window, 'topleft') else 0)
+                top = getattr(window, 'top', getattr(window, 'topleft', [0, 0])[1] if hasattr(window, 'topleft') else 0)
+                
+                self.update_status(f"📸 Capturing window: {window.title} ({width}x{height})", "blue")
+            except Exception as e:
+                self.update_status(f"❌ Could not get window properties: {str(e)}", "red")
+                return None
             
-            # Method 1: Try DXcam (fastest, Windows Desktop Duplication API)
-            if DXCAM_AVAILABLE:
+            # Method 1: Try DXcam (fastest, Windows Desktop Duplication API) - Windows only
+            if DXCAM_AVAILABLE and PLATFORM == "Windows":
                 try:
                     camera = dxcam.create()
                     if camera:
-                        region = (window.left, window.top, 
-                                window.left + window.width, 
-                                window.top + window.height)
+                        region = (left, top, left + width, top + height)
                         frame = camera.grab(region=region)
                         if frame is not None and frame.size > 0:
                             img = Image.fromarray(frame)
@@ -1988,10 +2346,10 @@ class BiosensorApp(QMainWindow):
             try:
                 with mss.mss() as sct:
                     monitor = {
-                        "top": window.top,
-                        "left": window.left,
-                        "width": window.width,
-                        "height": window.height
+                        "top": top,
+                        "left": left,
+                        "width": width,
+                        "height": height
                     }
                     
                     # Grab the screenshot
@@ -2011,12 +2369,28 @@ class BiosensorApp(QMainWindow):
             except Exception as e:
                 print(f"MSS failed: {e}")
             
-            # Method 3: Fallback to pyautogui with window activation
+            # Method 3: Linux-specific screenshot methods
+            if PLATFORM == "Linux":
+                try:
+                    # Try using scrot for Linux
+                    import subprocess
+                    scrot_cmd = [
+                        "scrot", 
+                        "-a", f"{left},{top},{width},{height}",
+                        filepath
+                    ]
+                    result = subprocess.run(scrot_cmd, capture_output=True, text=True)
+                    if result.returncode == 0 and os.path.exists(filepath):
+                        self.update_status(f"✅ Screenshot saved (scrot): {filename}", "green")
+                        return filepath
+                except Exception as e:
+                    print(f"scrot failed: {e}")
+            
+            # Method 4: Fallback to pyautogui with window activation (cross-platform)
             try:
                 # Additional wait to ensure window is ready
                 time.sleep(0.5)
                 
-                left, top, width, height = window.left, window.top, window.width, window.height
                 screenshot = pyautogui.screenshot(region=(left, top, width, height))
                 
                 # Check if screenshot is not just black
@@ -2034,11 +2408,11 @@ class BiosensorApp(QMainWindow):
             except Exception as e:
                 print(f"PyAutoGUI failed: {e}")
             
-            self.update_status("❌ All capture methods failed", "red")
+            self.update_status(f"❌ All capture methods failed (Platform: {PLATFORM})", "red")
             return None
             
         except Exception as e:
-            self.update_status(f"❌ Screenshot failed: {str(e)}", "red")
+            self.update_status(f"❌ Screenshot failed: {str(e)} (Platform: {PLATFORM})", "red")
             return None
     
     def process_with_ocr(self, image_path: str):
@@ -2629,29 +3003,78 @@ class BiosensorApp(QMainWindow):
 
 
 def main():
+    """
+    Main application entry point for Grace Biosensor Data Capture.
+    
+    Initializes the cross-platform PyQt5 application, performs dependency checks,
+    and launches the main biosensor data capture interface.
+    
+    Features:
+    • Cross-platform compatibility (Windows, macOS, Linux)
+    • Automatic dependency validation
+    • Modern UI with dark theme support
+    • Platform-specific optimizations
+    
+    Returns:
+        int: Application exit code
+    """
     app = QApplication(sys.argv)
     
-    # Set application properties
-    app.setApplicationName("Biosensor Data Capture")
-    app.setApplicationVersion("1.0")
+    # Set application properties for cross-platform compatibility
+    app.setApplicationName("Grace Biosensor Data Capture")
+    app.setApplicationVersion("2.0.0")  # Cross-Platform Edition
+    app.setApplicationDisplayName("Grace Biosensor Data Capture - Cross-Platform Edition")
+    app.setOrganizationName("Anas Gulzar Dev")
+    app.setOrganizationDomain("github.com/anas-gulzar-dev")
+    
+    # Platform detection for startup optimizations
+    platform_info = f"Running on {PLATFORM.title()}"
+    if WINDOW_MANAGER_AVAILABLE:
+        platform_info += " with window management support"
+    print(f"🚀 {platform_info}")
     
     # Create and show main window
     window = BiosensorApp()
     window.show()
     
-    # Check for required dependencies
+    # Cross-platform dependency validation
     missing_deps = []
+    missing_features = []
+    
     if not requests:
         missing_deps.append("requests")
     
-    if missing_deps:
+    if not WINDOW_MANAGER_AVAILABLE:
+        missing_features.append("Window management (install PyWinCtl)")
+    
+    if PLATFORM == 'windows' and not DXCAM_AVAILABLE:
+        missing_features.append("DXcam acceleration (optional)")
+    
+    if PLATFORM == 'linux' and not LINUX_TOOLS_AVAILABLE:
+        missing_features.append("Linux window tools (install xdotool, wmctrl)")
+    
+    # Show dependency warnings if any
+    if missing_deps or missing_features:
+        warning_msg = "⚠️ Some dependencies or features are missing:\n\n"
+        
+        if missing_deps:
+            warning_msg += f"Critical dependencies: {', '.join(missing_deps)}\n"
+            warning_msg += "Install with: pip install " + " ".join(missing_deps) + "\n\n"
+        
+        if missing_features:
+            warning_msg += f"Optional features: {', '.join(missing_features)}\n"
+            warning_msg += "For full installation, run: python install_universal.py\n\n"
+        
+        warning_msg += "The application will continue with limited functionality."
+        
         QMessageBox.information(
             window, 
-            "Missing Dependencies", 
-            f"Please install missing dependencies:\npip install {' '.join(missing_deps)}"
+            "Dependency Check - Grace Biosensor Data Capture", 
+            warning_msg
         )
     
-    sys.exit(app.exec_())
+    # Start the application event loop
+    return sys.exit(app.exec_())
 
 
 if __name__ == "__main__":

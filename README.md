@@ -5,15 +5,15 @@
 ![License](https://img.shields.io/badge/license-MIT-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
 
-A professional-grade application for capturing, processing, and analyzing data from biosensor devices through automated screen capture and OCR technology.
+A professional-grade **cross-platform** application for capturing, processing, and analyzing data from biosensor devices through automated screen capture and OCR technology. Now fully supports Windows, macOS, and Linux distributions.
 
 ## 🌟 Features
 
-### 📸 Advanced Screen Capture
+### 📸 Advanced Cross-Platform Screen Capture
 - **Multi-Device Support**: Capture from phones, tablets, computers, and biosensor displays
-- **Smart Window Detection**: Automatically detects and categorizes device windows
-- **High-Quality Capture**: Optimized capture methods for best image quality
-- **Auto-Refresh**: Continuously scans for new devices and windows
+- **Smart Window Detection**: Cross-platform window detection using PyWinCtl
+- **Platform-Optimized Capture**: DXcam (Windows), scrot (Linux), MSS (all platforms)
+- **Auto-Refresh**: Continuously scans for new devices and windows across all platforms
 
 ### 🔍 Intelligent OCR Processing
 - **Azure Computer Vision**: Microsoft's advanced OCR technology
@@ -47,28 +47,80 @@ A professional-grade application for capturing, processing, and analyzing data f
 2. **Azure Computer Vision API** subscription
 3. **Device connection** (USB or wireless)
 4. **Screen mirroring software** (scrcpy for Android, QuickTime for iOS)
+5. **Platform-specific dependencies** (automatically handled by installation scripts)
 
 ### Installation
 
-1. **Clone or download** this repository:
+#### 🚀 Simple Installation (Recommended)
+
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/anas-gulzar-dev/grace.git
    cd grace
    ```
 
-2. **Install dependencies**:
+2. **Install dependencies based on your platform**:
+
+   **Windows:**
+   ```bash
+   pip install -r windows_requirements.txt
+   ```
+
+   **Linux:**
+   ```bash
+   # Option 1: Use the automated installer (recommended)
+   chmod +x install_linux.sh
+   ./install_linux.sh
+   
+   # Option 2: Manual installation
+   # Install system packages first
+   sudo apt install python3-tk xdotool wmctrl scrot python3-full python3-venv
+   
+   # Create virtual environment (recommended for modern Linux)
+   python3 -m venv grace_env
+   source grace_env/bin/activate
+   pip install -r linux_requirements.txt
+   
+   # Or install system-wide (not recommended)
+   pip install -r linux_requirements.txt --break-system-packages
+   ```
+
+   **Cross-platform (basic):**
    ```bash
    pip install -r requirements.txt
    ```
 
 3. **Configure environment**:
-   - Copy `.env.example` to `.env`
-   - Add your Azure Computer Vision API credentials
+   ```bash
+   cp .env.example .env
+   # Edit .env and add your Azure Computer Vision API credentials
+   ```
 
 4. **Launch the application**:
    ```bash
    python main.py
    ```
+
+#### 📋 Requirements Files
+
+- **`requirements.txt`**: Core cross-platform dependencies
+- **`windows_requirements.txt`**: Complete Windows installation (includes Windows-specific packages)
+- **`linux_requirements.txt`**: Complete Linux installation (includes Linux-specific packages)
+
+#### 🔧 System Dependencies (Linux only)
+
+For Linux users, install these system packages before running pip:
+
+```bash
+# Ubuntu/Debian
+sudo apt install python3-tk xdotool wmctrl scrot
+
+# Fedora
+sudo dnf install tkinter xdotool wmctrl scrot
+
+# Arch Linux
+sudo pacman -S tk xdotool wmctrl scrot
+```
 
 ## ⚙️ Configuration
 
@@ -175,6 +227,28 @@ ENABLE_ANIMATIONS=true
 ## 🔧 Troubleshooting
 
 ### Common Issues
+
+#### Installation Problems
+- **Issue**: Complex installation process or dependency conflicts
+- **Recommended Solution**: Use the interactive installer
+  ```bash
+  python install_platform_selector.py
+  ```
+- **Benefits**: 
+  - Auto-detects your platform
+  - Handles system packages automatically
+  - Tests installation before completion
+  - Provides detailed error messages
+
+#### Python 3.13 Pillow Installation Error
+- **Issue**: `KeyError: '__version__'` when installing Pillow
+- **Quick Fix**: Run `python fix_pillow_python313.py`
+- **Alternative**: Use interactive installer (handles this automatically)
+- **Manual Solutions**:
+  - Update pip: `python -m pip install --upgrade pip setuptools wheel`
+  - Install without build isolation: `pip install Pillow --no-build-isolation`
+  - Use binary only: `pip install --only-binary=Pillow Pillow`
+  - Install pre-release: `pip install Pillow --pre`
 
 #### API Key Problems
 - **Issue**: "Invalid API key" error

@@ -1,0 +1,28 @@
+# Linux Requirements for Biosensor Data Capture Tool
+# Simple installation: pip install -r linux_requirements.txt
+# Note: Some system packages may need to be installed via apt/yum/pacman
+
+# Core Dependencies
+pyautogui==0.9.54
+PyWinCtl==0.0.50
+Pillow==10.4.0
+requests==2.32.3
+opencv-python==4.10.0.84
+numpy==2.1.1
+mss==9.0.1
+python-dotenv==1.0.0
+psutil==5.9.8
+
+# UI Libraries
+PyQt5==5.15.10
+qtawesome==1.3.1
+qdarkstyle==3.2.3
+PyQt5-stubs==5.15.6.0
+
+# Linux-specific
+python3-xlib==0.15
+
+# System packages needed (install via package manager):
+# Ubuntu/Debian: sudo apt install python3-tk xdotool wmctrl scrot
+# Fedora: sudo dnf install tkinter xdotool wmctrl scrot
+# Arch: sudo pacman -S tk xdotool wmctrl scrot

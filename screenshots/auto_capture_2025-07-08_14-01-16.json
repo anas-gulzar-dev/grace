@@ -1,0 +1,1253 @@
+{
+  "timestamp": "2025-07-08 14:01:16",
+  "window_title": "WhatsApp",
+  "raw_text": "kr di hein\n1:57 PM\ne\nWhatsApp\nArchived\nD Search archived chats\nBhai Anas\nMuhammad Usaid\nU shukriya bhot meri api key b...\n+923208463188\nKesi hain ap dear\nZain Toor (You)\nV/ Bonus meme for the birt..\nHusnain Tabassam\nV/ asslamualikum bhai husnain...\nMaam Hamna\nV/ Reply to kary\nHaya Abaya By IshmA\nEasypaisa/Jazzcash : 0300 8985...\nAbaya Shop 3 Abaya Shop\nAp humri I'd visit kara Sara desi...\nFree Online Seminar 2\nUnknown number: MY SELF...\nAbaya Shop Abaya Shop 2\nArzoo Pakiysh\nV/ Sister\nBhai Anas\n1:55 PM\n1:58 PM\n1:55 PM\nArdived\n11:26 AM\n1226 AM\nAr&ived\nYesterday\nArdived\n7/2/2025\n6/30/2025\nAr&ived\n6/27/2025\nArdived\n6/27/2025\nAr&ived\n6/17/2025\n6/12/2025\nhn g\n1:57 PM\njesy ap ne likhi same to same wesy hi\npip freeze > installed.txt\npip uninstall -y -r installed.txt\nauper wale\npip ke sath\nb hai anas\ncommand run kare\npip freeze > installed.txt in vscode\nthen 2. pip uninstall -y -r installed.txt\ndel installed.txt\nnai in vscode ko nahi likhna\njust command likhna hai\ndel installed.txt\nye run ki hein\n1:58 PM\n1:58 PM\nnai in vscode ko nahi likhna\nnhi likha\n1:58 PM\nbipe a message\n1:56 PM U\n1-87 PM\n1:58 PM U\nO",
+  "full_ocr_result": {
+    "language": "en",
+    "textAngle": 0.0,
+    "orientation": "Up",
+    "regions": [
+      {
+        "boundingBox": "479,110,56,10",
+        "lines": [
+          {
+            "boundingBox": "479,110,56,10",
+            "words": [
+              {
+                "boundingBox": "479,110,11,10",
+                "text": "kr"
+              },
+              {
+                "boundingBox": "494,110,11,10",
+                "text": "di"
+              },
+              {
+                "boundingBox": "510,110,25,10",
+                "text": "hein"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "728,282,34,7",
+        "lines": [
+          {
+            "boundingBox": "728,282,34,7",
+            "words": [
+              {
+                "boundingBox": "728,282,17,7",
+                "text": "1:57"
+              },
+              {
+                "boundingBox": "749,282,13,7",
+                "text": "PM"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "21,891,22,22",
+        "lines": [
+          {
+            "boundingBox": "21,891,22,22",
+            "words": [
+              {
+                "boundingBox": "21,891,22,22",
+                "text": "e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "52,17,296,905",
+        "lines": [
+          {
+            "boundingBox": "52,17,56,12",
+            "words": [
+              {
+                "boundingBox": "52,17,56,12",
+                "text": "WhatsApp"
+              }
+            ]
+          },
+          {
+            "boundingBox": "79,67,78,15",
+            "words": [
+              {
+                "boundingBox": "79,67,78,15",
+                "text": "Archived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "90,115,152,11",
+            "words": [
+              {
+                "boundingBox": "90,115,11,11",
+                "text": "D"
+              },
+              {
+                "boundingBox": "109,116,41,10",
+                "text": "Search"
+              },
+              {
+                "boundingBox": "154,116,51,10",
+                "text": "archived"
+              },
+              {
+                "boundingBox": "210,116,32,10",
+                "text": "chats"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,171,61,10",
+            "words": [
+              {
+                "boundingBox": "144,171,26,10",
+                "text": "Bhai"
+              },
+              {
+                "boundingBox": "174,171,31,10",
+                "text": "Anas"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,243,115,10",
+            "words": [
+              {
+                "boundingBox": "144,243,76,10",
+                "text": "Muhammad"
+              },
+              {
+                "boundingBox": "225,243,34,10",
+                "text": "Usaid"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,264,204,13",
+            "words": [
+              {
+                "boundingBox": "144,264,16,10",
+                "text": "U"
+              },
+              {
+                "boundingBox": "164,264,50,13",
+                "text": "shukriya"
+              },
+              {
+                "boundingBox": "220,264,28,10",
+                "text": "bhot"
+              },
+              {
+                "boundingBox": "252,264,27,10",
+                "text": "meri"
+              },
+              {
+                "boundingBox": "283,264,18,13",
+                "text": "api"
+              },
+              {
+                "boundingBox": "307,264,20,13",
+                "text": "key"
+              },
+              {
+                "boundingBox": "331,264,17,10",
+                "text": "b..."
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,315,100,10",
+            "words": [
+              {
+                "boundingBox": "144,315,100,10",
+                "text": "+923208463188"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,336,105,13",
+            "words": [
+              {
+                "boundingBox": "144,336,23,10",
+                "text": "Kesi"
+              },
+              {
+                "boundingBox": "172,336,25,10",
+                "text": "hain"
+              },
+              {
+                "boundingBox": "202,339,15,10",
+                "text": "ap"
+              },
+              {
+                "boundingBox": "221,336,28,10",
+                "text": "dear"
+              }
+            ]
+          },
+          {
+            "boundingBox": "143,387,95,12",
+            "words": [
+              {
+                "boundingBox": "143,387,27,10",
+                "text": "Zain"
+              },
+              {
+                "boundingBox": "174,387,29,10",
+                "text": "Toor"
+              },
+              {
+                "boundingBox": "207,387,31,12",
+                "text": "(You)"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,408,199,10",
+            "words": [
+              {
+                "boundingBox": "144,408,16,10",
+                "text": "V/"
+              },
+              {
+                "boundingBox": "184,408,37,10",
+                "text": "Bonus"
+              },
+              {
+                "boundingBox": "226,411,37,7",
+                "text": "meme"
+              },
+              {
+                "boundingBox": "268,408,17,10",
+                "text": "for"
+              },
+              {
+                "boundingBox": "289,408,19,10",
+                "text": "the"
+              },
+              {
+                "boundingBox": "313,408,30,10",
+                "text": "birt.."
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,459,115,10",
+            "words": [
+              {
+                "boundingBox": "144,459,50,10",
+                "text": "Husnain"
+              },
+              {
+                "boundingBox": "199,459,60,10",
+                "text": "Tabassam"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,480,202,10",
+            "words": [
+              {
+                "boundingBox": "144,480,16,10",
+                "text": "V/"
+              },
+              {
+                "boundingBox": "164,480,89,10",
+                "text": "asslamualikum"
+              },
+              {
+                "boundingBox": "259,480,25,10",
+                "text": "bhai"
+              },
+              {
+                "boundingBox": "289,480,57,10",
+                "text": "husnain..."
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,531,88,10",
+            "words": [
+              {
+                "boundingBox": "144,531,38,10",
+                "text": "Maam"
+              },
+              {
+                "boundingBox": "188,531,44,10",
+                "text": "Hamna"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,552,100,13",
+            "words": [
+              {
+                "boundingBox": "144,552,16,10",
+                "text": "V/"
+              },
+              {
+                "boundingBox": "165,552,33,13",
+                "text": "Reply"
+              },
+              {
+                "boundingBox": "201,553,13,9",
+                "text": "to"
+              },
+              {
+                "boundingBox": "219,552,25,13",
+                "text": "kary"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,603,138,13",
+            "words": [
+              {
+                "boundingBox": "144,603,31,13",
+                "text": "Haya"
+              },
+              {
+                "boundingBox": "179,603,39,13",
+                "text": "Abaya"
+              },
+              {
+                "boundingBox": "223,603,15,13",
+                "text": "By"
+              },
+              {
+                "boundingBox": "242,603,40,10",
+                "text": "IshmA"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,624,200,13",
+            "words": [
+              {
+                "boundingBox": "144,624,115,13",
+                "text": "Easypaisa/Jazzcash"
+              },
+              {
+                "boundingBox": "264,627,2,7",
+                "text": ":"
+              },
+              {
+                "boundingBox": "270,624,30,10",
+                "text": "0300"
+              },
+              {
+                "boundingBox": "304,624,40,10",
+                "text": "8985..."
+              }
+            ]
+          },
+          {
+            "boundingBox": "143,675,167,13",
+            "words": [
+              {
+                "boundingBox": "143,675,39,13",
+                "text": "Abaya"
+              },
+              {
+                "boundingBox": "187,675,32,13",
+                "text": "Shop"
+              },
+              {
+                "boundingBox": "223,675,7,10",
+                "text": "3"
+              },
+              {
+                "boundingBox": "234,675,39,13",
+                "text": "Abaya"
+              },
+              {
+                "boundingBox": "278,675,32,13",
+                "text": "Shop"
+              }
+            ]
+          },
+          {
+            "boundingBox": "143,696,203,13",
+            "words": [
+              {
+                "boundingBox": "143,696,17,13",
+                "text": "Ap"
+              },
+              {
+                "boundingBox": "165,696,35,10",
+                "text": "humri"
+              },
+              {
+                "boundingBox": "205,696,13,10",
+                "text": "I'd"
+              },
+              {
+                "boundingBox": "223,696,24,10",
+                "text": "visit"
+              },
+              {
+                "boundingBox": "252,696,25,10",
+                "text": "kara"
+              },
+              {
+                "boundingBox": "281,696,26,10",
+                "text": "Sara"
+              },
+              {
+                "boundingBox": "312,696,34,10",
+                "text": "desi..."
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,747,138,10",
+            "words": [
+              {
+                "boundingBox": "144,747,26,10",
+                "text": "Free"
+              },
+              {
+                "boundingBox": "174,747,41,10",
+                "text": "Online"
+              },
+              {
+                "boundingBox": "220,747,52,10",
+                "text": "Seminar"
+              },
+              {
+                "boundingBox": "275,747,7,10",
+                "text": "2"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,768,197,10",
+            "words": [
+              {
+                "boundingBox": "144,768,57,10",
+                "text": "Unknown"
+              },
+              {
+                "boundingBox": "206,768,50,10",
+                "text": "number:"
+              },
+              {
+                "boundingBox": "281,768,19,10",
+                "text": "MY"
+              },
+              {
+                "boundingBox": "304,768,37,10",
+                "text": "SELF..."
+              }
+            ]
+          },
+          {
+            "boundingBox": "143,819,167,13",
+            "words": [
+              {
+                "boundingBox": "143,819,39,13",
+                "text": "Abaya"
+              },
+              {
+                "boundingBox": "187,819,32,13",
+                "text": "Shop"
+              },
+              {
+                "boundingBox": "223,819,39,13",
+                "text": "Abaya"
+              },
+              {
+                "boundingBox": "266,819,32,13",
+                "text": "Shop"
+              },
+              {
+                "boundingBox": "303,819,7,10",
+                "text": "2"
+              }
+            ]
+          },
+          {
+            "boundingBox": "143,891,89,13",
+            "words": [
+              {
+                "boundingBox": "143,891,38,10",
+                "text": "Arzoo"
+              },
+              {
+                "boundingBox": "186,891,46,13",
+                "text": "Pakiysh"
+              }
+            ]
+          },
+          {
+            "boundingBox": "144,912,54,10",
+            "words": [
+              {
+                "boundingBox": "144,912,16,10",
+                "text": "V/"
+              },
+              {
+                "boundingBox": "164,912,34,10",
+                "text": "Sister"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "511,68,61,10",
+        "lines": [
+          {
+            "boundingBox": "511,68,61,10",
+            "words": [
+              {
+                "boundingBox": "511,68,26,10",
+                "text": "Bhai"
+              },
+              {
+                "boundingBox": "541,68,31,10",
+                "text": "Anas"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "557,116,34,7",
+        "lines": [
+          {
+            "boundingBox": "557,116,34,7",
+            "words": [
+              {
+                "boundingBox": "557,116,17,7",
+                "text": "1:55"
+              },
+              {
+                "boundingBox": "578,116,13,7",
+                "text": "PM"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "358,172,55,730",
+        "lines": [
+          {
+            "boundingBox": "371,172,41,9",
+            "words": [
+              {
+                "boundingBox": "371,172,21,9",
+                "text": "1:58"
+              },
+              {
+                "boundingBox": "396,172,16,9",
+                "text": "PM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "371,244,41,9",
+            "words": [
+              {
+                "boundingBox": "371,244,21,9",
+                "text": "1:55"
+              },
+              {
+                "boundingBox": "396,244,16,9",
+                "text": "PM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "361,265,47,9",
+            "words": [
+              {
+                "boundingBox": "361,265,47,9",
+                "text": "Ardived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "363,316,49,9",
+            "words": [
+              {
+                "boundingBox": "363,316,27,9",
+                "text": "11:26"
+              },
+              {
+                "boundingBox": "394,316,18,9",
+                "text": "AM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "363,388,49,9",
+            "words": [
+              {
+                "boundingBox": "363,388,27,9",
+                "text": "1226"
+              },
+              {
+                "boundingBox": "394,388,18,9",
+                "text": "AM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "361,409,47,9",
+            "words": [
+              {
+                "boundingBox": "361,409,47,9",
+                "text": "Ar&ived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "362,460,51,12",
+            "words": [
+              {
+                "boundingBox": "362,460,51,12",
+                "text": "Yesterday"
+              }
+            ]
+          },
+          {
+            "boundingBox": "361,481,47,9",
+            "words": [
+              {
+                "boundingBox": "361,481,47,9",
+                "text": "Ardived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "364,532,48,10",
+            "words": [
+              {
+                "boundingBox": "364,532,48,10",
+                "text": "7/2/2025"
+              }
+            ]
+          },
+          {
+            "boundingBox": "358,604,54,10",
+            "words": [
+              {
+                "boundingBox": "358,604,54,10",
+                "text": "6/30/2025"
+              }
+            ]
+          },
+          {
+            "boundingBox": "361,625,47,9",
+            "words": [
+              {
+                "boundingBox": "361,625,47,9",
+                "text": "Ar&ived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "358,676,54,10",
+            "words": [
+              {
+                "boundingBox": "358,676,54,10",
+                "text": "6/27/2025"
+              }
+            ]
+          },
+          {
+            "boundingBox": "361,697,47,9",
+            "words": [
+              {
+                "boundingBox": "361,697,47,9",
+                "text": "Ardived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "358,748,54,10",
+            "words": [
+              {
+                "boundingBox": "358,748,54,10",
+                "text": "6/27/2025"
+              }
+            ]
+          },
+          {
+            "boundingBox": "361,769,47,9",
+            "words": [
+              {
+                "boundingBox": "361,769,47,9",
+                "text": "Ar&ived"
+              }
+            ]
+          },
+          {
+            "boundingBox": "358,820,54,10",
+            "words": [
+              {
+                "boundingBox": "358,820,54,10",
+                "text": "6/17/2025"
+              }
+            ]
+          },
+          {
+            "boundingBox": "358,892,54,10",
+            "words": [
+              {
+                "boundingBox": "358,892,54,10",
+                "text": "6/12/2025"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "476,239,230,419",
+        "lines": [
+          {
+            "boundingBox": "479,239,26,13",
+            "words": [
+              {
+                "boundingBox": "479,239,14,10",
+                "text": "hn"
+              },
+              {
+                "boundingBox": "498,242,7,10",
+                "text": "g"
+              }
+            ]
+          },
+          {
+            "boundingBox": "527,245,34,7",
+            "words": [
+              {
+                "boundingBox": "527,245,17,7",
+                "text": "1:57"
+              },
+              {
+                "boundingBox": "548,245,13,7",
+                "text": "PM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "476,276,230,13",
+            "words": [
+              {
+                "boundingBox": "476,276,26,13",
+                "text": "jesy"
+              },
+              {
+                "boundingBox": "505,279,15,10",
+                "text": "ap"
+              },
+              {
+                "boundingBox": "525,279,14,7",
+                "text": "ne"
+              },
+              {
+                "boundingBox": "544,276,24,10",
+                "text": "likhi"
+              },
+              {
+                "boundingBox": "573,279,32,7",
+                "text": "same"
+              },
+              {
+                "boundingBox": "609,277,12,9",
+                "text": "to"
+              },
+              {
+                "boundingBox": "626,279,32,7",
+                "text": "same"
+              },
+              {
+                "boundingBox": "662,279,30,10",
+                "text": "wesy"
+              },
+              {
+                "boundingBox": "696,276,10,10",
+                "text": "hi"
+              }
+            ]
+          },
+          {
+            "boundingBox": "479,626,148,13",
+            "words": [
+              {
+                "boundingBox": "479,626,19,13",
+                "text": "pip"
+              },
+              {
+                "boundingBox": "502,626,37,10",
+                "text": "freeze"
+              },
+              {
+                "boundingBox": "544,628,7,7",
+                "text": ">"
+              },
+              {
+                "boundingBox": "557,626,70,10",
+                "text": "installed.txt"
+              }
+            ]
+          },
+          {
+            "boundingBox": "479,645,179,13",
+            "words": [
+              {
+                "boundingBox": "479,645,19,13",
+                "text": "pip"
+              },
+              {
+                "boundingBox": "502,645,51,10",
+                "text": "uninstall"
+              },
+              {
+                "boundingBox": "558,648,12,10",
+                "text": "-y"
+              },
+              {
+                "boundingBox": "574,648,10,7",
+                "text": "-r"
+              },
+              {
+                "boundingBox": "588,645,70,10",
+                "text": "installed.txt"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "893,156,210,437",
+        "lines": [
+          {
+            "boundingBox": "1036,156,67,13",
+            "words": [
+              {
+                "boundingBox": "1036,159,36,10",
+                "text": "auper"
+              },
+              {
+                "boundingBox": "1075,156,28,10",
+                "text": "wale"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1037,193,66,13",
+            "words": [
+              {
+                "boundingBox": "1037,193,18,13",
+                "text": "pip"
+              },
+              {
+                "boundingBox": "1060,193,13,10",
+                "text": "ke"
+              },
+              {
+                "boundingBox": "1078,193,25,10",
+                "text": "sath"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1036,358,49,9",
+            "words": [
+              {
+                "boundingBox": "1036,358,6,9",
+                "text": "b"
+              },
+              {
+                "boundingBox": "1043,358,15,9",
+                "text": "hai"
+              },
+              {
+                "boundingBox": "1061,361,24,6",
+                "text": "anas"
+              }
+            ]
+          },
+          {
+            "boundingBox": "986,389,99,9",
+            "words": [
+              {
+                "boundingBox": "986,389,52,9",
+                "text": "command"
+              },
+              {
+                "boundingBox": "1043,392,16,6",
+                "text": "run"
+              },
+              {
+                "boundingBox": "1063,389,22,9",
+                "text": "kare"
+              }
+            ]
+          },
+          {
+            "boundingBox": "906,421,178,11",
+            "words": [
+              {
+                "boundingBox": "906,421,17,11",
+                "text": "pip"
+              },
+              {
+                "boundingBox": "926,421,32,9",
+                "text": "freeze"
+              },
+              {
+                "boundingBox": "962,422,6,7",
+                "text": ">"
+              },
+              {
+                "boundingBox": "972,421,60,9",
+                "text": "installed.txt"
+              },
+              {
+                "boundingBox": "1035,421,10,9",
+                "text": "in"
+              },
+              {
+                "boundingBox": "1048,421,36,9",
+                "text": "vscode"
+              }
+            ]
+          },
+          {
+            "boundingBox": "893,452,192,12",
+            "words": [
+              {
+                "boundingBox": "893,452,23,9",
+                "text": "then"
+              },
+              {
+                "boundingBox": "920,452,9,9",
+                "text": "2."
+              },
+              {
+                "boundingBox": "933,452,16,12",
+                "text": "pip"
+              },
+              {
+                "boundingBox": "952,452,44,9",
+                "text": "uninstall"
+              },
+              {
+                "boundingBox": "1000,455,10,9",
+                "text": "-y"
+              },
+              {
+                "boundingBox": "1013,454,9,7",
+                "text": "-r"
+              },
+              {
+                "boundingBox": "1025,452,60,9",
+                "text": "installed.txt"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1006,483,79,9",
+            "words": [
+              {
+                "boundingBox": "1006,483,15,9",
+                "text": "del"
+              },
+              {
+                "boundingBox": "1025,483,60,9",
+                "text": "installed.txt"
+              }
+            ]
+          },
+          {
+            "boundingBox": "934,543,168,10",
+            "words": [
+              {
+                "boundingBox": "934,543,17,10",
+                "text": "nai"
+              },
+              {
+                "boundingBox": "956,543,10,10",
+                "text": "in"
+              },
+              {
+                "boundingBox": "970,543,43,10",
+                "text": "vscode"
+              },
+              {
+                "boundingBox": "1018,543,14,10",
+                "text": "ko"
+              },
+              {
+                "boundingBox": "1037,543,25,10",
+                "text": "nahi"
+              },
+              {
+                "boundingBox": "1067,543,35,10",
+                "text": "likhna"
+              }
+            ]
+          },
+          {
+            "boundingBox": "950,580,152,13",
+            "words": [
+              {
+                "boundingBox": "950,580,24,13",
+                "text": "just"
+              },
+              {
+                "boundingBox": "978,580,61,10",
+                "text": "command"
+              },
+              {
+                "boundingBox": "1045,580,35,10",
+                "text": "likhna"
+              },
+              {
+                "boundingBox": "1085,580,17,10",
+                "text": "hai"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "478,664,93,46",
+        "lines": [
+          {
+            "boundingBox": "478,664,93,10",
+            "words": [
+              {
+                "boundingBox": "478,664,18,10",
+                "text": "del"
+              },
+              {
+                "boundingBox": "501,664,70,10",
+                "text": "installed.txt"
+              }
+            ]
+          },
+          {
+            "boundingBox": "478,697,83,13",
+            "words": [
+              {
+                "boundingBox": "478,700,14,10",
+                "text": "ye"
+              },
+              {
+                "boundingBox": "497,700,19,7",
+                "text": "run"
+              },
+              {
+                "boundingBox": "521,697,9,10",
+                "text": "ki"
+              },
+              {
+                "boundingBox": "535,697,26,10",
+                "text": "hein"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "583,670,88,40",
+        "lines": [
+          {
+            "boundingBox": "637,670,34,7",
+            "words": [
+              {
+                "boundingBox": "637,670,17,7",
+                "text": "1:58"
+              },
+              {
+                "boundingBox": "658,670,13,7",
+                "text": "PM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "583,703,34,7",
+            "words": [
+              {
+                "boundingBox": "583,703,17,7",
+                "text": "1:58"
+              },
+              {
+                "boundingBox": "604,703,13,7",
+                "text": "PM"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "489,755,144,9",
+        "lines": [
+          {
+            "boundingBox": "489,755,144,9",
+            "words": [
+              {
+                "boundingBox": "489,755,15,9",
+                "text": "nai"
+              },
+              {
+                "boundingBox": "508,755,8,9",
+                "text": "in"
+              },
+              {
+                "boundingBox": "520,755,37,9",
+                "text": "vscode"
+              },
+              {
+                "boundingBox": "561,755,12,9",
+                "text": "ko"
+              },
+              {
+                "boundingBox": "577,755,22,9",
+                "text": "nahi"
+              },
+              {
+                "boundingBox": "603,755,30,9",
+                "text": "likhna"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "479,786,50,10",
+        "lines": [
+          {
+            "boundingBox": "479,786,50,10",
+            "words": [
+              {
+                "boundingBox": "479,786,18,10",
+                "text": "nhi"
+              },
+              {
+                "boundingBox": "502,786,27,10",
+                "text": "likha"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "546,792,102,118",
+        "lines": [
+          {
+            "boundingBox": "614,792,34,7",
+            "words": [
+              {
+                "boundingBox": "614,792,17,7",
+                "text": "1:58"
+              },
+              {
+                "boundingBox": "635,792,13,7",
+                "text": "PM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "546,891,97,19",
+            "words": [
+              {
+                "boundingBox": "546,891,29,19",
+                "text": "bipe"
+              },
+              {
+                "boundingBox": "579,898,6,7",
+                "text": "a"
+              },
+              {
+                "boundingBox": "590,898,53,10",
+                "text": "message"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "1112,162,63,679",
+        "lines": [
+          {
+            "boundingBox": "1122,162,53,7",
+            "words": [
+              {
+                "boundingBox": "1122,162,17,7",
+                "text": "1:56"
+              },
+              {
+                "boundingBox": "1143,162,13,7",
+                "text": "PM"
+              },
+              {
+                "boundingBox": "1163,162,12,7",
+                "text": "U"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1112,512,34,7",
+            "words": [
+              {
+                "boundingBox": "1112,512,18,7",
+                "text": "1-87"
+              },
+              {
+                "boundingBox": "1133,512,13,7",
+                "text": "PM"
+              }
+            ]
+          },
+          {
+            "boundingBox": "1122,834,53,7",
+            "words": [
+              {
+                "boundingBox": "1122,834,17,7",
+                "text": "1:58"
+              },
+              {
+                "boundingBox": "1143,834,13,7",
+                "text": "PM"
+              },
+              {
+                "boundingBox": "1163,834,12,7",
+                "text": "U"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "boundingBox": "458,892,16,16",
+        "lines": [
+          {
+            "boundingBox": "458,892,16,16",
+            "words": [
+              {
+                "boundingBox": "458,892,16,16",
+                "text": "O"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "modelVersion": "2021-04-01"
+  },
+  "image_path": "screenshots\\screenshot_20250708_140114_5934.png"
+}
